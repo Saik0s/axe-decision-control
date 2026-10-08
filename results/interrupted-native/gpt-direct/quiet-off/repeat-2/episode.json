@@ -1,0 +1,613 @@
+{
+  "schema_version": 1,
+  "scenario": {
+    "id": "quiet-off",
+    "goal": "Start a session named Plan week for 10 minutes with Quiet mode off.",
+    "allowed_texts": [
+      "Plan week"
+    ],
+    "initial": {
+      "seed": 19,
+      "duration": 25,
+      "quiet": true,
+      "prefill": "",
+      "scroll": false
+    },
+    "expected": {
+      "name": "Plan week",
+      "duration": 10,
+      "quiet": false,
+      "phase": "running"
+    }
+  },
+  "repetition": 2,
+  "seed": 2037,
+  "screen": {
+    "width": 402.0,
+    "height": 874.0
+  },
+  "provider_config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4.1-mini",
+    "mode": "direct",
+    "base_url": "https://openrouter.ai/api",
+    "max_seconds": 300,
+    "max_steps": 20,
+    "max_requests": 120
+  },
+  "report": {
+    "mode": "direct",
+    "status": "blocked",
+    "reason": "Invalid policy output or unsupported configuration",
+    "steps": 7,
+    "native_commands": 27,
+    "native_failures": 0,
+    "native_mutations": 8,
+    "decision_requests": 0,
+    "generative_requests": 7,
+    "elapsed_seconds": 24.984719833009876,
+    "model_seconds": 7.738073417043779,
+    "reported_cost_usd": 0.0020683999999999998,
+    "unpriced_requests": 0,
+    "identity": {
+      "name": "openrouter",
+      "requested_model": "openai/gpt-4.1-mini",
+      "resolved_model": "openai/gpt-4.1-mini",
+      "resolved_provider": "OpenAI",
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "local": false
+    },
+    "events": [
+      {
+        "step": 1,
+        "phase": "observe",
+        "at_seconds": 0.00002379197394475341,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 1,
+        "phase": "decide",
+        "at_seconds": 1.36454329197295,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 1,
+        "phase": "freshness",
+        "at_seconds": 1.3645816249772906,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 1,
+        "phase": "act",
+        "at_seconds": 1.649581792007666,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 1,
+        "phase": "verify",
+        "at_seconds": 2.9264962499728426,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "observe",
+        "at_seconds": 2.926592083007563,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "decide",
+        "at_seconds": 4.690691374999005,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "freshness",
+        "at_seconds": 4.690731875016354,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "act",
+        "at_seconds": 5.0391357080079615,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "verify",
+        "at_seconds": 7.6063402079744264,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "observe",
+        "at_seconds": 7.606397291994654,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "decide",
+        "at_seconds": 10.011185374984052,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "freshness",
+        "at_seconds": 10.011226292001083,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "act",
+        "at_seconds": 10.792382500017993,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "verify",
+        "at_seconds": 12.91591141698882,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "observe",
+        "at_seconds": 12.915989624976646,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "decide",
+        "at_seconds": 14.339820666995365,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "freshness",
+        "at_seconds": 14.339860374981072,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "act",
+        "at_seconds": 14.769730541971512,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "verify",
+        "at_seconds": 16.607864874997176,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 5,
+        "phase": "observe",
+        "at_seconds": 16.60793812497286,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 5,
+        "phase": "decide",
+        "at_seconds": 18.005423374997918,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 5,
+        "phase": "freshness",
+        "at_seconds": 18.005456916987896,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 5,
+        "phase": "act",
+        "at_seconds": 18.34013166697696,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 5,
+        "phase": "verify",
+        "at_seconds": 20.138517957995646,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 6,
+        "phase": "observe",
+        "at_seconds": 20.13858208298916,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 6,
+        "phase": "decide",
+        "at_seconds": 21.598789707990363,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 6,
+        "phase": "freshness",
+        "at_seconds": 21.598829374997877,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 6,
+        "phase": "act",
+        "at_seconds": 22.027263708005194,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 6,
+        "phase": "verify",
+        "at_seconds": 23.599590500001796,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 7,
+        "phase": "observe",
+        "at_seconds": 23.59966562502086,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      }
+    ],
+    "calls": [
+      {
+        "kind": "generative",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "openai/gpt-4.1-mini",
+          "resolved_model": "openai/gpt-4.1-mini",
+          "resolved_provider": "OpenAI",
+          "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 1108.1111250096,
+          "input_tokens": 359,
+          "output_tokens": 25,
+          "reported_cost_usd": 0.0001836,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "generative",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "openai/gpt-4.1-mini",
+          "resolved_model": "openai/gpt-4.1-mini",
+          "resolved_provider": "OpenAI",
+          "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 1242.1225000289269,
+          "input_tokens": 653,
+          "output_tokens": 26,
+          "reported_cost_usd": 0.0003028,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "generative",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "openai/gpt-4.1-mini",
+          "resolved_model": "openai/gpt-4.1-mini",
+          "resolved_provider": "OpenAI",
+          "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 1213.5219580377452,
+          "input_tokens": 685,
+          "output_tokens": 25,
+          "reported_cost_usd": 0.000314,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "generative",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "openai/gpt-4.1-mini",
+          "resolved_model": "openai/gpt-4.1-mini",
+          "resolved_provider": "OpenAI",
+          "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 1014.6663339692168,
+          "input_tokens": 717,
+          "output_tokens": 25,
+          "reported_cost_usd": 0.0003268,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "generative",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "openai/gpt-4.1-mini",
+          "resolved_model": "openai/gpt-4.1-mini",
+          "resolved_provider": "OpenAI",
+          "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 1031.642749963794,
+          "input_tokens": 749,
+          "output_tokens": 25,
+          "reported_cost_usd": 0.0003396,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "generative",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "openai/gpt-4.1-mini",
+          "resolved_model": "openai/gpt-4.1-mini",
+          "resolved_provider": "OpenAI",
+          "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 1013.7642080080695,
+          "input_tokens": 781,
+          "output_tokens": 25,
+          "reported_cost_usd": 0.0003524,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "generative",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "openai/gpt-4.1-mini",
+          "resolved_model": "openai/gpt-4.1-mini",
+          "resolved_provider": "OpenAI",
+          "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 1114.2445420264266,
+          "input_tokens": 523,
+          "output_tokens": 25,
+          "reported_cost_usd": 0.0002492,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      }
+    ]
+  },
+  "exit_code": 2,
+  "evaluation": {
+    "oracle": {
+      "phase": "running",
+      "name": "Plan week",
+      "duration": 10,
+      "quiet": true,
+      "seed": 2037,
+      "screen_width": 402.0,
+      "screen_height": 874.0
+    },
+    "tree": {
+      "labels": [
+        "FocusBench",
+        "Session started",
+        "Plan week",
+        "10 minutes",
+        "Quiet mode on"
+      ],
+      "omitted_labels": 0
+    },
+    "issues": [
+      "final_quiet_mismatch",
+      "visible_quiet_missing",
+      "visible_conflicting_state"
+    ]
+  },
+  "setup_failures": [],
+  "proof_failures": [],
+  "resources": null,
+  "proof": {
+    "screenshot": "final.png",
+    "tree": "final-tree.json",
+    "video": null
+  }
+}

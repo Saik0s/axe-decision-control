@@ -1,0 +1,539 @@
+{
+  "schema_version": 1,
+  "scenario": {
+    "id": "prefilled",
+    "goal": "Replace the prefilled session name with Deep work and start it for 15 minutes with Quiet mode on.",
+    "allowed_texts": [
+      "Deep work"
+    ],
+    "initial": {
+      "seed": 24,
+      "duration": 5,
+      "quiet": true,
+      "prefill": "Draft",
+      "scroll": false
+    },
+    "expected": {
+      "name": "Deep work",
+      "duration": 15,
+      "quiet": true,
+      "phase": "running"
+    }
+  },
+  "repetition": 0,
+  "seed": 24,
+  "screen": {
+    "width": 402.0,
+    "height": 874.0
+  },
+  "provider_config": {
+    "provider": "openrouter",
+    "model": "typesafe/jev-1.13",
+    "mode": "tree",
+    "base_url": "https://openrouter.ai/api",
+    "max_seconds": 300,
+    "max_steps": 20,
+    "max_requests": 120
+  },
+  "report": {
+    "mode": "tree",
+    "status": "completed",
+    "reason": "Model confirmed the goal in a fresh observation",
+    "steps": 5,
+    "native_commands": 21,
+    "native_failures": 0,
+    "native_mutations": 6,
+    "decision_requests": 7,
+    "generative_requests": 0,
+    "elapsed_seconds": 12.402908332995139,
+    "model_seconds": 1.8465141240158118,
+    "reported_cost_usd": 0.000285138,
+    "unpriced_requests": 0,
+    "identity": {
+      "name": "openrouter",
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "resolved_provider": "TypeSafe",
+      "endpoint": "https://openrouter.ai/api/alpha/decisions",
+      "local": false
+    },
+    "events": [
+      {
+        "step": 1,
+        "phase": "observe",
+        "at_seconds": 0.000022040971089154482,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 1,
+        "phase": "decide",
+        "at_seconds": 0.5859751660027541,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 1,
+        "phase": "freshness",
+        "at_seconds": 0.5860172079992481,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 1,
+        "phase": "act",
+        "at_seconds": 0.8295039999647997,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 1,
+        "phase": "verify",
+        "at_seconds": 1.9101769579574466,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "observe",
+        "at_seconds": 1.9102777499938384,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "decide",
+        "at_seconds": 2.581694916007109,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "freshness",
+        "at_seconds": 2.58172979101073,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "act",
+        "at_seconds": 2.8937479999731295,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 2,
+        "phase": "verify",
+        "at_seconds": 5.295825665991288,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "observe",
+        "at_seconds": 5.295894082984887,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "decide",
+        "at_seconds": 6.218994374969043,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "freshness",
+        "at_seconds": 6.219029958010651,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "act",
+        "at_seconds": 6.826803790987469,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 3,
+        "phase": "verify",
+        "at_seconds": 8.66331920796074,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "observe",
+        "at_seconds": 8.663379625009838,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "decide",
+        "at_seconds": 9.246790915960446,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "freshness",
+        "at_seconds": 9.246826665999833,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "act",
+        "at_seconds": 9.715218416007701,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 4,
+        "phase": "verify",
+        "at_seconds": 10.931323874974623,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false
+      },
+      {
+        "step": 5,
+        "phase": "observe",
+        "at_seconds": 10.93138625001302,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 5,
+        "phase": "decide",
+        "at_seconds": 11.664789083006326,
+        "operation": "DONE",
+        "completion_belief": 0.94,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 5,
+        "phase": "freshness",
+        "at_seconds": 11.664833916001953,
+        "operation": "DONE",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false
+      },
+      {
+        "step": 5,
+        "phase": "verify",
+        "at_seconds": 12.402698791003786,
+        "operation": "DONE",
+        "completion_belief": 0.93,
+        "inside_belief": null,
+        "state_changed": false,
+        "text_focus_required": false
+      }
+    ],
+    "calls": [
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.13",
+          "resolved_model": "typesafe/jev-1.13-20260917",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 335.56979097193107,
+          "input_tokens": 752,
+          "output_tokens": 126,
+          "reported_cost_usd": 0.000031584,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.13",
+          "resolved_model": "typesafe/jev-1.13-20260917",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 240.4890420148149,
+          "input_tokens": 1308,
+          "output_tokens": 182,
+          "reported_cost_usd": 0.000054936,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.13",
+          "resolved_model": "typesafe/jev-1.13-20260917",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 296.40308301895857,
+          "input_tokens": 1352,
+          "output_tokens": 181,
+          "reported_cost_usd": 0.000056784,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.13",
+          "resolved_model": "typesafe/jev-1.13-20260917",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 260.228333005216,
+          "input_tokens": 1393,
+          "output_tokens": 181,
+          "reported_cost_usd": 0.000058506,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.13",
+          "resolved_model": "typesafe/jev-1.13-20260917",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 232.05720796249807,
+          "input_tokens": 878,
+          "output_tokens": 125,
+          "reported_cost_usd": 0.000036876,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.13",
+          "resolved_model": "typesafe/jev-1.13-20260917",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 232.2062500170432,
+          "input_tokens": 553,
+          "output_tokens": 20,
+          "reported_cost_usd": 0.000023226,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.13",
+          "resolved_model": "typesafe/jev-1.13-20260917",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 249.56041702535003,
+          "input_tokens": 553,
+          "output_tokens": 20,
+          "reported_cost_usd": 0.000023226,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      }
+    ]
+  },
+  "exit_code": 0,
+  "evaluation": {
+    "oracle": {
+      "phase": "running",
+      "name": "Deep work",
+      "duration": 15,
+      "quiet": true,
+      "seed": 24,
+      "screen_width": 402.0,
+      "screen_height": 874.0
+    },
+    "tree": {
+      "labels": [
+        "FocusBench",
+        "Session started",
+        "Deep work",
+        "15 minutes",
+        "Quiet mode on"
+      ],
+      "omitted_labels": 0
+    },
+    "issues": []
+  },
+  "setup_failures": [],
+  "proof_failures": [],
+  "resources": null,
+  "proof": {
+    "screenshot": "final.png",
+    "tree": "final-tree.json",
+    "video": null
+  }
+}

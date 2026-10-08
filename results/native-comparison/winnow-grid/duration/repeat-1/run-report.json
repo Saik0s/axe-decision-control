@@ -1,0 +1,918 @@
+{
+  "mode": "grid",
+  "status": "blocked",
+  "reason": "Fresh completion judgment is below the configured threshold",
+  "steps": 7,
+  "native_commands": 28,
+  "native_failures": 0,
+  "native_mutations": 7,
+  "decision_requests": 19,
+  "generative_requests": 0,
+  "elapsed_seconds": 140.85699554200983,
+  "model_seconds": 121.29292912420351,
+  "reported_cost_usd": null,
+  "unpriced_requests": 19,
+  "identity": {
+    "name": "winnow",
+    "requested_model": "Winnow-12B",
+    "resolved_model": "Winnow-12B",
+    "resolved_provider": "winnow",
+    "endpoint": "http://127.0.0.1:8093/v1/systemone",
+    "local": true
+  },
+  "events": [
+    {
+      "step": 1,
+      "phase": "observe",
+      "at_seconds": 0.000022292020730674267,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 1,
+      "phase": "decide",
+      "at_seconds": 24.056235750031192,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": 0.8271861807571025,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 1,
+      "phase": "freshness",
+      "at_seconds": 24.05628787499154,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 1,
+      "phase": "act",
+      "at_seconds": 24.630618958035484,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 1,
+      "phase": "verify",
+      "at_seconds": 25.900358374987263,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": true,
+      "text_focus_required": false
+    },
+    {
+      "step": 2,
+      "phase": "observe",
+      "at_seconds": 25.90045341703808,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 2,
+      "phase": "decide",
+      "at_seconds": 47.35660245799227,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": 0.9157622885683898,
+      "state_changed": null,
+      "text_focus_required": true
+    },
+    {
+      "step": 2,
+      "phase": "freshness",
+      "at_seconds": 47.35666170803597,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 2,
+      "phase": "act",
+      "at_seconds": 48.14232979202643,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 2,
+      "phase": "verify",
+      "at_seconds": 50.43543229199713,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": false,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "observe",
+      "at_seconds": 50.435528333007824,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "decide",
+      "at_seconds": 53.08328091702424,
+      "operation": "TYPE_TEXT",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "freshness",
+      "at_seconds": 53.08332220802549,
+      "operation": "TYPE_TEXT",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "act",
+      "at_seconds": 53.62217166699702,
+      "operation": "TYPE_TEXT",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "verify",
+      "at_seconds": 55.11918212502496,
+      "operation": "TYPE_TEXT",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": true,
+      "text_focus_required": false
+    },
+    {
+      "step": 4,
+      "phase": "observe",
+      "at_seconds": 55.11927929200465,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 4,
+      "phase": "decide",
+      "at_seconds": 76.4417948750197,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": 0.8509267236765505,
+      "state_changed": null,
+      "text_focus_required": true
+    },
+    {
+      "step": 4,
+      "phase": "freshness",
+      "at_seconds": 76.4418299170211,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 4,
+      "phase": "act",
+      "at_seconds": 76.98051700001815,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 4,
+      "phase": "verify",
+      "at_seconds": 78.56664862501202,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": false,
+      "text_focus_required": false
+    },
+    {
+      "step": 5,
+      "phase": "observe",
+      "at_seconds": 78.56674383301288,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 5,
+      "phase": "decide",
+      "at_seconds": 103.71433320798678,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": 0.9309760456075693,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 5,
+      "phase": "freshness",
+      "at_seconds": 103.71437033300754,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 5,
+      "phase": "act",
+      "at_seconds": 104.28675800003111,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 5,
+      "phase": "verify",
+      "at_seconds": 106.02988558303332,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": true,
+      "text_focus_required": false
+    },
+    {
+      "step": 6,
+      "phase": "observe",
+      "at_seconds": 106.02997979201609,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 6,
+      "phase": "decide",
+      "at_seconds": 132.11503058299422,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": 0.8893898840250396,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 6,
+      "phase": "freshness",
+      "at_seconds": 132.11507895798422,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 6,
+      "phase": "act",
+      "at_seconds": 132.89842700003646,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 6,
+      "phase": "verify",
+      "at_seconds": 134.75324320798973,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": true,
+      "text_focus_required": false
+    },
+    {
+      "step": 7,
+      "phase": "observe",
+      "at_seconds": 134.753356583009,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 7,
+      "phase": "decide",
+      "at_seconds": 139.60711741703562,
+      "operation": "DONE",
+      "completion_belief": 0.21559675505737097,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 7,
+      "phase": "freshness",
+      "at_seconds": 139.60716083302395,
+      "operation": "DONE",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 7,
+      "phase": "verify",
+      "at_seconds": 140.8565950000193,
+      "operation": "DONE",
+      "completion_belief": 0.21559675505737097,
+      "inside_belief": null,
+      "state_changed": false,
+      "text_focus_required": false
+    }
+  ],
+  "calls": [
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 1956.1032500350848,
+        "input_tokens": 1022,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 1947.082459,
+        "prefill_ms": 1381.535459,
+        "decode_ms": 1907.5235410000003,
+        "queue_ms": 0.029959,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 763,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 13126.99491699459,
+        "input_tokens": 5068,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 13123.040041,
+        "prefill_ms": 1481.417208,
+        "decode_ms": 13081.079128,
+        "queue_ms": 0.023208,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 844,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 8256.64025003789,
+        "input_tokens": 3540,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 8254.03225,
+        "prefill_ms": 2126.136875,
+        "decode_ms": 8208.499963,
+        "queue_ms": 0.018875,
+        "cache_hit": false,
+        "image_tokens": 969,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 1172,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 2012.0174590265378,
+        "input_tokens": 1069,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 2009.311458,
+        "prefill_ms": 1449.905542,
+        "decode_ms": 1977.3165,
+        "queue_ms": 0.02975,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 810,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 10970.466667029541,
+        "input_tokens": 6155,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 10965.673542,
+        "prefill_ms": 1722.702874,
+        "decode_ms": 10916.044871999999,
+        "queue_ms": 0.02775,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 907,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 7855.437708029058,
+        "input_tokens": 4115,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 7850.296583,
+        "prefill_ms": 2476.8609579999998,
+        "decode_ms": 7724.666247999998,
+        "queue_ms": 1.013584,
+        "cache_hit": false,
+        "image_tokens": 969,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 1235,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 2094.604625017382,
+        "input_tokens": 1117,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 2090.288334,
+        "prefill_ms": 1526.647958,
+        "decode_ms": 2057.6549990000003,
+        "queue_ms": 0.04,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 858,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 2148.9569999976084,
+        "input_tokens": 1145,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 2146.477958,
+        "prefill_ms": 1584.135667,
+        "decode_ms": 2115.637626,
+        "queue_ms": 0.026167,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 886,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 11082.277584006079,
+        "input_tokens": 6231,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 11079.332917,
+        "prefill_ms": 1818.184125,
+        "decode_ms": 11036.655336999998,
+        "queue_ms": 0.02325,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 983,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 7410.232750000432,
+        "input_tokens": 4191,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 7407.395,
+        "prefill_ms": 2517.976583,
+        "decode_ms": 7361.997208000001,
+        "queue_ms": 0.025875,
+        "cache_hit": false,
+        "image_tokens": 969,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 1311,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 2285.2472909726202,
+        "input_tokens": 1192,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 2282.699791,
+        "prefill_ms": 1721.0545,
+        "decode_ms": 2254.1015820000002,
+        "queue_ms": 0.0275,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 933,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 13621.509290998802,
+        "input_tokens": 5238,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 13618.849375,
+        "prefill_ms": 1736.027917,
+        "decode_ms": 13572.635003999998,
+        "queue_ms": 0.03025,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 1014,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 8598.941291042138,
+        "input_tokens": 3710,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 8596.440458,
+        "prefill_ms": 2374.167083,
+        "decode_ms": 8551.608834000002,
+        "queue_ms": 0.03675,
+        "cache_hit": false,
+        "image_tokens": 969,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 1342,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 2278.504708025139,
+        "input_tokens": 1239,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 2276.075667,
+        "prefill_ms": 1710.403833,
+        "decode_ms": 2247.512541,
+        "queue_ms": 0.014875,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 980,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 13818.114458001219,
+        "input_tokens": 5285,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 13812.243291,
+        "prefill_ms": 1864.968334,
+        "decode_ms": 13766.987882000005,
+        "queue_ms": 0.038833,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 1061,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 9349.616999970749,
+        "input_tokens": 3757,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 9339.753417,
+        "prefill_ms": 2563.291625,
+        "decode_ms": 9236.73017,
+        "queue_ms": 1.50875,
+        "cache_hit": false,
+        "image_tokens": 969,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 1389,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 2381.579042004887,
+        "input_tokens": 1285,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 2379.248375,
+        "prefill_ms": 1811.406042,
+        "decode_ms": 2349.757665,
+        "queue_ms": 0.02,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 1026,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 1890.0608330150135,
+        "input_tokens": 1065,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 1888.177375,
+        "prefill_ms": 1706.882666,
+        "decode_ms": 1857.9136679999997,
+        "queue_ms": 0.031958,
+        "cache_hit": false,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 1003,
+        "prefix_reused_tokens": 0,
+        "context_evictions": 3
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "winnow",
+        "requested_model": "Winnow-12B",
+        "resolved_model": "Winnow-12B",
+        "resolved_provider": "winnow",
+        "endpoint": "http://127.0.0.1:8093/v1/systemone",
+        "local": true
+      },
+      "usage": {
+        "request_ms": 155.62299999874085,
+        "input_tokens": 1065,
+        "output_tokens": 0,
+        "reported_cost_usd": null,
+        "native_ms": 153.419333,
+        "prefill_ms": 0.0,
+        "decode_ms": 150.5785,
+        "queue_ms": 0.037375,
+        "cache_hit": true,
+        "image_tokens": 646,
+        "backend_allocated_bytes": 14705770496,
+        "backend_budget_bytes": 55662788608,
+        "prefix_processed_tokens": 0,
+        "prefix_reused_tokens": 1003,
+        "context_evictions": 3
+      }
+    }
+  ]
+}

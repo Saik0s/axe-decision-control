@@ -1,0 +1,529 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-05T19:08:22.836178+00:00",
+  "verdict": "All three original recordings fully decode and support saved report/oracle outcomes: two completed episodes and one blocked episode.",
+  "scope": {
+    "run": "annotation-final-105",
+    "lanes": [
+      "gpt-direct",
+      "clef-tree",
+      "clef-grid"
+    ],
+    "scenario": "basic",
+    "repetition": 0,
+    "fixture": "synthetic FocusBench",
+    "episode_count": 3
+  },
+  "criteria": [
+    "Source hashes stable throughout review.",
+    "Full one-thread passthrough-timestamp decode reaches EOF and matches source frame count.",
+    "Inspect beginning/middle/end and actual final.png separately.",
+    "Compare final phase, name, duration and Quiet state to report and oracle.",
+    "Only synthetic semantic summaries, relative paths, hashes and technical measurements in publishable output."
+  ],
+  "path_convention": "Source paths are repository-relative. Technical evidence and derived frame paths are relative to this audit folder.",
+  "tools": {
+    "ffprobe": "ffprobe version 9.0.2 Copyright (c) 2007-2026 the FFmpeg developers",
+    "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers"
+  },
+  "methods": {
+    "decode": "Complete ffmpeg decode with copyts, fps_mode passthrough and one decoder, encoder and filter thread; raw diagnostic bodies are not persisted.",
+    "frame_selection": "First frame, closest frame to temporal midpoint of source PTS span, and last frame; index and exact source PTS ticks retained.",
+    "timing": "Original variable frame timing retained. No video retimed, re-encoded, or modified.",
+    "visual": "view_image of nine extracted source frames and three actual final.png files; no simulator interaction or new capture.",
+    "warning_interpretation": "Confirmed stderr warnings all concern null-output non-monotonic DTS. Decoder exits zero, all frames decode, source PTS unique and monotonic. These warnings are not corrupt-frame evidence."
+  },
+  "results": [
+    {
+      "lane": "gpt-direct",
+      "technical_evidence": "gpt-direct/technical.json",
+      "verdict": "pass_success_evidence",
+      "sources": {
+        "original.mp4": {
+          "path": "benchmark-runs/annotation-final-105/gpt-direct/basic/repeat-0/original.mp4",
+          "bytes": 432817,
+          "sha256": "77c0995eb5e2563ec55ca88c9a88f80655b2c4e60988261be9c18c62dd51d0b2"
+        },
+        "final.png": {
+          "path": "benchmark-runs/annotation-final-105/gpt-direct/basic/repeat-0/final.png",
+          "bytes": 117276,
+          "sha256": "ab38923dded718d78ac12db3e2d2763055f634810bb801028f717003a61da33b"
+        },
+        "episode.json": {
+          "path": "benchmark-runs/annotation-final-105/gpt-direct/basic/repeat-0/episode.json",
+          "bytes": 14174,
+          "sha256": "13f7aaf70468a71bdc1e25a4d820246022a7ff15cd0888c431ffd1233a7aaa4a"
+        },
+        "run-report.json": {
+          "path": "benchmark-runs/annotation-final-105/gpt-direct/basic/repeat-0/run-report.json",
+          "bytes": 11898,
+          "sha256": "0c5ea853229f11d1da422ca248c17ae312b17e5410c007013ecce9e472eb6a3a"
+        },
+        "final-tree.json": {
+          "path": "benchmark-runs/annotation-final-105/gpt-direct/basic/repeat-0/final-tree.json",
+          "bytes": 141,
+          "sha256": "7cd48361803549e379613a7c56b8ce1c3aa73f3e25537ed0c6d390b2d33b31c6"
+        }
+      },
+      "expected": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true
+      },
+      "oracle": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true,
+        "seed": 7
+      },
+      "report_status": "completed",
+      "episode_exit_code": 0,
+      "duration_seconds": "15.871667",
+      "decoded_frames": 148,
+      "full_decode_exit_code": 0,
+      "source_pts_duplicate_count": 0,
+      "source_pts_non_monotonic_count": 0,
+      "source_positive_pts_delta_range_ticks": [
+        1,
+        1843
+      ],
+      "time_base": "1/600",
+      "null_output_warning_count_confirmation": 102,
+      "source_hashes_unchanged": true,
+      "final_screenshot_observation": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration_minutes": 25,
+        "quiet": true,
+        "completion_label_visible": true,
+        "observation": "Session started, Ship demo, 25 minutes, Quiet mode on.",
+        "source_path": "benchmark-runs/annotation-final-105/gpt-direct/basic/repeat-0/final.png",
+        "source_sha256": "ab38923dded718d78ac12db3e2d2763055f634810bb801028f717003a61da33b",
+        "inspection_method": "direct view_image of actual saved final.png; video samples inspected separately",
+        "video_end_semantically_matches": true
+      },
+      "visual_review": {
+        "method": "direct image-tool inspection of beginning, temporal midpoint, last decoded frame and actual final.png",
+        "final_screenshot": {
+          "phase": "running",
+          "name": "Ship demo",
+          "duration_minutes": 25,
+          "quiet": true,
+          "completion_label_visible": true,
+          "observation": "Session started, Ship demo, 25 minutes, Quiet mode on.",
+          "source_path": "benchmark-runs/annotation-final-105/gpt-direct/basic/repeat-0/final.png",
+          "source_sha256": "ab38923dded718d78ac12db3e2d2763055f634810bb801028f717003a61da33b",
+          "inspection_method": "direct view_image of actual saved final.png; video samples inspected separately",
+          "video_end_semantically_matches": true
+        },
+        "final_phase_matches_oracle": true,
+        "final_name_matches_oracle": true,
+        "final_duration_matches_oracle": true,
+        "final_quiet_matches_oracle": true,
+        "report_status_supported": true,
+        "goal_completed": true,
+        "media_decodable": true,
+        "verdict": "pass_success_evidence",
+        "claim_limit": "A single basic/repeat-0 episode, not the 105-episode matrix or a lane success rate.",
+        "editor_name_caveat": "At midpoint, completion label is absent but Ship demo is visible inside editor. This is an intermediate editing state, not missing typed text."
+      },
+      "representative_frames": [
+        {
+          "position": "beginning",
+          "index_zero_based": 0,
+          "pts_seconds": "0.000000",
+          "elapsed_from_first_pts_seconds": "0.000000",
+          "path": "gpt-direct/frame-01.png",
+          "bytes": 121822,
+          "sha256": "65ff83e57fbd75d65070beb45523f328f8afbc4a38b10f2e0531024bbe0bf7d5",
+          "pts_ticks": 0,
+          "time_base": "1/600",
+          "visual_observation": {
+            "phase": "home",
+            "name": null,
+            "duration_minutes": null,
+            "quiet": null,
+            "completion_label_visible": false,
+            "observation": "Home screen with New session button."
+          }
+        },
+        {
+          "position": "middle",
+          "index_zero_based": 68,
+          "pts_seconds": "7.915000",
+          "elapsed_from_first_pts_seconds": "7.915000",
+          "path": "gpt-direct/frame-02.png",
+          "bytes": 144941,
+          "sha256": "cc5fa48a6188cddc1b3cf005301d1f8837a7379a9ce31addcd087e831a7e009c",
+          "pts_ticks": 4749,
+          "time_base": "1/600",
+          "visual_observation": {
+            "phase": "editing",
+            "name": "Ship demo",
+            "duration_minutes": 25,
+            "quiet": false,
+            "completion_label_visible": false,
+            "observation": "Ship demo is present in the editor; 25 min is selected and Quiet mode is Off."
+          }
+        },
+        {
+          "position": "end",
+          "index_zero_based": 147,
+          "pts_seconds": "15.868333",
+          "elapsed_from_first_pts_seconds": "15.868333",
+          "path": "gpt-direct/frame-03.png",
+          "bytes": 117487,
+          "sha256": "3347187460d5893f25675f7a439720bbe3ae52bd4d32513254e51801b82407a9",
+          "pts_ticks": 9521,
+          "time_base": "1/600",
+          "visual_observation": {
+            "phase": "running",
+            "name": "Ship demo",
+            "duration_minutes": 25,
+            "quiet": true,
+            "completion_label_visible": true,
+            "observation": "Session started, Ship demo, 25 minutes, Quiet mode on."
+          }
+        }
+      ]
+    },
+    {
+      "lane": "clef-tree",
+      "technical_evidence": "clef-tree/technical.json",
+      "verdict": "pass_success_evidence",
+      "sources": {
+        "original.mp4": {
+          "path": "benchmark-runs/annotation-final-105/clef-tree/basic/repeat-0/original.mp4",
+          "bytes": 385167,
+          "sha256": "aec1e18aa53d20604732d15b0e2e08af9864ffd450bd80e0fe8b10a28be952bd"
+        },
+        "final.png": {
+          "path": "benchmark-runs/annotation-final-105/clef-tree/basic/repeat-0/final.png",
+          "bytes": 117509,
+          "sha256": "2f674fea1fdb314f61598cdcdd63c336b19515174f42cea737e009824b801a86"
+        },
+        "episode.json": {
+          "path": "benchmark-runs/annotation-final-105/clef-tree/basic/repeat-0/episode.json",
+          "bytes": 15020,
+          "sha256": "d5f61a7b2b8bbfecf4cb4c6c20f764ab92f7611cadb5b97a4fa2933c1a32377b"
+        },
+        "run-report.json": {
+          "path": "benchmark-runs/annotation-final-105/clef-tree/basic/repeat-0/run-report.json",
+          "bytes": 12692,
+          "sha256": "ac7f8e881aeb00f4185aaaf98297b61fbb0d247920366cf23cfb10b2535fff66"
+        },
+        "final-tree.json": {
+          "path": "benchmark-runs/annotation-final-105/clef-tree/basic/repeat-0/final-tree.json",
+          "bytes": 141,
+          "sha256": "7cd48361803549e379613a7c56b8ce1c3aa73f3e25537ed0c6d390b2d33b31c6"
+        }
+      },
+      "expected": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true
+      },
+      "oracle": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true,
+        "seed": 7
+      },
+      "report_status": "completed",
+      "episode_exit_code": 0,
+      "duration_seconds": "14.661667",
+      "decoded_frames": 129,
+      "full_decode_exit_code": 0,
+      "source_pts_duplicate_count": 0,
+      "source_pts_non_monotonic_count": 0,
+      "source_positive_pts_delta_range_ticks": [
+        1,
+        1733
+      ],
+      "time_base": "1/600",
+      "null_output_warning_count_confirmation": 93,
+      "source_hashes_unchanged": true,
+      "final_screenshot_observation": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration_minutes": 25,
+        "quiet": true,
+        "completion_label_visible": true,
+        "observation": "Session started, Ship demo, 25 minutes, Quiet mode on.",
+        "source_path": "benchmark-runs/annotation-final-105/clef-tree/basic/repeat-0/final.png",
+        "source_sha256": "2f674fea1fdb314f61598cdcdd63c336b19515174f42cea737e009824b801a86",
+        "inspection_method": "direct view_image of actual saved final.png; video samples inspected separately",
+        "video_end_semantically_matches": true
+      },
+      "visual_review": {
+        "method": "direct image-tool inspection of beginning, temporal midpoint, last decoded frame and actual final.png",
+        "final_screenshot": {
+          "phase": "running",
+          "name": "Ship demo",
+          "duration_minutes": 25,
+          "quiet": true,
+          "completion_label_visible": true,
+          "observation": "Session started, Ship demo, 25 minutes, Quiet mode on.",
+          "source_path": "benchmark-runs/annotation-final-105/clef-tree/basic/repeat-0/final.png",
+          "source_sha256": "2f674fea1fdb314f61598cdcdd63c336b19515174f42cea737e009824b801a86",
+          "inspection_method": "direct view_image of actual saved final.png; video samples inspected separately",
+          "video_end_semantically_matches": true
+        },
+        "final_phase_matches_oracle": true,
+        "final_name_matches_oracle": true,
+        "final_duration_matches_oracle": true,
+        "final_quiet_matches_oracle": true,
+        "report_status_supported": true,
+        "goal_completed": true,
+        "media_decodable": true,
+        "verdict": "pass_success_evidence",
+        "claim_limit": "A single basic/repeat-0 episode, not the 105-episode matrix or a lane success rate.",
+        "editor_name_caveat": "At midpoint, completion label is absent but Ship demo is visible inside editor. This is an intermediate editing state, not missing typed text."
+      },
+      "representative_frames": [
+        {
+          "position": "beginning",
+          "index_zero_based": 0,
+          "pts_seconds": "0.000000",
+          "elapsed_from_first_pts_seconds": "0.000000",
+          "path": "clef-tree/frame-01.png",
+          "bytes": 121812,
+          "sha256": "5fd9613d5fd9d745441ad637dd60d665c4b0ba2e35b9f498904fc958db0dd707",
+          "pts_ticks": 0,
+          "time_base": "1/600",
+          "visual_observation": {
+            "phase": "home",
+            "name": null,
+            "duration_minutes": null,
+            "quiet": null,
+            "completion_label_visible": false,
+            "observation": "Home screen with New session button."
+          }
+        },
+        {
+          "position": "middle",
+          "index_zero_based": 67,
+          "pts_seconds": "7.318333",
+          "elapsed_from_first_pts_seconds": "7.318333",
+          "path": "clef-tree/frame-02.png",
+          "bytes": 144943,
+          "sha256": "effd9cf88164f573b9c9da1b5b417330c49064a97d00432d4a218a95649e5ced",
+          "pts_ticks": 4391,
+          "time_base": "1/600",
+          "visual_observation": {
+            "phase": "editing",
+            "name": "Ship demo",
+            "duration_minutes": 25,
+            "quiet": false,
+            "completion_label_visible": false,
+            "observation": "Ship demo is present in the editor; 25 min is selected and Quiet mode is Off.",
+            "caret_visible": true
+          }
+        },
+        {
+          "position": "end",
+          "index_zero_based": 128,
+          "pts_seconds": "14.660000",
+          "elapsed_from_first_pts_seconds": "14.660000",
+          "path": "clef-tree/frame-03.png",
+          "bytes": 116627,
+          "sha256": "68b27dee0d2da790e50a2084a92c6b55a41c56c058c5a458f86103cf49734712",
+          "pts_ticks": 8796,
+          "time_base": "1/600",
+          "visual_observation": {
+            "phase": "running",
+            "name": "Ship demo",
+            "duration_minutes": 25,
+            "quiet": true,
+            "completion_label_visible": true,
+            "observation": "Session started, Ship demo, 25 minutes, Quiet mode on."
+          }
+        }
+      ]
+    },
+    {
+      "lane": "clef-grid",
+      "technical_evidence": "clef-grid/technical.json",
+      "verdict": "pass_blocked_outcome_evidence",
+      "sources": {
+        "original.mp4": {
+          "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/original.mp4",
+          "bytes": 157271,
+          "sha256": "aa33256c9eb45c38b932b5e2eff2150377f45d61d75d1c1675a855b3353bd388"
+        },
+        "final.png": {
+          "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/final.png",
+          "bytes": 133136,
+          "sha256": "0c286b53e0dbdc2ed2bc633af9dee99ab6019c927c2af09085da1fdc14aaaf95"
+        },
+        "episode.json": {
+          "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/episode.json",
+          "bytes": 10130,
+          "sha256": "8b990edfd1965238faeab1147761574a9b37c5f1b92effb467b8535df0c196ae"
+        },
+        "run-report.json": {
+          "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/run-report.json",
+          "bytes": 7858,
+          "sha256": "e187805f2a454856ccbbdbd823ea7795858b3513bd2020d98a9a69f5cc918c9c"
+        },
+        "final-tree.json": {
+          "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/final-tree.json",
+          "bytes": 256,
+          "sha256": "7cfa638fabb59968157b98228c924ae934c7fdc83510a3f9dbf165b0849b52e2"
+        }
+      },
+      "expected": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true
+      },
+      "oracle": {
+        "phase": "editing",
+        "name": "",
+        "duration": 25,
+        "quiet": false,
+        "seed": 7
+      },
+      "report_status": "blocked",
+      "episode_exit_code": 2,
+      "duration_seconds": "13.245000",
+      "decoded_frames": 43,
+      "full_decode_exit_code": 0,
+      "source_pts_duplicate_count": 0,
+      "source_pts_non_monotonic_count": 0,
+      "source_positive_pts_delta_range_ticks": [
+        1,
+        3079
+      ],
+      "time_base": "1/600",
+      "null_output_warning_count_confirmation": 10,
+      "source_hashes_unchanged": true,
+      "final_screenshot_observation": {
+        "phase": "editing",
+        "name": "",
+        "duration_minutes": 25,
+        "quiet": false,
+        "completion_label_visible": false,
+        "observation": "Editor remains open: empty name field, selected 25 min, Quiet Off, faded Start session button.",
+        "name_editor_value": "",
+        "name_editor_placeholder": "Session name",
+        "start_button_visually_disabled": true,
+        "source_path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/final.png",
+        "source_sha256": "0c286b53e0dbdc2ed2bc633af9dee99ab6019c927c2af09085da1fdc14aaaf95",
+        "inspection_method": "direct view_image of actual saved final.png; video samples inspected separately",
+        "video_end_semantically_matches": true,
+        "composition_note": "Saved screenshot places editor controls lower than last video frame; phase, empty name, selected duration and Quiet Off agree."
+      },
+      "visual_review": {
+        "method": "direct image-tool inspection of beginning, temporal midpoint, last decoded frame and actual final.png",
+        "final_screenshot": {
+          "phase": "editing",
+          "name": "",
+          "duration_minutes": 25,
+          "quiet": false,
+          "completion_label_visible": false,
+          "observation": "Editor remains open: empty name field, selected 25 min, Quiet Off, faded Start session button.",
+          "name_editor_value": "",
+          "name_editor_placeholder": "Session name",
+          "start_button_visually_disabled": true,
+          "source_path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/final.png",
+          "source_sha256": "0c286b53e0dbdc2ed2bc633af9dee99ab6019c927c2af09085da1fdc14aaaf95",
+          "inspection_method": "direct view_image of actual saved final.png; video samples inspected separately",
+          "video_end_semantically_matches": true,
+          "composition_note": "Saved screenshot places editor controls lower than last video frame; phase, empty name, selected duration and Quiet Off agree."
+        },
+        "final_phase_matches_oracle": true,
+        "final_name_matches_oracle": true,
+        "final_duration_matches_oracle": true,
+        "final_quiet_matches_oracle": true,
+        "report_status_supported": true,
+        "goal_completed": false,
+        "media_decodable": true,
+        "verdict": "pass_blocked_outcome_evidence",
+        "claim_limit": "A single basic/repeat-0 episode, not the 105-episode matrix or a lane success rate.",
+        "issue_interpretation": {
+          "final_phase_mismatch": "Confirmed: editor remains visible, session has not started.",
+          "final_name_mismatch": "Confirmed: actual editor is empty, not merely missing a completion label.",
+          "final_quiet_mismatch": "Confirmed: Quiet mode is Off.",
+          "visible_started_missing": "Confirmed: Session started is absent.",
+          "visible_name_missing": "Confirmed for this episode: only Session name placeholder is visible; Ship demo is absent.",
+          "visible_quiet_missing": "Quiet mode on is absent; editor explicitly shows Quiet mode Off."
+        }
+      },
+      "representative_frames": [
+        {
+          "position": "beginning",
+          "index_zero_based": 0,
+          "pts_seconds": "0.000000",
+          "elapsed_from_first_pts_seconds": "0.000000",
+          "path": "clef-grid/frame-01.png",
+          "bytes": 122038,
+          "sha256": "d0ae8af3b2e030f1682f9efac1b7f1bbfe74a1a47ba5caf42488c2b3bb719cc9",
+          "pts_ticks": 0,
+          "time_base": "1/600",
+          "visual_observation": {
+            "phase": "home",
+            "name": null,
+            "duration_minutes": null,
+            "quiet": null,
+            "completion_label_visible": false,
+            "observation": "Home screen with New session button."
+          }
+        },
+        {
+          "position": "middle",
+          "index_zero_based": 26,
+          "pts_seconds": "6.641667",
+          "elapsed_from_first_pts_seconds": "6.641667",
+          "path": "clef-grid/frame-02.png",
+          "bytes": 109828,
+          "sha256": "bf808af2757a6a6dc4d3284aff33494f37098bc023a69c18854472e9e1eb6a9f",
+          "pts_ticks": 3985,
+          "time_base": "1/600",
+          "visual_observation": {
+            "phase": "home",
+            "name": null,
+            "duration_minutes": null,
+            "quiet": null,
+            "completion_label_visible": false,
+            "observation": "Home screen with New session button visibly pressed; editor not yet visible."
+          }
+        },
+        {
+          "position": "end",
+          "index_zero_based": 42,
+          "pts_seconds": "13.236667",
+          "elapsed_from_first_pts_seconds": "13.236667",
+          "path": "clef-grid/frame-03.png",
+          "bytes": 148126,
+          "sha256": "e3c9fb42f86c3c7c4b36c644f2e9aa583df4869aafd2b638d5f325f2e55b1cae",
+          "pts_ticks": 7942,
+          "time_base": "1/600",
+          "visual_observation": {
+            "phase": "editing",
+            "name": "",
+            "duration_minutes": 25,
+            "quiet": false,
+            "completion_label_visible": false,
+            "observation": "Editor remains open: empty name field, selected 25 min, Quiet Off, faded Start session button.",
+            "name_editor_value": "",
+            "name_editor_placeholder": "Session name",
+            "start_button_visually_disabled": true
+          }
+        }
+      ]
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "Only these three terminal basic/repeat-0 episodes reviewed.",
+    "Complete decoding checks media integrity; visual review samples beginning/middle/end and final screenshot, not every intermediate interaction.",
+    "No benchmark-wide performance, later-video result, model-error cause or source-to-build provenance inferred."
+  ],
+  "next_action": "Use gpt-direct and clef-tree as successful first-episode evidence, label clef-grid as blocked, and review later four recordings separately after they exist."
+}

@@ -1,0 +1,497 @@
+{
+  "mode": "grid",
+  "status": "blocked",
+  "reason": "Grid tap belief is below the configured threshold",
+  "steps": 4,
+  "native_commands": 15,
+  "native_failures": 0,
+  "native_mutations": 4,
+  "decision_requests": 10,
+  "generative_requests": 0,
+  "elapsed_seconds": 23.60582729196176,
+  "model_seconds": 14.289913040061947,
+  "reported_cost_usd": 0.01170168,
+  "unpriced_requests": 0,
+  "identity": {
+    "name": "openrouter",
+    "requested_model": "cloudflare/clef",
+    "resolved_model": "cloudflare/clef",
+    "resolved_provider": "Cloudflare",
+    "endpoint": "https://openrouter.ai/api/alpha/decisions",
+    "local": false
+  },
+  "events": [
+    {
+      "step": 1,
+      "phase": "observe",
+      "at_seconds": 0.000021958956494927406,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 1,
+      "phase": "decide",
+      "at_seconds": 5.26456237497041,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": 0.5789,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 1,
+      "phase": "freshness",
+      "at_seconds": 5.264614166982938,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 1,
+      "phase": "act",
+      "at_seconds": 5.874437333957758,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 1,
+      "phase": "verify",
+      "at_seconds": 7.202481583983172,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": true,
+      "text_focus_required": false
+    },
+    {
+      "step": 2,
+      "phase": "observe",
+      "at_seconds": 7.202580499986652,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 2,
+      "phase": "decide",
+      "at_seconds": 12.747564541990869,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": 0.6056,
+      "state_changed": null,
+      "text_focus_required": true
+    },
+    {
+      "step": 2,
+      "phase": "freshness",
+      "at_seconds": 12.747604499978479,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 2,
+      "phase": "act",
+      "at_seconds": 13.333663541998249,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 2,
+      "phase": "verify",
+      "at_seconds": 14.939203208952677,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": false,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "observe",
+      "at_seconds": 14.939286249980796,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "decide",
+      "at_seconds": 16.23198645899538,
+      "operation": "TYPE_TEXT",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "freshness",
+      "at_seconds": 16.232026458950713,
+      "operation": "TYPE_TEXT",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "act",
+      "at_seconds": 16.825235958967824,
+      "operation": "TYPE_TEXT",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 3,
+      "phase": "verify",
+      "at_seconds": 18.294706208980642,
+      "operation": "TYPE_TEXT",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": true,
+      "text_focus_required": false
+    },
+    {
+      "step": 4,
+      "phase": "observe",
+      "at_seconds": 18.294796834001318,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 4,
+      "phase": "decide",
+      "at_seconds": 23.036735583969858,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": 0.3816,
+      "state_changed": null,
+      "text_focus_required": false
+    },
+    {
+      "step": 4,
+      "phase": "freshness",
+      "at_seconds": 23.03677958395565,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false
+    }
+  ],
+  "calls": [
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 721.8742910190485,
+        "input_tokens": 1453,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.00034872,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 1913.0563749931753,
+        "input_tokens": 7995,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.0019188,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 1978.9698750246316,
+        "input_tokens": 5591,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.00134184,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 481.70079104602337,
+        "input_tokens": 1509,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.00036216,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 2391.3338749553077,
+        "input_tokens": 9026,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.00216624,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 2031.2932080123574,
+        "input_tokens": 6142,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.00147408,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 681.0546659980901,
+        "input_tokens": 1567,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.00037608,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 1147.1543749794364,
+        "input_tokens": 1598,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.00038352,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 1612.803417025134,
+        "input_tokens": 8140,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.0019536,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "cloudflare/clef",
+        "resolved_model": "cloudflare/clef",
+        "resolved_provider": "Cloudflare",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 1330.6721670087427,
+        "input_tokens": 5736,
+        "output_tokens": 0,
+        "reported_cost_usd": 0.00137664,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    }
+  ]
+}

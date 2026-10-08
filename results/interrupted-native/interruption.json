@@ -1,0 +1,50 @@
+{
+  "process_exit_code": 2,
+  "process_session": 13763,
+  "benchmark_child_pids": [],
+  "disk_failure_observed": true,
+  "finished_utc_in_original_ledger": null,
+  "valid_episodes": 100,
+  "passes": 46,
+  "saved_proof_sets": 100,
+  "invalid_files": [],
+  "coverage": {
+    "expected": 105,
+    "observed": 100,
+    "matched": 100,
+    "missing": [
+      {
+        "cell": "winnow-grid",
+        "scenario": "prefilled",
+        "repetition": 1
+      },
+      {
+        "cell": "winnow-grid",
+        "scenario": "prefilled",
+        "repetition": 2
+      },
+      {
+        "cell": "winnow-grid",
+        "scenario": "scroll",
+        "repetition": 0
+      },
+      {
+        "cell": "winnow-grid",
+        "scenario": "scroll",
+        "repetition": 1
+      },
+      {
+        "cell": "winnow-grid",
+        "scenario": "scroll",
+        "repetition": 2
+      }
+    ],
+    "unexpected": [],
+    "issues": [
+      "implementation_or_runtime_changed",
+      "matrix_cell_unfinished",
+      "matrix_run_unfinished"
+    ]
+  },
+  "original_recordings_preserved": true
+}

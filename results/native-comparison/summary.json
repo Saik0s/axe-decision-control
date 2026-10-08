@@ -1,0 +1,1662 @@
+{
+  "strata": [
+    {
+      "scenario": "basic",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "grid",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 50.28758233197732,
+        "model_seconds": 37.6759797091363,
+        "reported_cost_usd": 0.03001968,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 8,
+        "native_commands": 22,
+        "native_mutations": 3,
+        "native_failures": 0,
+        "decision_requests": 24,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "final_quiet_mismatch": 3,
+          "report_not_completed": 3,
+          "final_name_mismatch": 3,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "basic",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 45.73216391704045,
+        "model_seconds": 13.999331244034693,
+        "reported_cost_usd": 0.00341208,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 21,
+        "generative_requests": 0,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "basic",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "openai/gpt-4.1-mini",
+        "mode": "direct",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 54.43175358296139,
+        "model_seconds": 20.474749626067933,
+        "reported_cost_usd": 0.0047256,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 18,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "basic",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "typesafe/jev-1.13",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 39.40341475099558,
+        "model_seconds": 5.859165584959555,
+        "reported_cost_usd": 0.0008472239999999999,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 21,
+        "generative_requests": 0,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "basic",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "direct",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 65.72032137500355,
+        "model_seconds": 29.809865874995012,
+        "reported_cost_usd": null,
+        "unpriced_requests": 18,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 18,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "basic",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "grid",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 376.72055333293974,
+        "model_seconds": 301.6805524569354,
+        "reported_cost_usd": null,
+        "unpriced_requests": 46,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 18,
+        "native_commands": 71,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 46,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3,
+          "visible_name_missing": 2,
+          "visible_started_missing": 2,
+          "final_phase_mismatch": 2,
+          "visible_quiet_missing": 3,
+          "final_quiet_mismatch": 1,
+          "visible_conflicting_state": 1
+        }
+      }
+    },
+    {
+      "scenario": "basic",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "tree",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 56.345943749009166,
+        "model_seconds": 16.945148126163986,
+        "reported_cost_usd": null,
+        "unpriced_requests": 18,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 12,
+        "native_commands": 51,
+        "native_mutations": 15,
+        "native_failures": 0,
+        "decision_requests": 18,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "duration",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "grid",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 89.77016616699984,
+        "model_seconds": 61.393743916007224,
+        "reported_cost_usd": 0.04587984,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 51,
+        "native_mutations": 12,
+        "native_failures": 0,
+        "decision_requests": 39,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "final_quiet_mismatch": 3,
+          "report_not_completed": 3,
+          "final_duration_mismatch": 3,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "duration",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 54.82282508298522,
+        "model_seconds": 17.395831670088228,
+        "reported_cost_usd": 0.00420912,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 18,
+        "native_commands": 75,
+        "native_mutations": 21,
+        "native_failures": 0,
+        "decision_requests": 24,
+        "generative_requests": 0,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "duration",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "openai/gpt-4.1-mini",
+        "mode": "direct",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 64.307327581977,
+        "model_seconds": 22.480665001785383,
+        "reported_cost_usd": 0.0058211999999999995,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 18,
+        "native_commands": 75,
+        "native_mutations": 21,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 21,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "duration",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "typesafe/jev-1.13",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 45.397080834023654,
+        "model_seconds": 6.523968375055119,
+        "reported_cost_usd": 0.001042524,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 18,
+        "native_commands": 75,
+        "native_mutations": 21,
+        "native_failures": 0,
+        "decision_requests": 24,
+        "generative_requests": 0,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "duration",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "direct",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 73.63682004198199,
+        "model_seconds": 28.2454044559272,
+        "reported_cost_usd": null,
+        "unpriced_requests": 21,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 18,
+        "native_commands": 75,
+        "native_mutations": 21,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 21,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "duration",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "grid",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 490.5775028329808,
+        "model_seconds": 414.48130137706175,
+        "reported_cost_usd": null,
+        "unpriced_requests": 60,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 24,
+        "native_commands": 96,
+        "native_mutations": 25,
+        "native_failures": 0,
+        "decision_requests": 60,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "final_quiet_mismatch": 2,
+          "report_not_completed": 3,
+          "final_duration_mismatch": 2,
+          "visible_conflicting_state": 2,
+          "visible_duration_missing": 2,
+          "visible_quiet_missing": 3,
+          "visible_name_missing": 1,
+          "visible_started_missing": 1,
+          "final_phase_mismatch": 1
+        }
+      }
+    },
+    {
+      "scenario": "duration",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "tree",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 54.190598832967225,
+        "model_seconds": 21.237883998895995,
+        "reported_cost_usd": null,
+        "unpriced_requests": 21,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 21,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "prefilled",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "grid",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 85.94006433303002,
+        "model_seconds": 56.75485649507027,
+        "reported_cost_usd": 0.04593312,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 51,
+        "native_mutations": 12,
+        "native_failures": 0,
+        "decision_requests": 39,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3,
+          "final_duration_mismatch": 3,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "prefilled",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 42.65760091703851,
+        "model_seconds": 12.739040501823183,
+        "reported_cost_usd": 0.00345744,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 21,
+        "generative_requests": 0,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "prefilled",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "openai/gpt-4.1-mini",
+        "mode": "direct",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 67.19853720802348,
+        "model_seconds": 21.65848608285887,
+        "reported_cost_usd": 0.0047676,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 18,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "prefilled",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "typesafe/jev-1.13",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 40.77064591803355,
+        "model_seconds": 6.750016331090592,
+        "reported_cost_usd": 0.000855414,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 21,
+        "generative_requests": 0,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "prefilled",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "direct",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 80.0433469589916,
+        "model_seconds": 24.51500974909868,
+        "reported_cost_usd": null,
+        "unpriced_requests": 15,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 57,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 15,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3
+        }
+      }
+    },
+    {
+      "scenario": "prefilled",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "grid",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 353.2586141670472,
+        "model_seconds": 300.62567404389847,
+        "reported_cost_usd": null,
+        "unpriced_requests": 47,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 19,
+        "native_commands": 78,
+        "native_mutations": 22,
+        "native_failures": 0,
+        "decision_requests": 47,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3,
+          "final_duration_mismatch": 2,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "prefilled",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "tree",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 73.67401787498966,
+        "model_seconds": 20.2314053751179,
+        "reported_cost_usd": null,
+        "unpriced_requests": 21,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 21,
+        "generative_requests": 0,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "quiet-off",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "grid",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 81.80272616702132,
+        "model_seconds": 54.64038516493747,
+        "reported_cost_usd": 0.0417948,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 13,
+        "native_commands": 42,
+        "native_mutations": 9,
+        "native_failures": 0,
+        "decision_requests": 35,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "final_quiet_mismatch": 3,
+          "report_not_completed": 3,
+          "final_duration_mismatch": 3,
+          "final_name_mismatch": 1,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "quiet-off",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 2,
+        "failures": 1,
+        "independent_outcome_successes": 2,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.2076596008020477,
+          "high": 0.9385080552796037
+        },
+        "wall_seconds": 52.100622958969325,
+        "model_seconds": 14.552986082970165,
+        "reported_cost_usd": 0.00414312,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 17,
+        "native_commands": 71,
+        "native_mutations": 20,
+        "native_failures": 0,
+        "decision_requests": 23,
+        "generative_requests": 0,
+        "statuses": {
+          "completed": 2,
+          "blocked": 1
+        },
+        "failure_reasons": {
+          "report_not_completed": 1,
+          "visible_name_missing": 1,
+          "visible_started_missing": 1,
+          "final_phase_mismatch": 1,
+          "visible_quiet_missing": 1
+        }
+      }
+    },
+    {
+      "scenario": "quiet-off",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "openai/gpt-4.1-mini",
+        "mode": "direct",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 1,
+        "failures": 2,
+        "independent_outcome_successes": 1,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.06149194472039621,
+          "high": 0.7923403991979522
+        },
+        "wall_seconds": 90.9303820829955,
+        "model_seconds": 23.73876057972666,
+        "reported_cost_usd": 0.0060772,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 20,
+        "native_commands": 79,
+        "native_mutations": 23,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 21,
+        "statuses": {
+          "completed": 1,
+          "blocked": 2
+        },
+        "failure_reasons": {
+          "report_not_completed": 2,
+          "final_quiet_mismatch": 2,
+          "visible_conflicting_state": 2,
+          "visible_quiet_missing": 2
+        }
+      }
+    },
+    {
+      "scenario": "quiet-off",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "typesafe/jev-1.13",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 51.355502458056435,
+        "model_seconds": 6.5416352900792845,
+        "reported_cost_usd": 0.001042146,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 18,
+        "native_commands": 75,
+        "native_mutations": 21,
+        "native_failures": 0,
+        "decision_requests": 24,
+        "generative_requests": 0,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "quiet-off",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "direct",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 3,
+        "failures": 0,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.4385029682449546,
+          "high": 1.0
+        },
+        "wall_seconds": 90.81912120908964,
+        "model_seconds": 28.56406445900211,
+        "reported_cost_usd": null,
+        "unpriced_requests": 21,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 18,
+        "native_commands": 75,
+        "native_mutations": 21,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 21,
+        "statuses": {
+          "completed": 3
+        },
+        "failure_reasons": {}
+      }
+    },
+    {
+      "scenario": "quiet-off",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "grid",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 487.7789490839932,
+        "model_seconds": 417.1410522098304,
+        "reported_cost_usd": null,
+        "unpriced_requests": 57,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 23,
+        "native_commands": 91,
+        "native_mutations": 24,
+        "native_failures": 0,
+        "decision_requests": 57,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "final_quiet_mismatch": 3,
+          "report_not_completed": 3,
+          "final_duration_mismatch": 3,
+          "visible_conflicting_state": 3,
+          "visible_duration_missing": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "quiet-off",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "tree",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 55.42179875000147,
+        "model_seconds": 21.180135749978945,
+        "reported_cost_usd": null,
+        "unpriced_requests": 21,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 15,
+        "native_commands": 63,
+        "native_mutations": 18,
+        "native_failures": 0,
+        "decision_requests": 21,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "scroll",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "grid",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 64.64289991697297,
+        "model_seconds": 45.66585812414996,
+        "reported_cost_usd": 0.0374016,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 11,
+        "native_commands": 33,
+        "native_mutations": 6,
+        "native_failures": 0,
+        "decision_requests": 31,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "final_quiet_mismatch": 3,
+          "report_not_completed": 3,
+          "final_duration_mismatch": 3,
+          "final_name_mismatch": 2,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "scroll",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 1,
+        "failures": 2,
+        "independent_outcome_successes": 1,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 0.06149194472039621,
+          "high": 0.7923403991979522
+        },
+        "wall_seconds": 30.046045750030316,
+        "model_seconds": 6.5901173750753514,
+        "reported_cost_usd": 0.0026707199999999997,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 13,
+        "native_commands": 47,
+        "native_mutations": 11,
+        "native_failures": 0,
+        "decision_requests": 15,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 2,
+          "completed": 1
+        },
+        "failure_reasons": {
+          "final_quiet_mismatch": 2,
+          "report_not_completed": 2,
+          "final_duration_mismatch": 2,
+          "final_name_mismatch": 2,
+          "visible_name_missing": 2,
+          "visible_started_missing": 2,
+          "final_phase_mismatch": 2,
+          "visible_quiet_missing": 2
+        }
+      }
+    },
+    {
+      "scenario": "scroll",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "openai/gpt-4.1-mini",
+        "mode": "direct",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 0,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 79.30375375103904,
+        "model_seconds": 25.87632012082031,
+        "reported_cost_usd": 0.0069408000000000004,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 24,
+        "native_commands": 88,
+        "native_mutations": 24,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 24,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3,
+          "visible_name_missing": 3,
+          "visible_started_missing": 3,
+          "visible_duration_missing": 3,
+          "final_phase_mismatch": 3,
+          "visible_quiet_missing": 3
+        }
+      }
+    },
+    {
+      "scenario": "scroll",
+      "provider_config": {
+        "provider": "openrouter",
+        "model": "typesafe/jev-1.13",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 65.95479025004897,
+        "model_seconds": 9.080622836074326,
+        "reported_cost_usd": 0.00149247,
+        "unpriced_requests": 0,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 28,
+        "native_commands": 107,
+        "native_mutations": 27,
+        "native_failures": 0,
+        "decision_requests": 34,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3
+        }
+      }
+    },
+    {
+      "scenario": "scroll",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "direct",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 3,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 105.83307562500704,
+        "model_seconds": 40.442739622842055,
+        "reported_cost_usd": null,
+        "unpriced_requests": 33,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 33,
+        "native_commands": 132,
+        "native_mutations": 36,
+        "native_failures": 0,
+        "decision_requests": 0,
+        "generative_requests": 33,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3
+        }
+      }
+    },
+    {
+      "scenario": "scroll",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "grid",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 2,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 757.9968245000346,
+        "model_seconds": 665.5604168317514,
+        "reported_cost_usd": null,
+        "unpriced_requests": 93,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 37,
+        "native_commands": 138,
+        "native_mutations": 33,
+        "native_failures": 0,
+        "decision_requests": 93,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 2,
+          "budget_exhausted": 1
+        },
+        "failure_reasons": {
+          "report_not_completed": 3,
+          "final_quiet_mismatch": 1,
+          "final_duration_mismatch": 1,
+          "visible_name_missing": 1,
+          "visible_started_missing": 1,
+          "final_phase_mismatch": 1,
+          "visible_quiet_missing": 1
+        }
+      }
+    },
+    {
+      "scenario": "scroll",
+      "provider_config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "tree",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      },
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "counts": {
+        "episodes": 3,
+        "successes": 0,
+        "failures": 3,
+        "independent_outcome_successes": 1,
+        "saved_proof_complete": 3,
+        "success_interval_95": {
+          "low": 5.551115123125783e-17,
+          "high": 0.5614970317550454
+        },
+        "wall_seconds": 75.06489487492945,
+        "model_seconds": 29.470262499176897,
+        "reported_cost_usd": null,
+        "unpriced_requests": 27,
+        "missing_reports": 0,
+        "inconsistent_reports": 0,
+        "steps": 23,
+        "native_commands": 89,
+        "native_mutations": 24,
+        "native_failures": 0,
+        "decision_requests": 27,
+        "generative_requests": 0,
+        "statuses": {
+          "blocked": 3
+        },
+        "failure_reasons": {
+          "report_not_completed": 3,
+          "visible_name_missing": 2,
+          "visible_started_missing": 2,
+          "visible_duration_missing": 2,
+          "final_phase_mismatch": 2,
+          "visible_quiet_missing": 2
+        }
+      }
+    }
+  ],
+  "invalid_files": [],
+  "coverage": {
+    "expected": 105,
+    "observed": 105,
+    "matched": 105,
+    "missing": [],
+    "unexpected": [],
+    "issues": []
+  },
+  "caveat": "Synthetic FocusBench tasks only. Quality, mode, and model are confounded; these observations support no causal or general-app claims. Wilson intervals treat episodes as independent; matched repeats may be correlated."
+}

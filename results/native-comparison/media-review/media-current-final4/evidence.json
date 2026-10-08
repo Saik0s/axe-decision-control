@@ -1,0 +1,795 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-05T19:29:18.322307+00:00",
+  "verdict": "All four required terminal first-episode recordings fully decode; direct inspection supports the saved outcomes listed per lane.",
+  "scope": {
+    "run": "annotation-final-105",
+    "lanes": [
+      "jev-tree",
+      "winnow-direct",
+      "winnow-tree",
+      "winnow-grid"
+    ],
+    "scenario": "basic",
+    "repetition": 0,
+    "fixture": "synthetic FocusBench",
+    "episode_count": 4
+  },
+  "path_convention": "Source paths are repository-relative. Technical evidence and sample paths are relative to this audit folder.",
+  "criteria": [
+    "Terminal episode.json with saved video proof matching exact original.mp4 before decoding.",
+    "All source hashes stable throughout review.",
+    "Complete one-thread passthrough-timestamp decode reaches EOF and matches source count.",
+    "Direct image-tool review of beginning/middle/end and actual saved final.png.",
+    "Compare phase, name, duration and Quiet state with report/oracle; retain failed outcomes.",
+    "No raw model/auth/error bodies or private absolute host paths in publishable output."
+  ],
+  "tools": {
+    "ffprobe": "ffprobe version 9.0.2 Copyright (c) 2007-2026 the FFmpeg developers",
+    "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers"
+  },
+  "methods": {
+    "decode": "Complete ffmpeg decode with copyts, fps_mode passthrough, repeat+warning and one decoder/encoder/filter thread; raw diagnostics not persisted.",
+    "timing": "Variable frame timing retained as exact source PTS ticks; no original media modified or retimed.",
+    "samples": "First source frame, closest frame to temporal midpoint, and last source frame, inspected separately from actual final.png.",
+    "pending": "Bounded polls of only matrix PID 13452 and required episode files; missing pending files not classified as failures.",
+    "warnings": "Only null-output non-monotonic DTS warnings. Source PTS are nondecreasing, with one adjacent repeated PTS in Winnow grid. All source frames decode; no failed decoder or corrupt-frame evidence."
+  },
+  "coverage": {
+    "reviewed_this_pass": 4,
+    "source_files_hashed_this_pass": 20,
+    "decoded_frames_this_pass": 868,
+    "sample_images_inspected_this_pass": 12,
+    "actual_final_screenshots_inspected_this_pass": 4,
+    "accepted_previous_pass": {
+      "episodes": 3,
+      "source_files_verified_by_parent": 15,
+      "decoded_frames_verified_by_parent": 320,
+      "audit": "../media-current-first3/audit.md",
+      "re_reviewed_this_pass": false
+    },
+    "current7_review_coverage": 7,
+    "current7_decoded_frames_including_accepted_previous": 1188,
+    "current7_source_files_including_accepted_previous": 35
+  },
+  "results": [
+    {
+      "lane": "jev-tree",
+      "technical_evidence": "jev-tree/technical.json",
+      "sources": {
+        "original.mp4": {
+          "path": "benchmark-runs/annotation-final-105/jev-tree/basic/repeat-0/original.mp4",
+          "bytes": 356330,
+          "sha256": "5b320f6adf71bf06c8d87522ee22ab2224d4cd1fb4fd102e1f2b24eb17eaddfc"
+        },
+        "final.png": {
+          "path": "benchmark-runs/annotation-final-105/jev-tree/basic/repeat-0/final.png",
+          "bytes": 116858,
+          "sha256": "90a3f3c316c30dd42d7117604f167cbf150ab817405095150014d4a854ee28f6"
+        },
+        "episode.json": {
+          "path": "benchmark-runs/annotation-final-105/jev-tree/basic/repeat-0/episode.json",
+          "bytes": 15130,
+          "sha256": "117a07b2fc3fca85f09494e870a9231c2a1c2f700cc1a40a9ea62bc8afce4009"
+        },
+        "run-report.json": {
+          "path": "benchmark-runs/annotation-final-105/jev-tree/basic/repeat-0/run-report.json",
+          "bytes": 12800,
+          "sha256": "1ce7c26097e65210bd6c015584a14ff9689461d8f29a363dd5f35169dac73ca2"
+        },
+        "final-tree.json": {
+          "path": "benchmark-runs/annotation-final-105/jev-tree/basic/repeat-0/final-tree.json",
+          "bytes": 141,
+          "sha256": "7cd48361803549e379613a7c56b8ce1c3aa73f3e25537ed0c6d390b2d33b31c6"
+        }
+      },
+      "terminal_episode_gate": {
+        "terminal": true,
+        "video_proof_matches_source_original": true,
+        "source_stat_stable_before_decode": true,
+        "saved_run_report_matches_episode": true
+      },
+      "report": {
+        "mode": "tree",
+        "status": "completed",
+        "steps": 5,
+        "native_commands": 21,
+        "native_failures": 0,
+        "native_mutations": 6,
+        "decision_requests": 7,
+        "generative_requests": 0,
+        "elapsed_seconds": 13.051560125022661
+      },
+      "episode_exit_code": 0,
+      "expected": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true
+      },
+      "oracle": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true,
+        "seed": 7
+      },
+      "evaluation_issue_codes": [],
+      "setup_failure_count": 0,
+      "proof_failure_count": 0,
+      "media": {
+        "codec": "h264",
+        "dimensions_pixels": [
+          1206,
+          2622
+        ],
+        "duration_seconds": "10.983333",
+        "decoded_frames": 111,
+        "full_decode_exit_code": 0,
+        "source_pts_duplicate_count": 0,
+        "source_pts_non_monotonic_count": 0,
+        "time_base": "1/600",
+        "positive_pts_delta_ticks_range": [
+          1,
+          1316
+        ],
+        "duplicate_pts_evidence": [],
+        "warning_categories": {
+          "null_output_non_monotonic_dts": 76
+        },
+        "source_hashes_unchanged": true
+      },
+      "representative_frames": [
+        {
+          "position": "beginning",
+          "index_zero_based": 0,
+          "pts_ticks": 0,
+          "time_base": "1/600",
+          "pts_seconds": "0.000000",
+          "elapsed_from_first_pts_seconds": "0.0",
+          "path": "jev-tree/frame-01.png",
+          "bytes": 119214,
+          "sha256": "dde64363153beae2ce743181a5d090a02f0419edc2573a49b7f80b859f9d562e",
+          "visual_observation": {
+            "phase": "home",
+            "name": null,
+            "duration_minutes": null,
+            "quiet": null,
+            "completion_label_visible": false,
+            "observation": "Home screen with New session button."
+          }
+        },
+        {
+          "position": "middle",
+          "index_zero_based": 40,
+          "pts_ticks": 3292,
+          "time_base": "1/600",
+          "pts_seconds": "5.486667",
+          "elapsed_from_first_pts_seconds": "5.486666666666666",
+          "path": "jev-tree/frame-02.png",
+          "bytes": 141268,
+          "sha256": "e3edf6d9e9d98cebe6915b07821273dfb6b22b75269df271a8f3c760fefc5b60",
+          "visual_observation": {
+            "phase": "editing",
+            "name": "Ship demo",
+            "duration_minutes": 25,
+            "quiet": false,
+            "completion_label_visible": false,
+            "observation": "Ship demo text and caret visible in editor; 25 min selected; Quiet Off."
+          }
+        },
+        {
+          "position": "end",
+          "index_zero_based": 110,
+          "pts_ticks": 6580,
+          "time_base": "1/600",
+          "pts_seconds": "10.966667",
+          "elapsed_from_first_pts_seconds": "10.966666666666667",
+          "path": "jev-tree/frame-03.png",
+          "bytes": 116230,
+          "sha256": "7eb9d8274882dd4ce3624a173f6c5f37fe30212d5004b184603e0a9d6abd61d9",
+          "visual_observation": {
+            "phase": "running",
+            "name": "Ship demo",
+            "duration_minutes": 25,
+            "quiet": true,
+            "completion_label_visible": true,
+            "observation": "Session started, Ship demo, 25 minutes, Quiet mode on."
+          }
+        }
+      ],
+      "visual_review": {
+        "status": "complete",
+        "method": "direct image-tool inspection of beginning, temporal midpoint, last decoded source frame and actual saved final.png",
+        "final_screenshot": {
+          "phase": "running",
+          "name": "Ship demo",
+          "duration_minutes": 25,
+          "quiet": true,
+          "completion_label_visible": true,
+          "observation": "Session started, Ship demo, 25 minutes, Quiet mode on.",
+          "source_path": "benchmark-runs/annotation-final-105/jev-tree/basic/repeat-0/final.png",
+          "source_sha256": "90a3f3c316c30dd42d7117604f167cbf150ab817405095150014d4a854ee28f6",
+          "inspection_method": "direct view_image of actual saved final.png; source video samples inspected separately",
+          "video_end_semantically_matches": true
+        },
+        "final_phase_matches_oracle": true,
+        "final_name_matches_oracle": true,
+        "final_duration_matches_oracle": true,
+        "final_quiet_matches_oracle": true,
+        "report_status_supported": true,
+        "goal_completed": true,
+        "verdict": "pass_success_evidence",
+        "intermediate_state_caveat": "Missing Session started during editing does not establish missing typed text. Jev midpoint contains Ship demo; Winnow direct midpoint has an empty focused editor, and its final state is successful."
+      }
+    },
+    {
+      "lane": "winnow-direct",
+      "technical_evidence": "winnow-direct/technical.json",
+      "sources": {
+        "original.mp4": {
+          "path": "benchmark-runs/annotation-final-105/winnow-direct/basic/repeat-0/original.mp4",
+          "bytes": 384285,
+          "sha256": "f22eb94aea13d54a19f0356cac21b2fc389f28ca57e10030217e184869316a86"
+        },
+        "final.png": {
+          "path": "benchmark-runs/annotation-final-105/winnow-direct/basic/repeat-0/final.png",
+          "bytes": 116416,
+          "sha256": "e6cb912e78015d5af5269f774149566f235ffef5448f4d255e0d5babe446dbd7"
+        },
+        "episode.json": {
+          "path": "benchmark-runs/annotation-final-105/winnow-direct/basic/repeat-0/episode.json",
+          "bytes": 44687,
+          "sha256": "f6fce81183faec1d5d83ca6380b9a5f46e5c7660e9417a6158efc3984b8a0dd7"
+        },
+        "run-report.json": {
+          "path": "benchmark-runs/annotation-final-105/winnow-direct/basic/repeat-0/run-report.json",
+          "bytes": 11672,
+          "sha256": "03a31b3c9cdc3b837d7efa8a18bbfd6502d2e6f6c168ea52546af273d4376cee"
+        },
+        "final-tree.json": {
+          "path": "benchmark-runs/annotation-final-105/winnow-direct/basic/repeat-0/final-tree.json",
+          "bytes": 141,
+          "sha256": "7cd48361803549e379613a7c56b8ce1c3aa73f3e25537ed0c6d390b2d33b31c6"
+        }
+      },
+      "terminal_episode_gate": {
+        "terminal": true,
+        "video_proof_matches_source_original": true,
+        "source_stat_stable_before_decode": true,
+        "saved_run_report_matches_episode": true
+      },
+      "report": {
+        "mode": "direct",
+        "status": "completed",
+        "steps": 5,
+        "native_commands": 21,
+        "native_failures": 0,
+        "native_mutations": 6,
+        "decision_requests": 0,
+        "generative_requests": 6,
+        "elapsed_seconds": 26.83355474995915
+      },
+      "episode_exit_code": 0,
+      "expected": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true
+      },
+      "oracle": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true,
+        "seed": 7
+      },
+      "evaluation_issue_codes": [],
+      "setup_failure_count": 0,
+      "proof_failure_count": 0,
+      "media": {
+        "codec": "h264",
+        "dimensions_pixels": [
+          1206,
+          2622
+        ],
+        "duration_seconds": "23.905000",
+        "decoded_frames": 145,
+        "full_decode_exit_code": 0,
+        "source_pts_duplicate_count": 0,
+        "source_pts_non_monotonic_count": 0,
+        "time_base": "1/600",
+        "positive_pts_delta_ticks_range": [
+          1,
+          2720
+        ],
+        "duplicate_pts_evidence": [],
+        "warning_categories": {
+          "null_output_non_monotonic_dts": 106
+        },
+        "source_hashes_unchanged": true
+      },
+      "representative_frames": [
+        {
+          "position": "beginning",
+          "index_zero_based": 0,
+          "pts_ticks": 0,
+          "time_base": "1/600",
+          "pts_seconds": "0.000000",
+          "elapsed_from_first_pts_seconds": "0.0",
+          "path": "winnow-direct/frame-01.png",
+          "bytes": 119370,
+          "sha256": "e64174f35f2c8c0cecea07d9348974c8e3d4032efd2826cb62cd66a4adb4d9b2",
+          "visual_observation": {
+            "phase": "home",
+            "name": null,
+            "duration_minutes": null,
+            "quiet": null,
+            "completion_label_visible": false,
+            "observation": "Home screen with New session button."
+          }
+        },
+        {
+          "position": "middle",
+          "index_zero_based": 22,
+          "pts_ticks": 8390,
+          "time_base": "1/600",
+          "pts_seconds": "13.983333",
+          "elapsed_from_first_pts_seconds": "13.983333333333333",
+          "path": "winnow-direct/frame-02.png",
+          "bytes": 154497,
+          "sha256": "d115b5a475ab6bd64e4f6bf020eadc0d38f4003c46da0a6796bb4307e5b288de",
+          "visual_observation": {
+            "phase": "editing",
+            "name": "",
+            "duration_minutes": 25,
+            "quiet": false,
+            "completion_label_visible": false,
+            "observation": "Focused editor with empty name field and Session name placeholder; 25 min selected; Quiet Off; faded Start session button.",
+            "name_editor_value": "",
+            "name_editor_placeholder": "Session name",
+            "caret_visible": true,
+            "start_button_visually_disabled": true
+          }
+        },
+        {
+          "position": "end",
+          "index_zero_based": 144,
+          "pts_ticks": 14342,
+          "time_base": "1/600",
+          "pts_seconds": "23.903333",
+          "elapsed_from_first_pts_seconds": "23.903333333333332",
+          "path": "winnow-direct/frame-03.png",
+          "bytes": 115885,
+          "sha256": "a3df88791f1e572a10d037bdcd604501e44bf3965c7e3fdf8db0d9f510ad6ddc",
+          "visual_observation": {
+            "phase": "running",
+            "name": "Ship demo",
+            "duration_minutes": 25,
+            "quiet": true,
+            "completion_label_visible": true,
+            "observation": "Session started, Ship demo, 25 minutes, Quiet mode on."
+          }
+        }
+      ],
+      "visual_review": {
+        "status": "complete",
+        "method": "direct image-tool inspection of beginning, temporal midpoint, last decoded source frame and actual saved final.png",
+        "final_screenshot": {
+          "phase": "running",
+          "name": "Ship demo",
+          "duration_minutes": 25,
+          "quiet": true,
+          "completion_label_visible": true,
+          "observation": "Session started, Ship demo, 25 minutes, Quiet mode on.",
+          "source_path": "benchmark-runs/annotation-final-105/winnow-direct/basic/repeat-0/final.png",
+          "source_sha256": "e6cb912e78015d5af5269f774149566f235ffef5448f4d255e0d5babe446dbd7",
+          "inspection_method": "direct view_image of actual saved final.png; source video samples inspected separately",
+          "video_end_semantically_matches": true
+        },
+        "final_phase_matches_oracle": true,
+        "final_name_matches_oracle": true,
+        "final_duration_matches_oracle": true,
+        "final_quiet_matches_oracle": true,
+        "report_status_supported": true,
+        "goal_completed": true,
+        "verdict": "pass_success_evidence",
+        "intermediate_state_caveat": "Missing Session started during editing does not establish missing typed text. Jev midpoint contains Ship demo; Winnow direct midpoint has an empty focused editor, and its final state is successful."
+      }
+    },
+    {
+      "lane": "winnow-tree",
+      "technical_evidence": "winnow-tree/technical.json",
+      "sources": {
+        "original.mp4": {
+          "path": "benchmark-runs/annotation-final-105/winnow-tree/basic/repeat-0/original.mp4",
+          "bytes": 370951,
+          "sha256": "a78198c3052370cd95f1a327bee50204b1f53b9d8de33cd286cd55f7d00e5ac2"
+        },
+        "final.png": {
+          "path": "benchmark-runs/annotation-final-105/winnow-tree/basic/repeat-0/final.png",
+          "bytes": 133257,
+          "sha256": "2f585ada457101661029aedfedb292622f800fdf0950e56573b72aec6b388a26"
+        },
+        "episode.json": {
+          "path": "benchmark-runs/annotation-final-105/winnow-tree/basic/repeat-0/episode.json",
+          "bytes": 30041,
+          "sha256": "a32c39942957ea3f160fc29ebf2a17baff2b680dd393e2d46e5b0f0d2c9718b0"
+        },
+        "run-report.json": {
+          "path": "benchmark-runs/annotation-final-105/winnow-tree/basic/repeat-0/run-report.json",
+          "bytes": 10573,
+          "sha256": "22a3607710a471344192f5393fbb2dea57d6da6bfb21d9f81e2406e9057274a9"
+        },
+        "final-tree.json": {
+          "path": "benchmark-runs/annotation-final-105/winnow-tree/basic/repeat-0/final-tree.json",
+          "bytes": 255,
+          "sha256": "81026d896f3391d201d18fa1eac8d493840d50a02c2245d555a76a78d77c46e8"
+        }
+      },
+      "terminal_episode_gate": {
+        "terminal": true,
+        "video_proof_matches_source_original": true,
+        "source_stat_stable_before_decode": true,
+        "saved_run_report_matches_episode": true
+      },
+      "report": {
+        "mode": "tree",
+        "status": "blocked",
+        "steps": 4,
+        "native_commands": 17,
+        "native_failures": 0,
+        "native_mutations": 5,
+        "decision_requests": 6,
+        "generative_requests": 0,
+        "elapsed_seconds": 14.60987045802176
+      },
+      "episode_exit_code": 2,
+      "expected": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true
+      },
+      "oracle": {
+        "phase": "editing",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true,
+        "seed": 7
+      },
+      "evaluation_issue_codes": [
+        "final_phase_mismatch",
+        "visible_started_missing",
+        "visible_name_missing",
+        "visible_quiet_missing"
+      ],
+      "setup_failure_count": 0,
+      "proof_failure_count": 0,
+      "media": {
+        "codec": "h264",
+        "dimensions_pixels": [
+          1206,
+          2622
+        ],
+        "duration_seconds": "11.985000",
+        "decoded_frames": 135,
+        "full_decode_exit_code": 0,
+        "source_pts_duplicate_count": 0,
+        "source_pts_non_monotonic_count": 0,
+        "time_base": "1/600",
+        "positive_pts_delta_ticks_range": [
+          1,
+          2121
+        ],
+        "duplicate_pts_evidence": [],
+        "warning_categories": {
+          "null_output_non_monotonic_dts": 90
+        },
+        "source_hashes_unchanged": true
+      },
+      "representative_frames": [
+        {
+          "position": "beginning",
+          "index_zero_based": 0,
+          "pts_ticks": 0,
+          "time_base": "1/600",
+          "pts_seconds": "0.000000",
+          "elapsed_from_first_pts_seconds": "0.0",
+          "path": "winnow-tree/frame-01.png",
+          "bytes": 121178,
+          "sha256": "0be445553e5945035c3b8afbc96a413b9017ef6df1d90bfe02896efbed171aa6",
+          "visual_observation": {
+            "phase": "home",
+            "name": null,
+            "duration_minutes": null,
+            "quiet": null,
+            "completion_label_visible": false,
+            "observation": "Home screen with New session button."
+          }
+        },
+        {
+          "position": "middle",
+          "index_zero_based": 20,
+          "pts_ticks": 3668,
+          "time_base": "1/600",
+          "pts_seconds": "6.113333",
+          "elapsed_from_first_pts_seconds": "6.113333333333333",
+          "path": "winnow-tree/frame-02.png",
+          "bytes": 166827,
+          "sha256": "8cf1e524d802bf4f42db73da3ff602a05587e7d24c6d6d10c5424eada318baeb",
+          "visual_observation": {
+            "phase": "editing",
+            "name": "",
+            "name_editor_value": "",
+            "name_editor_placeholder": "Session name",
+            "duration_minutes": 25,
+            "quiet": false,
+            "completion_label_visible": false,
+            "observation": "Focused editor is empty; 25 min selected; Quiet Off; faded Start session button."
+          }
+        },
+        {
+          "position": "end",
+          "index_zero_based": 134,
+          "pts_ticks": 7182,
+          "time_base": "1/600",
+          "pts_seconds": "11.970000",
+          "elapsed_from_first_pts_seconds": "11.97",
+          "path": "winnow-tree/frame-03.png",
+          "bytes": 142245,
+          "sha256": "62bd020e15590e9dd0f885bbda1ce339cb5907b04fe9d27ae3222e7c4011084b",
+          "visual_observation": {
+            "phase": "editing",
+            "name": "Ship demo",
+            "name_editor_value": "Ship demo",
+            "duration_minutes": 25,
+            "quiet": true,
+            "completion_label_visible": false,
+            "start_button_visually_enabled": true,
+            "observation": "New session editor; Ship demo is present; 25 min selected; Quiet On; Start session button still visible."
+          }
+        }
+      ],
+      "visual_review": {
+        "status": "complete",
+        "method": "direct image-tool inspection of beginning, temporal midpoint, last decoded source frame and actual saved final.png",
+        "final_screenshot": {
+          "phase": "editing",
+          "name": "Ship demo",
+          "name_editor_value": "Ship demo",
+          "duration_minutes": 25,
+          "quiet": true,
+          "completion_label_visible": false,
+          "start_button_visually_enabled": true,
+          "observation": "New session editor; Ship demo is present; 25 min selected; Quiet On; Start session button still visible.",
+          "source_path": "benchmark-runs/annotation-final-105/winnow-tree/basic/repeat-0/final.png",
+          "source_sha256": "2f585ada457101661029aedfedb292622f800fdf0950e56573b72aec6b388a26",
+          "inspection_method": "direct view_image of actual saved final.png; video samples inspected separately",
+          "video_end_semantically_matches": true,
+          "composition_note": "Saved screenshot places editor controls lower than the last video frame; phase, entered name, selected duration and Quiet On agree."
+        },
+        "final_phase_matches_oracle": true,
+        "final_name_matches_oracle": true,
+        "final_duration_matches_oracle": true,
+        "final_quiet_matches_oracle": true,
+        "report_status_supported": true,
+        "goal_completed": false,
+        "verdict": "pass_blocked_outcome_evidence",
+        "intermediate_state_caveat": "Final editor visibly contains Ship demo and Quiet On. The failed requirement is final phase editing instead of running. Missing completion labels do not establish missing editor text or Quiet Off.",
+        "issue_interpretation": {
+          "final_phase_mismatch": "Confirmed: editing, not running.",
+          "visible_started_missing": "Confirmed: Session started is absent.",
+          "visible_name_missing": "Evaluation records missing name label, but Ship demo is visibly present in the final editor; completion screen is absent.",
+          "visible_quiet_missing": "Evaluation records missing Quiet mode on phrase, but final editor visibly shows Quiet On; completion screen is absent."
+        }
+      }
+    },
+    {
+      "lane": "winnow-grid",
+      "technical_evidence": "winnow-grid/technical.json",
+      "sources": {
+        "original.mp4": {
+          "path": "benchmark-runs/annotation-final-105/winnow-grid/basic/repeat-0/original.mp4",
+          "bytes": 1067541,
+          "sha256": "017b23eb090230fe23baa7e62b1125500f90568532b7c5324710eaee1e386dee"
+        },
+        "final.png": {
+          "path": "benchmark-runs/annotation-final-105/winnow-grid/basic/repeat-0/final.png",
+          "bytes": 134036,
+          "sha256": "d282ebdac29dc49f170da906d33829f454868e6eabaa72ba2b268f47238cd7f7"
+        },
+        "episode.json": {
+          "path": "benchmark-runs/annotation-final-105/winnow-grid/basic/repeat-0/episode.json",
+          "bytes": 118805,
+          "sha256": "446969f8014c0e293ef501c7c0533c59557ed1fb0f8c320a6879dd592264f280"
+        },
+        "run-report.json": {
+          "path": "benchmark-runs/annotation-final-105/winnow-grid/basic/repeat-0/run-report.json",
+          "bytes": 17941,
+          "sha256": "d233f54030accc35ebb4dc0c0b4b002d752221d373baeba1db790b71843e0683"
+        },
+        "final-tree.json": {
+          "path": "benchmark-runs/annotation-final-105/winnow-grid/basic/repeat-0/final-tree.json",
+          "bytes": 255,
+          "sha256": "81026d896f3391d201d18fa1eac8d493840d50a02c2245d555a76a78d77c46e8"
+        }
+      },
+      "terminal_episode_gate": {
+        "terminal": true,
+        "video_proof_matches_source_original": true,
+        "source_stat_stable_before_decode": true,
+        "saved_run_report_matches_episode": true
+      },
+      "report": {
+        "mode": "grid",
+        "status": "blocked",
+        "steps": 5,
+        "native_commands": 20,
+        "native_failures": 0,
+        "native_mutations": 5,
+        "decision_requests": 13,
+        "generative_requests": 0,
+        "elapsed_seconds": 88.15695241698995
+      },
+      "episode_exit_code": 2,
+      "expected": {
+        "phase": "running",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true
+      },
+      "oracle": {
+        "phase": "editing",
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true,
+        "seed": 7
+      },
+      "evaluation_issue_codes": [
+        "final_phase_mismatch",
+        "visible_started_missing",
+        "visible_name_missing",
+        "visible_quiet_missing"
+      ],
+      "setup_failure_count": 0,
+      "proof_failure_count": 0,
+      "media": {
+        "codec": "h264",
+        "dimensions_pixels": [
+          1206,
+          2622
+        ],
+        "duration_seconds": "88.548333",
+        "decoded_frames": 477,
+        "full_decode_exit_code": 0,
+        "source_pts_duplicate_count": 1,
+        "source_pts_non_monotonic_count": 0,
+        "time_base": "1/600",
+        "positive_pts_delta_ticks_range": [
+          1,
+          12465
+        ],
+        "duplicate_pts_evidence": [
+          {
+            "frame_indexes_zero_based": [
+              18,
+              19
+            ],
+            "pts_ticks": 520,
+            "time_base": "1/600",
+            "pts_seconds": "0.8666666666666667"
+          }
+        ],
+        "warning_categories": {
+          "null_output_non_monotonic_dts": 335
+        },
+        "source_hashes_unchanged": true
+      },
+      "representative_frames": [
+        {
+          "position": "beginning",
+          "index_zero_based": 0,
+          "pts_ticks": 0,
+          "time_base": "1/600",
+          "pts_seconds": "0.000000",
+          "elapsed_from_first_pts_seconds": "0.0",
+          "path": "winnow-grid/frame-01.png",
+          "bytes": 121724,
+          "sha256": "dc14eb084c23a6afbf8d094f60dc98a92cfaf1f79e9f1b17c77d2e07500a271a",
+          "visual_observation": {
+            "phase": "home",
+            "name": null,
+            "duration_minutes": null,
+            "quiet": null,
+            "completion_label_visible": false,
+            "observation": "Home screen with New session button."
+          }
+        },
+        {
+          "position": "middle",
+          "index_zero_based": 45,
+          "pts_ticks": 29240,
+          "time_base": "1/600",
+          "pts_seconds": "48.733333",
+          "elapsed_from_first_pts_seconds": "48.733333333333334",
+          "path": "winnow-grid/frame-02.png",
+          "bytes": 141985,
+          "sha256": "331a31216d4ee5c26f3f0317a661dad192cf4be7c24dde83d9e8379a5c5408d0",
+          "visual_observation": {
+            "phase": "editing",
+            "name": "",
+            "name_editor_value": "",
+            "name_editor_placeholder": "Session name",
+            "duration_minutes": 25,
+            "quiet": false,
+            "completion_label_visible": false,
+            "caret_visible": false,
+            "observation": "Editor is empty with Session name placeholder; 25 min selected; Quiet Off; faded Start session button."
+          }
+        },
+        {
+          "position": "end",
+          "index_zero_based": 476,
+          "pts_ticks": 53128,
+          "time_base": "1/600",
+          "pts_seconds": "88.546667",
+          "elapsed_from_first_pts_seconds": "88.54666666666667",
+          "path": "winnow-grid/frame-03.png",
+          "bytes": 145675,
+          "sha256": "5979bba257d5a1f0984f5f63138298ff171c6623c8e6560bf2269ef5f7366baa",
+          "visual_observation": {
+            "phase": "editing",
+            "name": "Ship demo",
+            "name_editor_value": "Ship demo",
+            "duration_minutes": 25,
+            "quiet": true,
+            "completion_label_visible": false,
+            "start_button_visually_enabled": true,
+            "observation": "New session editor; Ship demo is present; 25 min selected; Quiet On; Start session button still visible."
+          }
+        }
+      ],
+      "visual_review": {
+        "status": "complete",
+        "method": "direct image-tool inspection of beginning, temporal midpoint, last decoded source frame and actual saved final.png",
+        "final_screenshot": {
+          "phase": "editing",
+          "name": "Ship demo",
+          "name_editor_value": "Ship demo",
+          "duration_minutes": 25,
+          "quiet": true,
+          "completion_label_visible": false,
+          "start_button_visually_enabled": true,
+          "observation": "New session editor; Ship demo is present; 25 min selected; Quiet On; Start session button still visible.",
+          "source_path": "benchmark-runs/annotation-final-105/winnow-grid/basic/repeat-0/final.png",
+          "source_sha256": "d282ebdac29dc49f170da906d33829f454868e6eabaa72ba2b268f47238cd7f7",
+          "inspection_method": "direct view_image of actual saved final.png; video samples inspected separately",
+          "video_end_semantically_matches": true,
+          "composition_note": "Saved screenshot places editor controls lower than the last video frame; phase, entered name, selected duration and Quiet On agree."
+        },
+        "final_phase_matches_oracle": true,
+        "final_name_matches_oracle": true,
+        "final_duration_matches_oracle": true,
+        "final_quiet_matches_oracle": true,
+        "report_status_supported": true,
+        "goal_completed": false,
+        "verdict": "pass_blocked_outcome_evidence",
+        "intermediate_state_caveat": "Final editor visibly contains Ship demo and Quiet On. The failed requirement is final phase editing instead of running. Missing completion labels do not establish missing editor text or Quiet Off.",
+        "issue_interpretation": {
+          "final_phase_mismatch": "Confirmed: editing, not running.",
+          "visible_started_missing": "Confirmed: Session started is absent.",
+          "visible_name_missing": "Evaluation records missing name label, but Ship demo is visibly present in the final editor; completion screen is absent.",
+          "visible_quiet_missing": "Evaluation records missing Quiet mode on phrase, but final editor visibly shows Quiet On; completion screen is absent."
+        }
+      }
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "Seven first-episode recordings across two accepted review batches, not a full 105-episode matrix or a success-rate estimate.",
+    "Full decoding checks media integrity; visual review samples representative frames and final screenshots rather than every interaction.",
+    "No model-error cause or source-to-build provenance inferred."
+  ],
+  "next_action": "Parent validates final-four evidence against current source hashes, then uses both batches as current7 media evidence, preserving failed or blocked outcomes."
+}

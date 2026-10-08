@@ -1,0 +1,37 @@
+[
+  {
+    "id": "basic",
+    "goal": "Start a session named Ship demo for 25 minutes with Quiet mode on.",
+    "allowed_texts": ["Ship demo"],
+    "initial": {"seed": 7, "duration": 25, "quiet": false, "prefill": "", "scroll": false},
+    "expected": {"name": "Ship demo", "duration": 25, "quiet": true, "phase": "running"}
+  },
+  {
+    "id": "duration",
+    "goal": "Start a session named Review PR for 50 minutes with Quiet mode on.",
+    "allowed_texts": ["Review PR"],
+    "initial": {"seed": 12, "duration": 10, "quiet": false, "prefill": "", "scroll": false},
+    "expected": {"name": "Review PR", "duration": 50, "quiet": true, "phase": "running"}
+  },
+  {
+    "id": "quiet-off",
+    "goal": "Start a session named Plan week for 10 minutes with Quiet mode off.",
+    "allowed_texts": ["Plan week"],
+    "initial": {"seed": 19, "duration": 25, "quiet": true, "prefill": "", "scroll": false},
+    "expected": {"name": "Plan week", "duration": 10, "quiet": false, "phase": "running"}
+  },
+  {
+    "id": "prefilled",
+    "goal": "Replace the prefilled session name with Deep work and start it for 15 minutes with Quiet mode on.",
+    "allowed_texts": ["Deep work"],
+    "initial": {"seed": 24, "duration": 5, "quiet": true, "prefill": "Draft", "scroll": false},
+    "expected": {"name": "Deep work", "duration": 15, "quiet": true, "phase": "running"}
+  },
+  {
+    "id": "scroll",
+    "goal": "Start a session named Session review for 25 minutes with Quiet mode on. Scroll to reach Start session.",
+    "allowed_texts": ["Session review"],
+    "initial": {"seed": 31, "duration": 10, "quiet": false, "prefill": "", "scroll": true},
+    "expected": {"name": "Session review", "duration": 25, "quiet": true, "phase": "running"}
+  }
+]

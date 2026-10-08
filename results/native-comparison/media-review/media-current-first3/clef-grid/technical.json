@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-05T19:05:04.373050+00:00",
+  "lane": "clef-grid",
+  "scenario": "basic",
+  "repetition": 0,
+  "source_root": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0",
+  "sources": {
+    "original.mp4": {
+      "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/original.mp4",
+      "bytes": 157271,
+      "sha256": "aa33256c9eb45c38b932b5e2eff2150377f45d61d75d1c1675a855b3353bd388"
+    },
+    "final.png": {
+      "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/final.png",
+      "bytes": 133136,
+      "sha256": "0c286b53e0dbdc2ed2bc633af9dee99ab6019c927c2af09085da1fdc14aaaf95"
+    },
+    "episode.json": {
+      "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/episode.json",
+      "bytes": 10130,
+      "sha256": "8b990edfd1965238faeab1147761574a9b37c5f1b92effb467b8535df0c196ae"
+    },
+    "run-report.json": {
+      "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/run-report.json",
+      "bytes": 7858,
+      "sha256": "e187805f2a454856ccbbdbd823ea7795858b3513bd2020d98a9a69f5cc918c9c"
+    },
+    "final-tree.json": {
+      "path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/final-tree.json",
+      "bytes": 256,
+      "sha256": "7cfa638fabb59968157b98228c924ae934c7fdc83510a3f9dbf165b0849b52e2"
+    }
+  },
+  "source_hashes_unchanged_after_probe": true,
+  "expected": {
+    "phase": "running",
+    "name": "Ship demo",
+    "duration": 25,
+    "quiet": true
+  },
+  "oracle": {
+    "phase": "editing",
+    "name": "",
+    "duration": 25,
+    "quiet": false,
+    "seed": 7
+  },
+  "report": {
+    "mode": "grid",
+    "status": "blocked",
+    "steps": 2,
+    "native_commands": 6,
+    "native_failures": 0,
+    "native_mutations": 1,
+    "decision_requests": 6,
+    "generative_requests": 0,
+    "elapsed_seconds": 12.783664665999822
+  },
+  "episode_exit_code": 2,
+  "report_matches_saved_run_report": true,
+  "evaluation_issue_codes": [
+    "final_phase_mismatch",
+    "final_name_mismatch",
+    "final_quiet_mismatch",
+    "visible_started_missing",
+    "visible_name_missing",
+    "visible_quiet_missing"
+  ],
+  "setup_failure_count": 0,
+  "proof_failure_count": 0,
+  "semantic_tree_summary": {
+    "labels": [
+      "FocusBench",
+      "New session",
+      "Session name",
+      "Duration",
+      "50 minutes",
+      "25 minutes",
+      "15 minutes",
+      "10 minutes",
+      "5 minutes",
+      "Quiet mode",
+      "Off",
+      "Start session"
+    ],
+    "omitted_labels": 2
+  },
+  "ffprobe": {
+    "exit_code": 0,
+    "stream": {
+      "codec_name": "h264",
+      "width": 1206,
+      "height": 2622,
+      "r_frame_rate": "60/1",
+      "avg_frame_rate": "8600/2649",
+      "time_base": "1/600",
+      "start_time": "0.000000",
+      "duration": "13.245000",
+      "nb_frames": "43"
+    },
+    "format": {
+      "start_time": "0.000000",
+      "duration": "13.245000",
+      "size": "157271"
+    },
+    "decoded_frame_metadata_count": 43,
+    "first_pts_seconds": "0.000000",
+    "last_pts_seconds": "13.236667",
+    "observed_pts_span_seconds": "13.236667",
+    "adjacent_duplicate_pts_count": 0,
+    "non_monotonic_pts_count": 0,
+    "positive_delta_min_seconds": "0.0016666666666666668",
+    "positive_delta_max_seconds": "5.131666666666667",
+    "distinct_positive_delta_count": 20,
+    "most_common_positive_deltas_seconds": [
+      {
+        "delta": "0.016666666666666666",
+        "count": 9
+      },
+      {
+        "delta": "0.0033333333333333335",
+        "count": 5
+      },
+      {
+        "delta": "0.015",
+        "count": 4
+      },
+      {
+        "delta": "0.0016666666666666668",
+        "count": 4
+      },
+      {
+        "delta": "0.018333333333333333",
+        "count": 3
+      },
+      {
+        "delta": "0.008333333333333333",
+        "count": 2
+      },
+      {
+        "delta": "0.15166666666666667",
+        "count": 2
+      },
+      {
+        "delta": "0.27166666666666667",
+        "count": 1
+      }
+    ],
+    "exact_timing": {
+      "time_base": "1/600",
+      "source_frame_pts_ticks": [
+        0,
+        163,
+        172,
+        182,
+        193,
+        202,
+        212,
+        223,
+        232,
+        242,
+        252,
+        262,
+        272,
+        282,
+        292,
+        303,
+        313,
+        322,
+        493,
+        587,
+        588,
+        592,
+        3671,
+        3672,
+        3773,
+        3775,
+        3985,
+        4022,
+        4023,
+        4395,
+        4397,
+        4402,
+        4493,
+        4694,
+        4696,
+        4702,
+        4793,
+        7843,
+        7845,
+        7846,
+        7935,
+        7937,
+        7942
+      ],
+      "source_frame_duration_ticks": [
+        163,
+        11,
+        10,
+        9,
+        9,
+        9,
+        11,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        11,
+        9,
+        10,
+        1,
+        94,
+        4,
+        171,
+        101,
+        1,
+        2,
+        3079,
+        1,
+        37,
+        372,
+        210,
+        2,
+        91,
+        5,
+        2,
+        201,
+        3050,
+        91,
+        2,
+        6,
+        2,
+        89,
+        5,
+        1,
+        5
+      ],
+      "positive_delta_min_ticks": 1,
+      "positive_delta_max_ticks": 3079,
+      "distinct_positive_delta_ticks_count": 20,
+      "most_common_positive_delta_ticks": [
+        {
+          "ticks": 10,
+          "count": 9
+        },
+        {
+          "ticks": 2,
+          "count": 5
+        },
+        {
+          "ticks": 9,
+          "count": 4
+        },
+        {
+          "ticks": 1,
+          "count": 4
+        },
+        {
+          "ticks": 11,
+          "count": 3
+        },
+        {
+          "ticks": 5,
+          "count": 2
+        },
+        {
+          "ticks": 91,
+          "count": 2
+        },
+        {
+          "ticks": 163,
+          "count": 1
+        }
+      ]
+    }
+  },
+  "full_decode": {
+    "exit_code": 0,
+    "progress": {
+      "frame": "43",
+      "out_time_us": "0",
+      "out_time": "00:00:00.000000",
+      "progress": "end"
+    },
+    "warning_line_count": 10,
+    "null_output_non_monotonic_dts_warning_count": 7,
+    "duplicate_pts_warning_count": 0,
+    "decoder_error_marker_count": 0,
+    "other_warning_line_count": 0,
+    "threads": 1,
+    "copyts": true,
+    "fps_mode": "passthrough",
+    "retiming": false,
+    "method": "ffmpeg -hide_banner -nostdin -loglevel warning (confirmation: repeat+warning) -nostats -threads 1 -filter_threads 1 -filter_complex_threads 1 -copyts -i <relative source original.mp4> -map 0:v:0 -an -sn -dn -fps_mode passthrough -threads 1 -progress pipe:1 -f null -",
+    "confirmation_for_warning_classification": {
+      "exit_code": 0,
+      "loglevel": "repeat+warning",
+      "warning_categories": {
+        "null_output_non_monotonic_dts": 10
+      },
+      "other_warning_sanitized_categories": []
+    },
+    "initial_repeat_summary_line_count": 3,
+    "decoded_count_matches_ffprobe": true
+  },
+  "extraction": {
+    "exit_code": 0,
+    "method": "decode selected source frame indexes at original PTS, with copyts, fps_mode passthrough and one decoder/encoder/filter thread",
+    "selected_frames": [
+      {
+        "position": "beginning",
+        "index_zero_based": 0,
+        "pts_seconds": "0.000000",
+        "elapsed_from_first_pts_seconds": "0.000000",
+        "path": "clef-grid/frame-01.png",
+        "bytes": 122038,
+        "sha256": "d0ae8af3b2e030f1682f9efac1b7f1bbfe74a1a47ba5caf42488c2b3bb719cc9",
+        "pts_ticks": 0,
+        "time_base": "1/600",
+        "visual_observation": {
+          "phase": "home",
+          "name": null,
+          "duration_minutes": null,
+          "quiet": null,
+          "completion_label_visible": false,
+          "observation": "Home screen with New session button."
+        }
+      },
+      {
+        "position": "middle",
+        "index_zero_based": 26,
+        "pts_seconds": "6.641667",
+        "elapsed_from_first_pts_seconds": "6.641667",
+        "path": "clef-grid/frame-02.png",
+        "bytes": 109828,
+        "sha256": "bf808af2757a6a6dc4d3284aff33494f37098bc023a69c18854472e9e1eb6a9f",
+        "pts_ticks": 3985,
+        "time_base": "1/600",
+        "visual_observation": {
+          "phase": "home",
+          "name": null,
+          "duration_minutes": null,
+          "quiet": null,
+          "completion_label_visible": false,
+          "observation": "Home screen with New session button visibly pressed; editor not yet visible."
+        }
+      },
+      {
+        "position": "end",
+        "index_zero_based": 42,
+        "pts_seconds": "13.236667",
+        "elapsed_from_first_pts_seconds": "13.236667",
+        "path": "clef-grid/frame-03.png",
+        "bytes": 148126,
+        "sha256": "e3c9fb42f86c3c7c4b36c644f2e9aa583df4869aafd2b638d5f325f2e55b1cae",
+        "pts_ticks": 7942,
+        "time_base": "1/600",
+        "visual_observation": {
+          "phase": "editing",
+          "name": "",
+          "duration_minutes": 25,
+          "quiet": false,
+          "completion_label_visible": false,
+          "observation": "Editor remains open: empty name field, selected 25 min, Quiet Off, faded Start session button.",
+          "name_editor_value": "",
+          "name_editor_placeholder": "Session name",
+          "start_button_visually_disabled": true
+        }
+      }
+    ]
+  },
+  "visual_review": {
+    "method": "direct image-tool inspection of beginning, temporal midpoint, last decoded frame and actual final.png",
+    "final_screenshot": {
+      "phase": "editing",
+      "name": "",
+      "duration_minutes": 25,
+      "quiet": false,
+      "completion_label_visible": false,
+      "observation": "Editor remains open: empty name field, selected 25 min, Quiet Off, faded Start session button.",
+      "name_editor_value": "",
+      "name_editor_placeholder": "Session name",
+      "start_button_visually_disabled": true,
+      "source_path": "benchmark-runs/annotation-final-105/clef-grid/basic/repeat-0/final.png",
+      "source_sha256": "0c286b53e0dbdc2ed2bc633af9dee99ab6019c927c2af09085da1fdc14aaaf95",
+      "inspection_method": "direct view_image of actual saved final.png; video samples inspected separately",
+      "video_end_semantically_matches": true,
+      "composition_note": "Saved screenshot places editor controls lower than last video frame; phase, empty name, selected duration and Quiet Off agree."
+    },
+    "final_phase_matches_oracle": true,
+    "final_name_matches_oracle": true,
+    "final_duration_matches_oracle": true,
+    "final_quiet_matches_oracle": true,
+    "report_status_supported": true,
+    "goal_completed": false,
+    "media_decodable": true,
+    "verdict": "pass_blocked_outcome_evidence",
+    "claim_limit": "A single basic/repeat-0 episode, not the 105-episode matrix or a lane success rate.",
+    "issue_interpretation": {
+      "final_phase_mismatch": "Confirmed: editor remains visible, session has not started.",
+      "final_name_mismatch": "Confirmed: actual editor is empty, not merely missing a completion label.",
+      "final_quiet_mismatch": "Confirmed: Quiet mode is Off.",
+      "visible_started_missing": "Confirmed: Session started is absent.",
+      "visible_name_missing": "Confirmed for this episode: only Session name placeholder is visible; Ship demo is absent.",
+      "visible_quiet_missing": "Quiet mode on is absent; editor explicitly shows Quiet mode Off."
+    }
+  },
+  "source_hashes_unchanged_after_review": true
+}

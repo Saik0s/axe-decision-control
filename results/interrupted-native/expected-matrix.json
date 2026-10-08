@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "repeats": 3,
+  "screen": {
+    "width": 402.0,
+    "height": 874.0
+  },
+  "scenarios": [
+    {
+      "id": "basic",
+      "goal": "Start a session named Ship demo for 25 minutes with Quiet mode on.",
+      "allowed_texts": [
+        "Ship demo"
+      ],
+      "initial": {
+        "seed": 7,
+        "duration": 25,
+        "quiet": false,
+        "prefill": "",
+        "scroll": false
+      },
+      "expected": {
+        "name": "Ship demo",
+        "duration": 25,
+        "quiet": true,
+        "phase": "running"
+      }
+    },
+    {
+      "id": "duration",
+      "goal": "Start a session named Review PR for 50 minutes with Quiet mode on.",
+      "allowed_texts": [
+        "Review PR"
+      ],
+      "initial": {
+        "seed": 12,
+        "duration": 10,
+        "quiet": false,
+        "prefill": "",
+        "scroll": false
+      },
+      "expected": {
+        "name": "Review PR",
+        "duration": 50,
+        "quiet": true,
+        "phase": "running"
+      }
+    },
+    {
+      "id": "quiet-off",
+      "goal": "Start a session named Plan week for 10 minutes with Quiet mode off.",
+      "allowed_texts": [
+        "Plan week"
+      ],
+      "initial": {
+        "seed": 19,
+        "duration": 25,
+        "quiet": true,
+        "prefill": "",
+        "scroll": false
+      },
+      "expected": {
+        "name": "Plan week",
+        "duration": 10,
+        "quiet": false,
+        "phase": "running"
+      }
+    },
+    {
+      "id": "prefilled",
+      "goal": "Replace the prefilled session name with Deep work and start it for 15 minutes with Quiet mode on.",
+      "allowed_texts": [
+        "Deep work"
+      ],
+      "initial": {
+        "seed": 24,
+        "duration": 5,
+        "quiet": true,
+        "prefill": "Draft",
+        "scroll": false
+      },
+      "expected": {
+        "name": "Deep work",
+        "duration": 15,
+        "quiet": true,
+        "phase": "running"
+      }
+    },
+    {
+      "id": "scroll",
+      "goal": "Start a session named Session review for 25 minutes with Quiet mode on. Scroll to reach Start session.",
+      "allowed_texts": [
+        "Session review"
+      ],
+      "initial": {
+        "seed": 31,
+        "duration": 10,
+        "quiet": false,
+        "prefill": "",
+        "scroll": true
+      },
+      "expected": {
+        "name": "Session review",
+        "duration": 25,
+        "quiet": true,
+        "phase": "running"
+      }
+    }
+  ],
+  "cells": [
+    {
+      "id": "gpt-direct",
+      "config": {
+        "provider": "openrouter",
+        "model": "openai/gpt-4.1-mini",
+        "mode": "direct",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      }
+    },
+    {
+      "id": "clef-tree",
+      "config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      }
+    },
+    {
+      "id": "clef-grid",
+      "config": {
+        "provider": "openrouter",
+        "model": "cloudflare/clef",
+        "mode": "grid",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      }
+    },
+    {
+      "id": "jev-tree",
+      "config": {
+        "provider": "openrouter",
+        "model": "typesafe/jev-1.13",
+        "mode": "tree",
+        "base_url": "https://openrouter.ai/api",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      }
+    },
+    {
+      "id": "winnow-direct",
+      "config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "direct",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      }
+    },
+    {
+      "id": "winnow-tree",
+      "config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "tree",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      }
+    },
+    {
+      "id": "winnow-grid",
+      "config": {
+        "provider": "winnow",
+        "model": "Winnow-12B",
+        "mode": "grid",
+        "base_url": "http://127.0.0.1:8093",
+        "max_seconds": 300,
+        "max_steps": 20,
+        "max_requests": 120
+      }
+    }
+  ],
+  "frozen": {
+    "source_sha256": "46f1ff07bb99804d7967a5ff88614d519b4a0b1424a0848c8c5fdaefa4e3ab87",
+    "runtime_package_sha256": "3975e1646fa91a68611a77642a21cb8d2bffca4f047df124468ee57684d19f4d",
+    "fixture_sha256": "88ff20cc79a904ea9ce9f788fa28f40a89cc283b3aeb9a9ef7dc5d88acaab75a",
+    "python": "3.13.9",
+    "system": "Darwin",
+    "machine": "arm64",
+    "packages": {
+      "axe-decision-control": "0.1.0",
+      "httpx": "0.28.1",
+      "pydantic": "2.13.5",
+      "Pillow": "12.3.0"
+    },
+    "simulator_runtime": "iOS 26.5 simulator"
+  }
+}
