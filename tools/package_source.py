@@ -20,9 +20,9 @@ from typing import TypedDict
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 SELECTED_ROOTS: tuple[str, ...] = (
-    ".gitignore", "AGENTS.md", "LICENSE", "README.md", "pyproject.toml", "uv.lock",
-    "src", "benchmarks", "docs", "tests", "tools", "fixtures",
-    ".agents/skills/axe-tree-control", ".agents/skills/axe-grid-control", "results",
+    ".gitignore", "AGENTS.md", "CLAUDE.md", "LICENSE", "README.md", "pyproject.toml", "uv.lock",
+    "src", "benchmarks", "docs", "tests", "tools", "fixtures", "evals", ".github",
+    ".claude-plugin", ".codex-plugin", ".agents/plugins", "skills", "results",
 )
 EXCLUDED_NAMES: frozenset[str] = frozenset({
     ".git", ".venv", "venv", "__pycache__", "cache", "caches", ".cache",

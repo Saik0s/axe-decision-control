@@ -14,7 +14,7 @@ import pytest
 from PIL import Image
 from pydantic import ValidationError
 
-from axe_control.decisions import ProviderIdentity
+from axe_control.decisions import ModelCall, ProviderIdentity, ProviderUsage
 from axe_control.models import RunReport, ScreenSize
 from benchmarks import matrix
 from benchmarks.summarize import (
@@ -68,13 +68,21 @@ def episode(expected: matrix.ExpectedMatrix, cell: matrix.Cell,
                                 f"{facts.duration} minutes",
                                 f"Quiet mode {'on' if facts.quiet else 'off'}"])
     identity = ProviderIdentity(name=cell.config.provider, requested_model=cell.config.model,
-                                endpoint=cell.config.base_url,
+                                endpoint=cell.config.base_url + (
+                                    "/v1/chat/completions" if cell.config.mode == "direct" else
+                                    "/v1/systemone" if cell.config.provider == "winnow" else
+                                    "/alpha/decisions"),
                                 local=cell.config.provider == "winnow")
+    calls = [ModelCall(kind="generative" if cell.config.mode == "direct" else "decision",
+                       succeeded=True, identity=identity, usage=ProviderUsage(request_ms=1.0))
+             for _ in range(2 if cell.config.mode == "direct" else 3)]
     report = RunReport(mode=cell.config.mode, status="completed", reason="synthetic",
-                       steps=0, native_commands=0, native_failures=0, native_mutations=0,
-                       decision_requests=0, generative_requests=0, elapsed_seconds=1.0,
-                       model_seconds=0.0, reported_cost_usd=None, unpriced_requests=0,
-                       identity=identity, events=[], calls=[])
+                       steps=1, native_commands=0, native_failures=0, native_mutations=0,
+                       decision_requests=sum(call.kind == "decision" for call in calls),
+                       generative_requests=sum(call.kind == "generative" for call in calls),
+                       elapsed_seconds=1.0, model_seconds=len(calls) / 1000,
+                       reported_cost_usd=None, unpriced_requests=len(calls),
+                       identity=identity, events=[], calls=calls)
     return Episode(scenario=scenario, repetition=repetition, seed=seed, screen=expected.screen,
                    provider_config=cell.config, report=report, exit_code=0,
                    evaluation=evaluate(scenario, seed, expected.screen, oracle, tree),
@@ -218,6 +226,60 @@ def test_full_105_episode_matrix_has_exact_coverage(tmp_path: Path) -> None:
     assert sum(item.counts.saved_proof_complete or 0 for item in summary.strata) == 105
 
 
+@pytest.mark.parametrize("episodes_fail,ledger_fails", [(True, False), (False, True),
+                                                       (True, True), (False, False)])
+def test_cell_ledger_must_agree_with_complete_matched_episode_results(
+    tmp_path: Path, episodes_fail: bool, ledger_fails: bool,
+) -> None:
+    expected = expected_matrix()
+    freeze(tmp_path, expected)
+    cell = expected.cells[0]
+    for index, scenario in enumerate(expected.scenarios):
+        for repetition in range(3):
+            row = episode(expected, cell, index, repetition)
+            if episodes_fail:
+                assert row.report is not None
+                row.report.status = "blocked"
+                row.exit_code = 2
+            save(tmp_path / cell.id / scenario.id / f"repeat-{repetition}", row)
+    record = matrix.MatrixRun.model_validate_json((tmp_path / "matrix-run.json").read_bytes())
+    if ledger_fails:
+        record.cells[0].status = "failed"
+        record.cells[0].exit_code = 2
+    matrix.write_record(tmp_path, record)
+    summary = summarize(tmp_path)
+    assert summary.coverage is not None and summary.coverage.matched == 15
+    assert ("matrix_cell_episode_status_mismatch" in summary.coverage.issues) == (
+        episodes_fail != ledger_fails)
+    assert sum(item.counts.failures for item in summary.strata) == (15 if episodes_fail else 0)
+
+
+@pytest.mark.parametrize("episodes_fail,ledger_fails", [(False, True), (True, True),
+                                                       (True, False)])
+def test_partial_cell_only_rejects_a_proven_ledger_contradiction(
+    tmp_path: Path, episodes_fail: bool, ledger_fails: bool,
+) -> None:
+    expected = expected_matrix()
+    freeze(tmp_path, expected)
+    cell = expected.cells[0]
+    row = episode(expected, cell)
+    if episodes_fail:
+        assert row.report is not None
+        row.report.status = "blocked"
+        row.exit_code = 2
+    save(tmp_path / cell.id / row.scenario.id / "repeat-0", row)
+    record = matrix.MatrixRun.model_validate_json((tmp_path / "matrix-run.json").read_bytes())
+    if ledger_fails:
+        record.cells[0].status = "failed"
+        record.cells[0].exit_code = 2
+    matrix.write_record(tmp_path, record)
+    summary = summarize(tmp_path)
+    assert summary.coverage is not None and not summary.coverage.complete
+    assert len(summary.coverage.missing) == 104
+    assert summary.coverage.issues == (
+        ["matrix_cell_episode_status_mismatch"] if episodes_fail and not ledger_fails else [])
+
+
 def test_interrupted_suite_reports_104_missing_and_nonzero_cli(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str],
 ) -> None:
@@ -300,6 +362,26 @@ def test_missing_or_invalid_expected_file_fails_closed(tmp_path: Path) -> None:
     (tmp_path / "expected-matrix.json").write_text("{}")
     coverage = summarize(tmp_path).coverage
     assert coverage is not None and coverage.issues == ["invalid_expected_matrix"]
+
+
+@pytest.mark.parametrize("exit_code,issues", [(None, ["child_timeout"]),
+                                           (1, []), (2, ["cell_metadata_unavailable"])])
+def test_complete_episode_files_do_not_hide_harness_failure(
+    tmp_path: Path, exit_code: int | None, issues: list[str],
+) -> None:
+    expected = expected_matrix()
+    freeze(tmp_path, expected)
+    for cell in expected.cells:
+        save_cell(tmp_path, expected, cell)
+    record = matrix.MatrixRun.model_validate_json((tmp_path / "matrix-run.json").read_bytes())
+    record.cells[0].status = "failed"
+    record.cells[0].exit_code = exit_code
+    record.cells[0].issues = issues
+    matrix.write_record(tmp_path, record)
+    coverage = summarize(tmp_path).coverage
+    assert coverage is not None and coverage.matched == 105
+    assert not coverage.complete
+    assert coverage.issues
 
 
 @pytest.mark.parametrize("change", ["mode", "missing-cell", "scenario", "model-path"])

@@ -169,11 +169,27 @@ def report_issues(report: RunReport, config: ProviderConfig, exit_code: int | No
         issues.append("report_exit_status_mismatch")
     if report.mode != config.mode:
         issues.append("report_mode_mismatch")
+    if report.status == "completed" and (not report.calls or not report.calls[-1].succeeded):
+        issues.append("report_completion_call_missing_or_failed")
     identities = [report.identity, *(call.identity for call in report.calls)]
     for identity in identities:
         if identity.name != config.provider or identity.requested_model != config.model:
             issues.append("report_identity_mismatch")
             break
+    decision_endpoint = config.base_url + (
+        "/v1/systemone" if config.provider == "winnow" else "/alpha/decisions")
+    chat_endpoint = config.base_url + "/v1/chat/completions"
+    final_endpoints = {chat_endpoint if config.mode == "direct" else decision_endpoint}
+    if config.provider == "winnow" and not any(call.succeeded for call in report.calls):
+        final_endpoints.add(decision_endpoint)  # Initial identity before a successful request.
+    try:
+        if (safe_endpoint(report.identity.endpoint) not in final_endpoints or any(
+                safe_endpoint(call.identity.endpoint) != (
+                    decision_endpoint if call.kind == "decision" else chat_endpoint)
+                for call in report.calls)):
+            issues.append("report_endpoint_mismatch")
+    except ValueError:
+        issues.append("report_endpoint_mismatch")
     counts = [report.steps, report.native_commands, report.native_mutations, report.native_failures,
               report.decision_requests, report.generative_requests, report.unpriced_requests]
     if (any(count < 0 for count in counts) or report.native_failures > report.native_commands

@@ -168,7 +168,7 @@ def check_coverage(directory: Path, observed: list[tuple[Path, Episode]],
     slots = {(cell.id, scenario.id, repetition): CoverageSlot(
         cell=cell.id, scenario=scenario.id, repetition=repetition)
         for cell in expected.cells for scenario in expected.scenarios for repetition in range(3)}
-    matched: set[tuple[str, str, int]] = set()
+    matched: dict[tuple[str, str, int], Episode] = {}
     unexpected: list[str] = []
     for path, episode in observed:
         relative = path.relative_to(directory)
@@ -181,7 +181,7 @@ def check_coverage(directory: Path, observed: list[tuple[Path, Episode]],
                 / "episode.json" or key in matched):
             unexpected.append(relative.as_posix())
         else:
-            matched.add(key)
+            matched[key] = episode
     issues: list[str] = []
     try:
         record = MatrixRun.model_validate_json((directory / "matrix-run.json").read_bytes())
@@ -195,6 +195,20 @@ def check_coverage(directory: Path, observed: list[tuple[Path, Episode]],
         for item in record.cells:
             if item.status not in {"finished", "failed"}:
                 issues.append("matrix_cell_unfinished")
+            if item.issues:
+                issues.append("matrix_cell_harness_failure")
+            if (item.status == "finished" and item.exit_code != 0
+                    or item.status == "failed" and item.exit_code != 2):
+                issues.append("matrix_cell_exit_status_mismatch")
+            episodes = [episode for (cell, _, _), episode in matched.items() if cell == item.cell]
+            failed = any(episode.issues() for episode in episodes)
+            complete = len(episodes) == len(expected.scenarios) * 3
+            # A known failure forces exit 2. Success needs every expected attempt;
+            # missing attempts alone cannot contradict a quality-failed child.
+            if not item.issues and item.status in {"finished", "failed"} and (failed or complete):
+                if (item.status != ("failed" if failed else "finished")
+                        or item.exit_code != (2 if failed else 0)):
+                    issues.append("matrix_cell_episode_status_mismatch")
             if item.before != frozen or item.after != frozen:
                 issues.append("implementation_or_runtime_changed")
     except (OSError, ValueError):

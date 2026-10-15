@@ -379,7 +379,7 @@ class Options(argparse.Namespace):
     app: Path
     provider: Literal["openrouter", "winnow"]
     model: str
-    mode: Literal["direct", "tree", "grid"]
+    mode: Literal["direct", "tree", "grid", "box"]
     base_url: str
     repeats: int
     points: str
@@ -398,7 +398,7 @@ def parse_options() -> Options:
     parser.add_argument("--app", type=Path, required=True)
     parser.add_argument("--provider", choices=("openrouter", "winnow"), required=True)
     parser.add_argument("--model", required=True)
-    parser.add_argument("--mode", choices=("direct", "tree", "grid"), required=True)
+    parser.add_argument("--mode", choices=("direct", "tree", "grid", "box"), required=True)
     parser.add_argument("--base-url", required=True)
     parser.add_argument("--repeats", type=int, default=3)
     parser.add_argument("--points", default="402x874")

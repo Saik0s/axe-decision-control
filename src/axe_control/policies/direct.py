@@ -25,6 +25,8 @@ def plan(ctx: RunContext, snapshot: TreeSnapshot, *, verify: bool = False) -> Pl
     action = reply.action
     if action.point is not None:
         raise ValueError("Tree baseline must use supplied semantic references")
+    if action.operation == "TYPE_TEXT" and action.target_ref is None:
+        raise ValueError("Direct text entry requires a current semantic target")
     if action.target_ref is not None:
         snapshot.resolve(action.target_ref)
     if action.text is not None and action.text not in ctx.task.allowed_texts:

@@ -1,10 +1,14 @@
 # Usage
 
 The CLI and library run one user-supplied goal against one explicit iOS Simulator.
-Commands below match the current parser. Clean installation and controlled native
-execution have current evidence. [Results](results.md) separates the completed
-105-episode native comparison from local inference measurements. Grid remains
-experimental, with 0/30 strict native passes; examples alone prove neither.
+Commands below match the current parser. [Results](results.md) separates the completed
+105-episode native comparison, frozen on 2026-10-05, from local inference
+measurements. Its **0/30 strict grid passes** came from Clef/Winnow, not JeV 1.14.
+Grid and box control remain experimental. The JeV 1.14 image/box provider probe
+is separate from native task success. Saved synthetic native evidence from
+2026-10-15 records passing tree/grid and final guided-box duration demos, alongside
+three retained generic-box attempts blocked by the presence gate. These are
+prototype observations, not a broad benchmark or general accuracy estimates.
 
 ## Install and select the target
 
@@ -59,9 +63,16 @@ an executable/path for `run` and `observe`; `doctor` checks `axe` on PATH.
 ## Provider and credentials
 
 OpenRouter's default base URL is `https://openrouter.ai/api`. Tree/grid default
-to `cloudflare/clef`; direct defaults to `openai/gpt-4.1-mini`. Prefer an explicit
-model selection. The supported Jev selector is `typesafe/jev-1.13` for tree only;
-moving aliases and direct TypeSafe selectors are not interchangeable with it.
+to `typesafe/jev-1.14`, as does box; direct defaults to `openai/gpt-4.1-mini`.
+Prefer an explicit model selection. JeV 1.14 supports text/image decisions and
+experimental boxes. The adapter requires its resolved response model to be
+`typesafe/jev-1.14-20261014`. This versioned selection does not use a moving
+latest alias. Direct TypeSafe selectors `jev-1.14.0` and `jev-preview` belong to
+a different API, which this package does not implement; its latest-alias
+documentation still names 1.13 as of the 2026-10-15 review.
+
+`typesafe/jev-1.13` remains a historical text-only tree route in this adapter.
+That restriction describes this package, not current upstream 1.13 image support.
 
 OpenRouter reads `OPENROUTER_API_KEY_FILE` or `OPENROUTER_API_KEY`. Winnow reads
 `WINNOW_API_KEY_FILE` or `WINNOW_API_KEY` when its server requires authentication.
@@ -84,7 +95,7 @@ one exact literal the user approved. The examples with `--text` require that
 literal; omit the option when no text is needed and repeat it for each additional
 approved value. The package selects from this catalog, not generated text.
 
-Tree control through Clef:
+Tree control through JeV 1.14:
 
 ```sh
 rtk proxy uv run --no-sync --offline axe-control run \
@@ -92,14 +103,14 @@ rtk proxy uv run --no-sync --offline axe-control run \
   --points "${AXE_POINTS:?Supply logical WIDTHxHEIGHT}" \
   --goal "${AXE_GOAL:?Supply the user goal}" \
   --text "${AXE_TEXT:?Supply an approved literal}" \
-  --provider openrouter --model cloudflare/clef --mode tree \
+  --provider openrouter --model typesafe/jev-1.14 --mode tree \
   --max-steps 20 --max-requests 120 --max-seconds 300
 ```
 
-For Jev tree decisions, replace only the model with `typesafe/jev-1.13`. Both
+For Clef tree decisions, replace only the model with `cloudflare/clef`. Both
 models use OpenRouter credentials and send task/app content to a cloud provider.
 
-Screenshot grid control through an already image-capable Winnow service:
+For explicitly requested experimental screenshot grid control through JeV 1.14:
 
 ```sh
 rtk proxy uv run --no-sync --offline axe-control run \
@@ -107,19 +118,71 @@ rtk proxy uv run --no-sync --offline axe-control run \
   --points "${AXE_POINTS:?Supply logical WIDTHxHEIGHT}" \
   --goal "${AXE_GOAL:?Supply the user goal}" \
   --text "${AXE_TEXT:?Supply an approved literal}" \
-  --provider winnow --model Winnow-12B \
-  --base-url "${WINNOW_BASE_URL:-http://127.0.0.1:8091}" --mode grid \
+  --provider openrouter --model typesafe/jev-1.14 --mode grid \
   --max-steps 20 --max-requests 120 --max-seconds 300
 ```
 
+The adapter supplies JeV's image opt-in header and prepares PNG/JPEG inputs before
+HTTP. Its conservative minimum side is **280 pixels**, versus upstream's published
+256-pixel floor; the maximum remains 1568 pixels. See [image contracts](provider-contracts.md#images)
+for the empirical reason and area limits.
 Clef grid uses `--provider openrouter --model cloudflare/clef --mode grid` with
-the normal OpenRouter base. Its gateway image encoding passed a hosted
-contrasting-image probe, separately from simulator grounding. Reject Jev for grid
-rather than converting screenshots into a text mode.
+the normal OpenRouter base. An already image-capable Winnow service uses
+`--provider winnow --model Winnow-12B --base-url "${WINNOW_BASE_URL:-http://127.0.0.1:8091}"`.
+The historical `typesafe/jev-1.13` adapter route rejects images/grid; JeV 1.14
+supports them. Provider image evidence is separate from simulator grounding.
 Grid sees screenshots and geometry, never accessibility selectors or bounds.
 It taps a field before typing if focus is needed. Its default grid is 4 columns
 by 8 rows, followed by 4 by 4 refinement; those dimensions are library settings,
 not CLI flags.
+
+### Experimental box control
+
+For an explicitly requested box run, JeV 1.14 localizes one visible control from
+the screenshot and taps its normalized box center in logical simulator points.
+Use narrow caller-supplied control descriptions with repeated `--target` options.
+The descriptions below belong to the synthetic session workflow; replace them
+with the caller's descriptions for another app or goal.
+
+```sh
+rtk proxy uv run --no-sync --offline axe-control run \
+  --udid "${AXE_UDID:?Select one simulator}" \
+  --points "${AXE_POINTS:?Supply logical WIDTHxHEIGHT}" \
+  --goal "${AXE_GOAL:?Supply the user goal}" \
+  --provider openrouter --model typesafe/jev-1.14 --mode box \
+  --target 'New session button' \
+  --target 'Session name editable field' \
+  --target '50 min duration button' \
+  --target 'Quiet mode control' \
+  --target 'Start session button' \
+  --minimum-present 0.9 --minimum-box-confidence 0.8 \
+  --max-steps 20 --max-requests 120 --max-seconds 300
+```
+
+Add approved `--text` literals if needed. Box requires decision, vision, and
+`capabilities.boxes` support; Clef/Winnow and the historical JeV 1.13 adapter
+route do not expose boxes. It receives no accessibility data or benchmark oracle.
+Only box mode uses these descriptions: a typed Choice question selects a target
+alongside the operation, then Box and Noul questions refer to that explicit
+target. The descriptions guide selection; they are not accessibility selectors
+or an automatic sequence of clicks. Generic box control without `--target`
+remains supported, but the generic next-control prompt has produced presence
+uncertainty and blocked attempts. Narrow guidance does not guarantee success.
+
+Noul checks visible target presence; Box requests an enabled control with an
+unobstructed center. Presence, box confidence, and screenshot freshness must
+pass before tapping. If presence and confidence are both at least 0.5 but either
+is below its final gate, the planner makes at most one crop-refinement request.
+It pads the candidate by 6% of full-image width/height on each side, clips to
+the image, and enlarges the crop 2× before adapter preparation caps each side at
+1568 pixels. Returned crop edges map back to full-image coordinates.
+The final presence/confidence gates remain 0.9/0.8 by default. A box
+alone is insufficient because the primitive returns one even when the target is
+absent. The 0.9/0.8 defaults are **uncalibrated demo heuristics**, not calibrated
+presence probabilities or hit guarantees. Text entry shares grid's approved
+literal and preceding focus-tap rules. See [box contracts](provider-contracts.md#experimental-box-decisions).
+
+### Direct generative control
 
 Direct generative control through Winnow:
 
@@ -135,7 +198,7 @@ rtk proxy uv run --no-sync --offline axe-control run \
 
 Add approved `--text` values if needed. An OpenRouter direct run needs a
 generative model that actually supports function calls, such as the configured
-default. Clef/Jev decision models are not direct-mode chat models. Direct reads
+default. Clef/JeV decision models are not direct-mode chat models. Direct reads
 accessibility state and requires exactly one actual `simulator_action` function
 call per response. It exposes TAP, TYPE_TEXT, SCROLL_UP, SCROLL_DOWN, WAIT, and
 DONE, with current semantic references and approved literals. A JSON message is
@@ -183,22 +246,27 @@ print(report.model_dump_json(indent=2))
 
 For hosted tree control, use
 `OpenRouterProvider(model="cloudflare/clef")` or
-`OpenRouterProvider(model="typesafe/jev-1.13")` from
+`OpenRouterProvider(model="typesafe/jev-1.14")` from
 `axe_control.providers.openrouter`, with the documented credentials. For grid,
 set `mode="grid"`, supply `screen`, and use a verified image-capable provider.
+For experimental box control, use `mode="box"`, supplied `screen`, and JeV 1.14;
+`RunConfig` exposes `minimum_present` and `minimum_box_confidence`.
+`Task.target_descriptions` is an optional list of caller-supplied control
+descriptions, equivalent to repeated CLI `--target` options; only box uses it.
 The library can set grid dimensions and image-change tolerance through `RunConfig`.
 Call `cancellation.set()` from the caller to request a cooperative stop; an
 `on_event` callback receives content-free `Event` telemetry.
 
-## Project skills
+## Agent plugins and skills
 
-In an agent that discovers project skills, use
-[$axe-tree-control](../.agents/skills/axe-tree-control/SKILL.md) for accessibility
-decisions or [$axe-grid-control](../.agents/skills/axe-grid-control/SKILL.md) for
-screenshot decisions. Keep the repository layout: both skills link to `docs/`
-relative to their skill directories. Copying one skill directory alone does
-not carry those references with it. The CLI wheel contains the Python package,
-not the skills, fixture, or benchmark modules.
+Install the [Claude Code or Codex plugin](plugins.md). Both load one canonical
+[`skills/`](../skills/) bundle. Each skill carries its own `references/`, so
+installed workflows work outside this checkout. In Codex invoke
+[$axe-tree-control](../skills/axe-tree-control/SKILL.md), or explicitly request
+experimental [$axe-grid-control](../skills/axe-grid-control/SKILL.md). Claude
+Code uses the namespaced slash commands shown in the installation guide.
+The CLI wheel installs the Python package; plugin skills, fixture and evaluation
+modules travel with the source checkout or ZIP, not the wheel.
 
 ## Limits and results
 
@@ -216,7 +284,8 @@ instantly cancelling that call. Provider HTTP timeout defaults to 90 seconds;
 native command timeout defaults to 30 seconds. Neither is a hard whole-run limit.
 
 `--minimum-done` defaults to 0.9 and `--minimum-inside` to 0.5. They must be in
-[0, 1]. These are uncalibrated model-belief thresholds, not permission, hit
+[0, 1], as must box's `--minimum-present` (0.9) and
+`--minimum-box-confidence` (0.8). These are uncalibrated thresholds, not permission, hit
 guarantees, or independent evidence. Three consecutive stale decisions or three
 actions with no observable change block the run.
 
@@ -230,15 +299,18 @@ benchmark success is determined separately by the independent oracle.
 ## Data and observations
 
 OpenRouter receives the goal, approved literal catalog, and accessibility content
-for tree/direct, or screenshots for grid. Local Winnow keeps requests at the
+for tree/direct, or screenshots for grid/box. Box target descriptions are also
+sent to the provider. Local Winnow keeps requests at the
 configured service; choosing a remote base moves the data boundary. The adapter's
 `local` identity flag identifies a loopback service endpoint. A loopback tunnel
 can still lead to a remote model host. Establish the destination within the user's
 authorized scope before sending app content.
 
 Reports contain counts, timings, beliefs, events, and sanitized model/endpoint
-metadata, not goals, text literals, raw app state, images, answer distributions,
-or credentials. Missing provider cost is unknown, not zero. Backend allocated
+metadata, not goals, text literals, target descriptions, raw app state, images,
+answer distributions, or credentials. Box telemetry includes numerical normalized bounds, presence
+belief, box confidence, and tap points; it saves no screenshot by default.
+Missing provider cost is unknown, not zero. Backend allocated
 bytes are a device/backend observation, not a per-request peak. Keep private CLI
 arguments out of shell history and command traces; use the library when argument
 visibility would expose private input. Never dump HTTP bodies or environment keys.
@@ -262,3 +334,32 @@ rtk proxy uv run --no-sync --offline axe-control observe \
 
 Capture is separate from content-free telemetry. Do not attach private captures
 to reports or public benchmark artifacts.
+
+The separate [JeV demo recorder](../tools/record_jev_demos.py) is an explicit
+synthetic capture workflow for tree/grid/box demos. Its repeated `--target`
+options supply workflow guidance to box only. Even with the same goal and initial
+state, that extra guidance means the modes are **not a controlled benchmark**.
+It makes paid model calls and saves screenshots, recordings, and questions/responses, without
+embedded image bytes in the question records. It is not ordinary `run` telemetry.
+
+### Recorded prototype observations, 2026-10-15
+
+Saved episodes independently pass the same synthetic goal: start “Review PR” for
+50 minutes with Quiet mode on, from the same initial state. Each has
+`Episode.issues() == []`. These are individual prototype observations, not a
+broad benchmark; the box run has additional caller workflow guidance.
+
+| Route | Provider calls | Controller time | Saved episode |
+| --- | --- | --- | --- |
+| Tree | 8 | 12.216 s | [Independent pass](../results/jev-1.14-2026-10-15/tree/episode.json) |
+| Grid | 22 | 26.452 s | [Independent pass](../results/jev-1.14-2026-10-15/grid/episode.json) |
+| Box, final image fix | 18 | 24.056 s | [Independent pass](../results/jev-1.14-2026-10-15/box-image-fix/box/episode.json) |
+
+The final box run retained the 0.9 presence and 0.8 confidence gates.
+Three earlier generic-box attempts remain
+retained: [initial](../results/jev-1.14-2026-10-15/box/run-report.json),
+[visibility-question revision](../results/jev-1.14-2026-10-15/box-atomic-visibility/box/run-report.json),
+and [crop refinement](../results/jev-1.14-2026-10-15/box-crop-refinement/box/run-report.json).
+Presence uncertainty around 0.81–0.89 correctly blocked them at the unchanged
+0.9 gate. Retaining those attempts prevents the final passing run from hiding
+earlier failures. The historical [results overview](results.md) remains frozen.

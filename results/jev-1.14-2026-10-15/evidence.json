@@ -1,0 +1,134 @@
+{
+  "recorded_date": "2026-10-15",
+  "scope": "synthetic demonstrations; all attempts retained; not a benchmark",
+  "requested_model": "typesafe/jev-1.14",
+  "box_has_caller_described_target_catalog": true,
+  "episodes": [
+    {
+      "path": "box/episode.json",
+      "mode": "box",
+      "status": "blocked",
+      "strict_pass": false,
+      "outcome_reached": false,
+      "issues": [
+        "report_not_completed",
+        "final_phase_mismatch",
+        "final_name_mismatch",
+        "final_duration_mismatch",
+        "final_quiet_mismatch",
+        "visible_started_missing",
+        "visible_name_missing",
+        "visible_duration_missing",
+        "visible_quiet_missing"
+      ],
+      "resolved_model": "typesafe/jev-1.14-20261014",
+      "requests": 4,
+      "elapsed_seconds": 3.5541835830008495,
+      "reported_cost_usd": 0.0005903519999999999,
+      "episode_sha256": "01ba75f0632f89b9252b410a17af4b6d64c90714c56b1bf0b855e4e304dd7b13"
+    },
+    {
+      "path": "box-atomic-visibility/box/episode.json",
+      "mode": "box",
+      "status": "blocked",
+      "strict_pass": false,
+      "outcome_reached": false,
+      "issues": [
+        "report_not_completed",
+        "final_phase_mismatch",
+        "final_name_mismatch",
+        "final_duration_mismatch",
+        "final_quiet_mismatch",
+        "visible_started_missing",
+        "visible_name_missing",
+        "visible_quiet_missing"
+      ],
+      "resolved_model": "typesafe/jev-1.14-20261014",
+      "requests": 4,
+      "elapsed_seconds": 6.024469542000588,
+      "reported_cost_usd": 0.000595392,
+      "episode_sha256": "ab33a436346f0041eaa9f8d00e0f8d7a9adca8458d3e3a67bba353087cb2afb2"
+    },
+    {
+      "path": "box-crop-refinement/box/episode.json",
+      "mode": "box",
+      "status": "blocked",
+      "strict_pass": false,
+      "outcome_reached": false,
+      "issues": [
+        "report_not_completed",
+        "final_phase_mismatch",
+        "final_name_mismatch",
+        "final_duration_mismatch",
+        "final_quiet_mismatch",
+        "visible_started_missing",
+        "visible_name_missing",
+        "visible_quiet_missing"
+      ],
+      "resolved_model": "typesafe/jev-1.14-20261014",
+      "requests": 5,
+      "elapsed_seconds": 5.0381721249978,
+      "reported_cost_usd": 0.0006832979999999999,
+      "episode_sha256": "b2271a514007ecffdacb89addfbbbcdaf9e1ff1ea1b5891257d786a2e831e2c9"
+    },
+    {
+      "path": "box-described-targets/box/episode.json",
+      "mode": "box",
+      "status": "failed",
+      "strict_pass": false,
+      "outcome_reached": false,
+      "issues": [
+        "report_not_completed",
+        "final_phase_mismatch",
+        "final_quiet_mismatch",
+        "visible_started_missing",
+        "visible_name_missing",
+        "visible_quiet_missing"
+      ],
+      "resolved_model": "typesafe/jev-1.14-20261014",
+      "requests": 13,
+      "elapsed_seconds": 16.96697312500328,
+      "reported_cost_usd": 0.001794282,
+      "episode_sha256": "c62d72787adc13cfbd4b49c29a92a4c309b952f4043880567f25f044d2afbb5e"
+    },
+    {
+      "path": "box-image-fix/box/episode.json",
+      "mode": "box",
+      "status": "completed",
+      "strict_pass": true,
+      "outcome_reached": true,
+      "issues": [],
+      "resolved_model": "typesafe/jev-1.14-20261014",
+      "requests": 18,
+      "elapsed_seconds": 24.056473166994692,
+      "reported_cost_usd": 0.00278439,
+      "episode_sha256": "5784a6e71588d3e5b2001bcc1b998fe2c21a874f30c59fa50d152d1e8eb80b1e"
+    },
+    {
+      "path": "grid/episode.json",
+      "mode": "grid",
+      "status": "completed",
+      "strict_pass": true,
+      "outcome_reached": true,
+      "issues": [],
+      "resolved_model": "typesafe/jev-1.14-20261014",
+      "requests": 22,
+      "elapsed_seconds": 26.451941082999838,
+      "reported_cost_usd": 0.0048246240000000004,
+      "episode_sha256": "472a292d6a081f1bb41d8564003baa8643c86489753f7ea27b89de2bb1a9fe1c"
+    },
+    {
+      "path": "tree/episode.json",
+      "mode": "tree",
+      "status": "completed",
+      "strict_pass": true,
+      "outcome_reached": true,
+      "issues": [],
+      "resolved_model": "typesafe/jev-1.14-20261014",
+      "requests": 8,
+      "elapsed_seconds": 12.216153624998697,
+      "reported_cost_usd": 0.000347508,
+      "episode_sha256": "adbcce7e4393b4f46eb985d50ce1d395844c2900ca29b19f376a391570169762"
+    }
+  ]
+}

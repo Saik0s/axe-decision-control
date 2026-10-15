@@ -68,16 +68,20 @@ def _tree(scenario: Scenario) -> SyntheticTree:
 def _report(config: ProviderConfig, status: Status = "completed", *,
             unpriced: bool = False) -> RunReport:
     identity = ProviderIdentity(name=config.provider, requested_model=config.model,
-                                endpoint=config.base_url, local=True)
+                                endpoint=config.base_url + "/v1/systemone", local=True)
+    generative_identity = identity.model_copy(
+        update={"endpoint": config.base_url + "/v1/chat/completions"})
     cost = None if unpriced else 0.02
     return RunReport(
         mode=config.mode, status=status, reason="synthetic", steps=3, native_commands=8,
         native_mutations=3, native_failures=1, decision_requests=1, generative_requests=1,
         elapsed_seconds=6.0, model_seconds=3.0, reported_cost_usd=cost,
-        unpriced_requests=2 if unpriced else 1, identity=identity, events=[], calls=[
+        unpriced_requests=2 if unpriced else 1,
+        identity=generative_identity if config.mode == "direct" else identity, events=[], calls=[
             ModelCall(kind="decision", succeeded=True, identity=identity,
                       usage=ProviderUsage(request_ms=1000.0, reported_cost_usd=cost)),
-            ModelCall(kind="generative", succeeded=status == "completed", identity=identity,
+            ModelCall(kind="generative", succeeded=status == "completed",
+                      identity=generative_identity,
                       usage=ProviderUsage(request_ms=2000.0)),
         ],
     )
@@ -178,6 +182,38 @@ def test_inconsistent_report_fails_without_contaminating_totals() -> None:
     assert counts.wall_seconds == 6.0 and counts.model_seconds == 3.0
     assert counts.reported_cost_usd == pytest.approx(0.02)
     assert counts.native_mutations == 3 and counts.unpriced_requests == 1
+
+
+@pytest.mark.parametrize("calls", ["all_failed", "final_failed", "missing"])
+def test_completed_report_requires_a_successful_final_call(calls: str) -> None:
+    row = _episode()
+    assert row.report is not None
+    if calls == "missing":
+        row.report.calls = []
+        row.report.decision_requests = row.report.generative_requests = 0
+        row.report.model_seconds = 0.0
+        row.report.reported_cost_usd = None
+        row.report.unpriced_requests = 0
+    else:
+        row.report.calls[-1].succeeded = False
+        if calls == "all_failed":
+            row.report.calls[0].succeeded = False
+    assert report_issues(row.report, row.provider_config, row.exit_code) == [
+        "report_completion_call_missing_or_failed"]
+    assert "report_completion_call_missing_or_failed" in row.issues()
+    counts = aggregate([row])[0].counts
+    assert (counts.successes, counts.failures, counts.inconsistent_reports) == (0, 1, 1)
+    assert counts.independent_outcome_successes == 1
+
+
+def test_prior_failed_call_does_not_invalidate_later_successful_completion() -> None:
+    row = _episode()
+    assert row.report is not None
+    row.report.calls[0].succeeded = False
+    assert report_issues(row.report, row.provider_config, row.exit_code) == []
+    assert row.issues() == []
+    counts = aggregate([row])[0].counts
+    assert (counts.successes, counts.failures, counts.inconsistent_reports) == (1, 0, 0)
 
 
 @pytest.mark.parametrize("field,value,issue", [
@@ -303,6 +339,22 @@ def test_report_and_each_call_must_match_requested_identity(
     else:
         report.identity = identity
     assert report_issues(report, _config(), 0) == ["report_identity_mismatch"]
+
+
+@pytest.mark.parametrize("call_identity", [False, True])
+@pytest.mark.parametrize("endpoint", ["https://other.example.test/v1/systemone",
+                                     "http://127.0.0.1:8093/v1/chat/completions",
+                                     "http://user:secret@127.0.0.1:8093/v1/systemone"])
+def test_report_cannot_attribute_requests_to_a_different_endpoint(
+    call_identity: bool, endpoint: str,
+) -> None:
+    report = _report(_config())
+    if call_identity:
+        report.calls[0].identity = report.calls[0].identity.model_copy(
+            update={"endpoint": endpoint})
+    else:
+        report.identity = report.identity.model_copy(update={"endpoint": endpoint})
+    assert "report_endpoint_mismatch" in report_issues(report, _config(), 0)
 
 
 @pytest.mark.parametrize("field", ["elapsed_seconds", "model_seconds", "reported_cost_usd"])

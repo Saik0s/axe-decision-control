@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Annotated, Literal
+from typing import Annotated, Literal, Self
 
-from pydantic import BaseModel, ConfigDict, Field, JsonValue
+from pydantic import BaseModel, ConfigDict, Field, JsonValue, model_validator
 
 Probability = Annotated[float, Field(ge=0, le=1, allow_inf_nan=False)]
 Nonnegative = Annotated[float, Field(ge=0, allow_inf_nan=False)]
@@ -32,7 +32,14 @@ class ScoreQuestion(StrictModel):
     criteria: Annotated[list[str], Field(min_length=2, max_length=64)]
 
 
-Question = Annotated[NoulQuestion | ChoiceQuestion | ScoreQuestion, Field(discriminator="type")]
+class BoxQuestion(StrictModel):
+    type: Literal["box"] = "box"
+    instructions: str
+
+
+Question = Annotated[
+    NoulQuestion | ChoiceQuestion | ScoreQuestion | BoxQuestion, Field(discriminator="type")
+]
 
 
 class NoulAnswer(StrictModel):
@@ -55,7 +62,26 @@ class ScoreAnswer(StrictModel):
     confidence: Probability | None = None
 
 
-Answer = Annotated[NoulAnswer | ChoiceAnswer | ScoreAnswer, Field(discriminator="type")]
+class NormalizedBox(StrictModel):
+    top: Probability
+    bottom: Probability
+    left: Probability
+    right: Probability
+
+    @model_validator(mode="after")
+    def ordered_edges(self) -> Self:
+        if self.left >= self.right or self.top >= self.bottom:
+            raise ValueError("Box edges must satisfy left < right and top < bottom")
+        return self
+
+
+class BoxAnswer(StrictModel):
+    type: Literal["box"] = "box"
+    box: NormalizedBox
+    confidence: Probability
+
+
+Answer = Annotated[NoulAnswer | ChoiceAnswer | ScoreAnswer | BoxAnswer, Field(discriminator="type")]
 
 
 class DecisionRequest(StrictModel):
@@ -78,6 +104,7 @@ class Capabilities(StrictModel):
     decisions: bool
     generation: bool
     vision: bool
+    boxes: bool = False
     max_questions: int = Field(ge=1, le=256)
     max_choices: int = Field(ge=2, le=64)
 

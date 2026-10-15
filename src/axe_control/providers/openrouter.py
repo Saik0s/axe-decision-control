@@ -18,6 +18,7 @@ from pydantic import BaseModel, ConfigDict, Field, JsonValue, TypeAdapter, Valid
 
 from ..decisions import (
     Answer,
+    BoxQuestion,
     Capabilities,
     Count,
     DecisionReply,
@@ -33,10 +34,17 @@ from ..decisions import (
 )
 from ..models import Action, AgentReply, AgentRequest
 from .base import validate_reply
+from .jev_images import prepare_jev_image
 
-_DECISION_MODELS = {"cloudflare/clef": 3, "typesafe/jev-1.13": 2}
-_DECISION_PROVIDERS = {"cloudflare/clef": "cloudflare", "typesafe/jev-1.13": "typesafe"}
-_RESOLVED_MODELS = {"typesafe/jev-1.13": {"typesafe/jev-1.13-20260917"}}
+_JEV_BOX_MODEL = "typesafe/jev-1.14"
+_DECISION_MODELS = {"cloudflare/clef": 3, "typesafe/jev-1.13": 2, _JEV_BOX_MODEL: 2}
+_DECISION_PROVIDERS = {
+    "cloudflare/clef": "cloudflare", "typesafe/jev-1.13": "typesafe", _JEV_BOX_MODEL: "typesafe",
+}
+_RESOLVED_MODELS = {
+    "typesafe/jev-1.13": {"typesafe/jev-1.13", "typesafe/jev-1.13-20260917"},
+    _JEV_BOX_MODEL: {"typesafe/jev-1.14-20261014"},
+}
 _JSON: TypeAdapter[JsonValue] = TypeAdapter(JsonValue)
 
 
@@ -284,9 +292,13 @@ class _HTTPProvider:
     def calls(self) -> tuple[ModelCall, ...]:
         return tuple(call.model_copy(deep=True) for call in self._calls)
 
+    @property
+    def capabilities(self) -> Capabilities:
+        raise NotImplementedError
+
     def _resolve(self, call: _Call, model: str, provider: str | None) -> None:
         requested = self._identity.requested_model
-        if model != requested and model not in _RESOLVED_MODELS.get(requested, set()):
+        if model not in _RESOLVED_MODELS.get(requested, {requested}):
             raise ProviderError("Provider returned a mismatched model identity")
         if provider is not None and not re.fullmatch(
             r"[A-Za-z0-9][A-Za-z0-9 ./_()+-]{0,127}", provider
@@ -294,8 +306,9 @@ class _HTTPProvider:
             raise ProviderError("Provider returned an invalid provider identity")
         expected_provider = _DECISION_PROVIDERS.get(requested)
         if (
-            expected_provider is not None and provider is not None
-            and provider.casefold() != expected_provider
+            (requested == _JEV_BOX_MODEL and provider is None)
+            or (expected_provider is not None and provider is not None
+                and provider.casefold() != expected_provider)
         ):
             raise ProviderError("Provider returned a mismatched provider identity")
         call.identity = call.identity.model_copy(
@@ -308,9 +321,15 @@ class _HTTPProvider:
         payload: StrictModel,
         kind: Literal["decision", "generative"],
         decode: Callable[[bytes, _Call], Reply],
+        *,
+        headers: dict[str, str] | None = None,
     ) -> Reply:
         if self._closed:
             raise ProviderError("Provider is closed")
+        if isinstance(payload, _DecisionPayload) and not self.capabilities.boxes and any(
+            isinstance(question, BoxQuestion) for question in payload.questions.values()
+        ):
+            raise ProviderError("This provider does not support box questions")
         content = payload.model_dump_json(exclude_none=True)
         if len(content.encode("utf-8")) > 32 * 1024 * 1024:
             raise ProviderError("Provider request exceeds the HTTP body limit")
@@ -323,7 +342,7 @@ class _HTTPProvider:
         started = time.perf_counter()
         succeeded = False
         try:
-            response = self._client.post(endpoint, content=content)
+            response = self._client.post(endpoint, content=content, headers=headers)
             if not response.is_success:
                 raise ProviderError(f"Provider returned HTTP {response.status_code}")
             call.usage.request_ms = (time.perf_counter() - started) * 1000
@@ -379,6 +398,7 @@ class OpenRouterProvider(_HTTPProvider):
         return Capabilities(
             decisions=decisions, generation=not decisions,
             vision=self._identity.requested_model != "typesafe/jev-1.13",
+            boxes=self._identity.requested_model == _JEV_BOX_MODEL,
             max_questions=64 if self._identity.requested_model == "cloudflare/clef" else 256,
             max_choices=64,
         )
@@ -386,6 +406,13 @@ class OpenRouterProvider(_HTTPProvider):
     def decide(self, request: DecisionRequest) -> DecisionReply:
         if not self.capabilities.decisions:
             raise ProviderError("This OpenRouter model does not expose typed decisions")
+        has_boxes = any(
+            isinstance(question, BoxQuestion) for question in request.questions.values()
+        )
+        if has_boxes and not self.capabilities.boxes:
+            raise ProviderError("This OpenRouter model does not support box questions")
+        if has_boxes and not request.images:
+            raise ProviderError("Box questions require an image")
         if request.images and not self.capabilities.vision:
             raise ProviderError("This OpenRouter decision model does not support vision")
         self._check_images(request.images)
@@ -398,9 +425,13 @@ class OpenRouterProvider(_HTTPProvider):
             for question in request.questions.values()
         ):
             raise ProviderError("Clef accepts at most ten score levels")
+        images = request.images
+        if self._identity.requested_model == _JEV_BOX_MODEL and images:
+            images = tuple(prepare_jev_image(image) for image in images)
+            self._check_images(images)
         payload = _DecisionPayload(
             model=self._identity.requested_model,
-            state=_parts(request.state, request.images) if request.images else request.state,
+            state=_parts(request.state, images) if images else request.state,
             questions=request.questions,
         )
         if (
@@ -419,7 +450,11 @@ class OpenRouterProvider(_HTTPProvider):
                 rounded_decimals=_DECISION_MODELS[self._identity.requested_model],
             )
 
-        return self._post(self._decision_url, payload, "decision", decode)
+        headers = (
+            {"TypeSafe-Danger-Zone-Images": "true"}
+            if self._identity.requested_model == _JEV_BOX_MODEL and (images or has_boxes) else None
+        )
+        return self._post(self._decision_url, payload, "decision", decode, headers=headers)
 
     def _check_images(self, images: tuple[str, ...]) -> None:
         if len(images) > 4:

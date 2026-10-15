@@ -1,0 +1,914 @@
+{
+  "schema_version": 1,
+  "scenario": {
+    "id": "duration",
+    "goal": "Start a session named Review PR for 50 minutes with Quiet mode on.",
+    "allowed_texts": [
+      "Review PR"
+    ],
+    "initial": {
+      "seed": 12,
+      "duration": 10,
+      "quiet": false,
+      "prefill": "",
+      "scroll": false
+    },
+    "expected": {
+      "name": "Review PR",
+      "duration": 50,
+      "quiet": true,
+      "phase": "running"
+    }
+  },
+  "repetition": 0,
+  "seed": 12,
+  "screen": {
+    "width": 402.0,
+    "height": 874.0
+  },
+  "provider_config": {
+    "provider": "openrouter",
+    "model": "typesafe/jev-1.14",
+    "mode": "box",
+    "base_url": "https://openrouter.ai/api",
+    "max_seconds": 240,
+    "max_steps": 20,
+    "max_requests": 120
+  },
+  "report": {
+    "mode": "box",
+    "status": "failed",
+    "reason": "Provider returned HTTP 400",
+    "steps": 6,
+    "native_commands": 22,
+    "native_failures": 0,
+    "native_mutations": 6,
+    "decision_requests": 13,
+    "generative_requests": 0,
+    "elapsed_seconds": 16.96697312500328,
+    "model_seconds": 4.714580958017905,
+    "reported_cost_usd": 0.001794282,
+    "unpriced_requests": 1,
+    "identity": {
+      "name": "openrouter",
+      "requested_model": "typesafe/jev-1.14",
+      "resolved_model": "typesafe/jev-1.14-20261014",
+      "resolved_provider": "TypeSafe",
+      "endpoint": "https://openrouter.ai/api/alpha/decisions",
+      "local": false
+    },
+    "events": [
+      {
+        "step": 1,
+        "phase": "observe",
+        "at_seconds": 0.00028537499747471884,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 1,
+        "phase": "decide",
+        "at_seconds": 1.4862484999976004,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": {
+          "top": 0.26,
+          "bottom": 0.33,
+          "left": 0.07,
+          "right": 0.94
+        },
+        "presence_belief": 0.97,
+        "box_confidence": 0.97,
+        "tap_point": {
+          "x": 203.01,
+          "y": 257.83000000000004
+        }
+      },
+      {
+        "step": 1,
+        "phase": "freshness",
+        "at_seconds": 1.5110715409973636,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 1,
+        "phase": "act",
+        "at_seconds": 2.028016625001328,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": {
+          "top": 0.26,
+          "bottom": 0.33,
+          "left": 0.07,
+          "right": 0.94
+        },
+        "presence_belief": 0.97,
+        "box_confidence": 0.97,
+        "tap_point": {
+          "x": 203.01,
+          "y": 257.83000000000004
+        }
+      },
+      {
+        "step": 1,
+        "phase": "verify",
+        "at_seconds": 3.0944589159989846,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 2,
+        "phase": "observe",
+        "at_seconds": 3.094547499997134,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 2,
+        "phase": "decide",
+        "at_seconds": 4.425651750003453,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": {
+          "top": 0.29,
+          "bottom": 0.34,
+          "left": 0.07,
+          "right": 0.93
+        },
+        "presence_belief": 0.95,
+        "box_confidence": 0.87,
+        "tap_point": {
+          "x": 201.0,
+          "y": 275.31
+        }
+      },
+      {
+        "step": 2,
+        "phase": "freshness",
+        "at_seconds": 4.45390254099766,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 2,
+        "phase": "act",
+        "at_seconds": 4.956601249999949,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": {
+          "top": 0.29,
+          "bottom": 0.34,
+          "left": 0.07,
+          "right": 0.93
+        },
+        "presence_belief": 0.95,
+        "box_confidence": 0.87,
+        "tap_point": {
+          "x": 201.0,
+          "y": 275.31
+        }
+      },
+      {
+        "step": 2,
+        "phase": "verify",
+        "at_seconds": 6.145035957997607,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": false,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 3,
+        "phase": "observe",
+        "at_seconds": 6.1451399580037105,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 3,
+        "phase": "decide",
+        "at_seconds": 7.387173333001556,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": true,
+        "box": {
+          "top": 0.25,
+          "bottom": 0.31,
+          "left": 0.07,
+          "right": 0.94
+        },
+        "presence_belief": 0.96,
+        "box_confidence": 0.95,
+        "tap_point": {
+          "x": 203.01,
+          "y": 244.72000000000003
+        }
+      },
+      {
+        "step": 3,
+        "phase": "freshness",
+        "at_seconds": 7.415779249997286,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 3,
+        "phase": "act",
+        "at_seconds": 7.918413083003543,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": {
+          "top": 0.25,
+          "bottom": 0.31,
+          "left": 0.07,
+          "right": 0.94
+        },
+        "presence_belief": 0.96,
+        "box_confidence": 0.95,
+        "tap_point": {
+          "x": 203.01,
+          "y": 244.72000000000003
+        }
+      },
+      {
+        "step": 3,
+        "phase": "verify",
+        "at_seconds": 9.217135083003086,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 4,
+        "phase": "observe",
+        "at_seconds": 9.217249916000583,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 4,
+        "phase": "decide",
+        "at_seconds": 10.117921666002076,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 4,
+        "phase": "freshness",
+        "at_seconds": 10.117968958002166,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 4,
+        "phase": "act",
+        "at_seconds": 10.613262958002451,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 4,
+        "phase": "verify",
+        "at_seconds": 11.901547583001957,
+        "operation": "TYPE_TEXT",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 5,
+        "phase": "observe",
+        "at_seconds": 11.901675708002585,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 5,
+        "phase": "decide",
+        "at_seconds": 13.52420762499969,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": {
+          "top": 0.3629099923722349,
+          "bottom": 0.42785278413424865,
+          "left": 0.5067330016583748,
+          "right": 0.9383416252072967
+        },
+        "presence_belief": 0.98,
+        "box_confidence": 0.89,
+        "tap_point": {
+          "x": 290.4599999999999,
+          "y": 345.5633333333333
+        }
+      },
+      {
+        "step": 5,
+        "phase": "freshness",
+        "at_seconds": 13.552585666002415,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 5,
+        "phase": "act",
+        "at_seconds": 14.052552833003574,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": {
+          "top": 0.3629099923722349,
+          "bottom": 0.42785278413424865,
+          "left": 0.5067330016583748,
+          "right": 0.9383416252072967
+        },
+        "presence_belief": 0.98,
+        "box_confidence": 0.89,
+        "tap_point": {
+          "x": 290.4599999999999,
+          "y": 345.5633333333333
+        }
+      },
+      {
+        "step": 5,
+        "phase": "verify",
+        "at_seconds": 15.396707500003686,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": true,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 6,
+        "phase": "observe",
+        "at_seconds": 15.396805415999552,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      }
+    ],
+    "calls": [
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 510.1997919991845,
+          "input_tokens": 3728,
+          "output_tokens": 158,
+          "reported_cost_usd": 0.000156576,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 365.0545830023475,
+          "input_tokens": 3453,
+          "output_tokens": 36,
+          "reported_cost_usd": 0.000145026,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 391.66883299913025,
+          "input_tokens": 3787,
+          "output_tokens": 158,
+          "reported_cost_usd": 0.000159054,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 363.47637500148267,
+          "input_tokens": 3504,
+          "output_tokens": 36,
+          "reported_cost_usd": 0.000147168,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 377.3722080004518,
+          "input_tokens": 3839,
+          "output_tokens": 158,
+          "reported_cost_usd": 0.000161238,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 304.3296250034473,
+          "input_tokens": 3625,
+          "output_tokens": 36,
+          "reported_cost_usd": 0.00015225,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 396.7720000000554,
+          "input_tokens": 3901,
+          "output_tokens": 158,
+          "reported_cost_usd": 0.000163842,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 380.70416700065834,
+          "input_tokens": 3929,
+          "output_tokens": 157,
+          "reported_cost_usd": 0.000165018,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 369.8794590018224,
+          "input_tokens": 3647,
+          "output_tokens": 36,
+          "reported_cost_usd": 0.000153174,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 279.1217910053092,
+          "input_tokens": 1589,
+          "output_tokens": 36,
+          "reported_cost_usd": 0.000066738,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 395.00270900316536,
+          "input_tokens": 4003,
+          "output_tokens": 157,
+          "reported_cost_usd": 0.000168126,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 359.94641599972965,
+          "input_tokens": 3716,
+          "output_tokens": 36,
+          "reported_cost_usd": 0.000156072,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": false,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": null,
+          "resolved_provider": null,
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 221.05300000112038,
+          "input_tokens": null,
+          "output_tokens": null,
+          "reported_cost_usd": null,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      }
+    ]
+  },
+  "exit_code": 2,
+  "evaluation": {
+    "oracle": {
+      "phase": "editing",
+      "name": "Review PR",
+      "duration": 50,
+      "quiet": false,
+      "seed": 12,
+      "screen_width": 402.0,
+      "screen_height": 874.0
+    },
+    "tree": {
+      "labels": [
+        "FocusBench",
+        "New session",
+        "Session name",
+        "Duration",
+        "10 minutes",
+        "50 minutes",
+        "5 minutes",
+        "15 minutes",
+        "25 minutes",
+        "Quiet mode",
+        "Off",
+        "Start session"
+      ],
+      "omitted_labels": 2
+    },
+    "issues": [
+      "final_phase_mismatch",
+      "final_quiet_mismatch",
+      "visible_started_missing",
+      "visible_name_missing",
+      "visible_quiet_missing"
+    ]
+  },
+  "setup_failures": [],
+  "proof_failures": [],
+  "resources": null,
+  "proof": {
+    "screenshot": "final.png",
+    "tree": "final-tree.json",
+    "video": "original.mp4"
+  }
+}

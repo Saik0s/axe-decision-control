@@ -1,0 +1,22 @@
+{
+  "name": "axe-decision-control",
+  "version": "0.2.0",
+  "description": "Bounded iOS Simulator control with AXe: semantic tree first, experimental screenshot grid on request.",
+  "author": {"name": "Igor Tarasenko"},
+  "repository": "https://github.com/Saik0s/axe-decision-control",
+  "license": "MIT",
+  "keywords": ["ios", "simulator", "axe", "accessibility"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AXe Decision Control",
+    "shortDescription": "Bounded iOS Simulator control through AXe",
+    "longDescription": "Use current accessibility targets for simulator goals. Screenshot grid control is experimental, with 0/30 strict passes in the recorded comparison, and requires an explicit visual-control request.",
+    "developerName": "Igor Tarasenko",
+    "category": "Coding",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "Use $axe-tree-control for my simulator goal.",
+      "Explain the experimental $axe-grid-control route before running it."
+    ]
+  }
+}

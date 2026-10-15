@@ -33,11 +33,14 @@ class Options(StrictModel):
     mode: Mode = "tree"
     goal: str | None = None
     text: list[str] = []
+    target: list[str] = []
     max_seconds: int = 300
     max_steps: int = 20
     max_requests: int = 120
     minimum_done: float = 0.9
     minimum_inside: float = 0.5
+    minimum_present: float = 0.9
+    minimum_box_confidence: float = 0.8
     report: Path | None = None
     output: Path | None = None
     format: Literal["tree", "screenshot"] = "tree"
@@ -83,16 +86,22 @@ def parser() -> argparse.ArgumentParser:
     control.add_argument(
         "--api-key-file", type=Path, help="Key file; never pass a secret as an argument"
     )
-    control.add_argument("--mode", choices=["direct", "tree", "grid"], default="tree")
+    control.add_argument("--mode", choices=["direct", "tree", "grid", "box"], default="tree")
     control.add_argument("--goal", required=True)
     control.add_argument(
         "--text", action="append", default=[], help="Approved literal for text entry"
+    )
+    control.add_argument(
+        "--target", action="append", default=[],
+        help="Caller-described candidate control for box mode; repeat for each candidate",
     )
     control.add_argument("--max-seconds", type=int, default=300)
     control.add_argument("--max-steps", type=int, default=20)
     control.add_argument("--max-requests", type=int, default=120)
     control.add_argument("--minimum-done", type=float, default=0.9)
     control.add_argument("--minimum-inside", type=float, default=0.5)
+    control.add_argument("--minimum-present", type=float, default=0.9)
+    control.add_argument("--minimum-box-confidence", type=float, default=0.8)
     control.add_argument("--report", type=Path, help="Content-free JSON telemetry output")
     control.add_argument("--quiet", action="store_true", help="Print final status only")
     return result
@@ -107,7 +116,7 @@ def make_provider(options: Options) -> Provider:
         )
     return OpenRouterProvider(
         model=options.model
-        or ("openai/gpt-4.1-mini" if options.mode == "direct" else "cloudflare/clef"),
+        or ("openai/gpt-4.1-mini" if options.mode == "direct" else "typesafe/jev-1.14"),
         base_url=options.base_url or "https://openrouter.ai/api",
         api_key_file=options.api_key_file,
     )
@@ -162,6 +171,8 @@ def main() -> int:
             max_seconds=options.max_seconds,
             minimum_done=options.minimum_done,
             minimum_inside=options.minimum_inside,
+            minimum_present=options.minimum_present,
+            minimum_box_confidence=options.minimum_box_confidence,
         )
         provider = make_provider(options)
         cancellation = threading.Event()
@@ -179,7 +190,8 @@ def main() -> int:
             report = run(
                 provider,
                 transport,
-                Task(goal=options.goal, allowed_texts=options.text),
+                Task(goal=options.goal, allowed_texts=options.text,
+                     target_descriptions=options.target),
                 config,
                 cancellation=cancellation,
                 on_event=announce,

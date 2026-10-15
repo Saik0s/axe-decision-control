@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="630" viewBox="0 0 1120 630" role="img" aria-labelledby="title desc">
+<title id="title">Three ways to choose one simulator action</title><desc id="desc">Direct tools and tree decisions both read accessibility. Grid reads pixels. All validate, act through AXe, read a fresh observation, and repeat. The native benchmark oracle is outside the control loop.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#353c42" stroke-width="1.5"/></marker></defs>
+<rect width="1120" height="630" fill="#f5f3ee" rx="20"/>
+<g font-family="system-ui,Arial,sans-serif" fill="#172a2b"><text x="40" y="47" font-size="26" font-weight="700">Same goal. Different action selection.</text><text x="40" y="78" font-size="16">Every action starts with an observation and ends with another one.</text></g>
+<g stroke="#c5cec9" fill="#fff"><rect x="40" y="115" width="330" height="325" rx="14"/><rect x="395" y="115" width="330" height="325" rx="14"/><rect x="750" y="115" width="330" height="325" rx="14"/></g>
+<g font-family="system-ui,Arial,sans-serif" fill="#172a2b">
+<text x="62" y="150" font-size="19" font-weight="700">01 / Direct LLM tools</text><text x="62" y="180" font-size="15">Accessibility labels, values, references</text>
+<text x="417" y="150" font-size="19" font-weight="700">02 / Tree decisions</text><text x="417" y="180" font-size="15">Accessibility + allowed choices</text>
+<text x="772" y="150" font-size="19" font-weight="700">03 / Grid decisions</text><text x="772" y="180" font-size="15">Screenshot pixels + screen geometry</text>
+</g>
+<g fill="#e6efeb"><rect x="62" y="210" width="286" height="68" rx="8"/><rect x="417" y="210" width="286" height="68" rx="8"/><rect x="772" y="210" width="286" height="68" rx="8"/></g>
+<g font-family="system-ui,Arial,sans-serif" fill="#172a2b" font-size="16"><text x="78" y="237" font-weight="650">LLM emits a function call</text><text x="78" y="261">simulator_action(TAP, ref)</text><text x="433" y="237" font-weight="650">Model answers typed questions</text><text x="433" y="261">operation = TAP · target = e3</text><text x="788" y="237" font-weight="650">Model scores visual regions</text><text x="788" y="261">coarse cell → fine cell → point</text></g>
+<g stroke="#353c42" stroke-width="1.5" marker-end="url(#arrow)"><path d="M205 286V316"/><path d="M560 286V316"/><path d="M915 286V316"/></g>
+<g font-family="system-ui,Arial,sans-serif" fill="#172a2b" font-size="15"><text x="62" y="342">Check function + current reference</text><text x="62" y="370">Reject unknown or stale targets</text><text x="62" y="412" fill="#546863">Baseline also uses accessibility.</text><text x="417" y="342">Check answer type + allowed ID</text><text x="417" y="370">Resolve reference to current control</text><text x="417" y="412" fill="#546863">Belief is not calibrated confidence.</text><text x="772" y="342">Check belief gate + pixel/point scale</text><text x="772" y="370">Tap selected fine-cell center</text><text x="772" y="412" fill="#9a3d27">Experimental: 0/30 strict passes.</text></g>
+<g stroke="#353c42" stroke-width="1.5" marker-end="url(#arrow)"><path d="M205 441V466"/><path d="M560 441V466"/><path d="M915 441V466"/></g>
+<rect x="40" y="480" width="1040" height="62" rx="10" fill="#172a2b"/>
+<g font-family="system-ui,Arial,sans-serif" fill="#fff" font-size="18"><text x="65" y="518">AXe executes one action</text><text x="408" y="518">→</text><text x="450" y="518">Read fresh state</text><text x="720" y="518">→</text><text x="760" y="518">Continue or verify DONE</text></g>
+<text x="40" y="584" font-family="system-ui,Arial,sans-serif" fill="#546863" font-size="16">Independent evaluation happens after the run. The planner never reads the fixture oracle.</text>
+</svg>

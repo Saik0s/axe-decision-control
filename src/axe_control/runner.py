@@ -9,9 +9,9 @@ from typing import Literal
 from .context import BudgetExceeded, Cancelled, RunContext
 from .decisions import ProviderError
 from .grid import changed
-from .models import ActionHistory, Event, Operation, RunConfig, RunReport, Task
+from .models import ActionHistory, Event, Operation, PlannedAction, RunConfig, RunReport, Task
 from .native import NativeError, NativeTransport
-from .policies import direct, grid, tree
+from .policies import box, direct, grid, tree, visual
 from .providers.base import Provider
 
 
@@ -48,6 +48,7 @@ def run(
         inside_belief: float | None = None,
         state_changed: bool | None = None,
         text_focus_required: bool = False,
+        localization: PlannedAction | None = None,
     ) -> None:
         # Only numeric metrics, bounded operation names and beliefs leave the loop.
         item = Event(
@@ -59,6 +60,10 @@ def run(
             inside_belief=inside_belief,
             state_changed=state_changed,
             text_focus_required=text_focus_required,
+            box=localization.box if localization else None,
+            presence_belief=localization.presence_belief if localization else None,
+            box_confidence=localization.box_confidence if localization else None,
+            tap_point=localization.action.point if localization else None,
         )
         events.append(item)
         if on_event is not None:
@@ -69,13 +74,16 @@ def run(
         if (
             (config.mode == "direct" and not capabilities.generation)
             or (config.mode != "direct" and not capabilities.decisions)
-            or (config.mode == "grid" and not capabilities.vision)
+            or (config.mode in {"grid", "box"} and not capabilities.vision)
+            or (config.mode == "box" and not capabilities.boxes)
         ):
             raise ValueError("The selected provider does not support this control mode")
         if len(task.allowed_texts) + 1 > provider.capabilities.max_choices:
             raise ValueError("Literal catalog exceeds the selected model's choice capacity")
-        if config.mode == "grid" and config.screen is None:
-            raise ValueError("Grid mode requires supplied simulator point geometry")
+        if len(task.target_descriptions) + 1 > provider.capabilities.max_choices:
+            raise ValueError("Target catalog exceeds the selected model's choice capacity")
+        if config.mode in {"grid", "box"} and config.screen is None:
+            raise ValueError("Screenshot mode requires supplied simulator point geometry")
         for step in range(1, config.max_steps + 1):
             steps = step
             ctx.check()
@@ -83,9 +91,9 @@ def run(
             ctx.check()
             snapshot = None
             image = None
-            if config.mode == "grid":
+            if config.mode in {"grid", "box"}:
                 image = transport.screenshot()
-                planned = grid.plan(ctx, image)
+                planned = box.plan(ctx, image) if config.mode == "box" else grid.plan(ctx, image)
             else:
                 snapshot = transport.tree()
                 planned = (
@@ -100,6 +108,7 @@ def run(
                 completion_belief=planned.completion_belief,
                 inside_belief=planned.inside_belief,
                 text_focus_required=planned.text_focus_key is not None,
+                localization=planned,
             )
             ctx.check()
             event("freshness", operation=action.operation)
@@ -114,6 +123,7 @@ def run(
                 stale_state = fresh_snapshot.digest != snapshot.digest
             else:
                 raise ValueError("Observation is unavailable")
+            ctx.check()
             if stale_state:
                 stale += 1
                 if stale >= 3:
@@ -122,15 +132,19 @@ def run(
                 continue
             stale = 0
             if action.operation == "DONE":
-                if config.mode == "grid" and fresh_image is not None:
-                    belief = grid.completion(ctx, fresh_image)
+                belief: float | None = None
+                confirmed = False
+                if config.mode in {"grid", "box"} and fresh_image is not None:
+                    belief = visual.completion(ctx, fresh_image)
                 elif config.mode == "direct" and fresh_snapshot is not None:
                     verified = direct.plan(ctx, fresh_snapshot, verify=True)
-                    belief = 1.0 if verified.action.operation == "DONE" else 0.0
+                    confirmed = verified.action.operation == "DONE"
                 elif fresh_snapshot is not None:
                     belief = tree.completion(ctx, fresh_snapshot)
                 else:
                     raise ValueError("Completion observation is unavailable")
+                if belief is not None:
+                    confirmed = belief >= config.minimum_done
                 ctx.check()
                 if fresh_image is not None:
                     verification_changed = changed(
@@ -145,7 +159,7 @@ def run(
                 event(
                     "verify",
                     operation="DONE",
-                    completion_belief=belief if config.mode != "direct" else None,
+                    completion_belief=belief,
                     state_changed=verification_changed,
                 )
                 ctx.check()
@@ -155,16 +169,26 @@ def run(
                         status, reason = "blocked", "Observation changed during three confirmations"
                         break
                     continue
-                if belief >= config.minimum_done:
+                if confirmed:
                     status, reason = "completed", "Model confirmed the goal in a fresh observation"
                 else:
                     status, reason = (
                         "blocked",
-                        "Fresh completion judgment is below the configured threshold",
+                        "Fresh direct confirmation did not return DONE" if config.mode == "direct"
+                        else "Fresh completion judgment is below the configured threshold",
                     )
                 break
             if planned.inside_belief is not None and planned.inside_belief < config.minimum_inside:
                 status, reason = "blocked", "Grid tap belief is below the configured threshold"
+                break
+            if config.mode == "box" and action.operation == "TAP" and (
+                planned.box is None or planned.presence_belief is None
+                or planned.box_confidence is None
+                or planned.presence_belief < config.minimum_present
+                or planned.box_confidence < config.minimum_box_confidence
+            ):
+                status = "blocked"
+                reason = "Box presence or confidence is below the configured gate"
                 break
             if action.target_ref is not None and fresh_snapshot is not None:
                 target = fresh_snapshot.resolve(action.target_ref)
@@ -174,7 +198,7 @@ def run(
                 }:
                     raise ValueError("Text entry target is not an editable field")
             ctx.check()
-            event("act", operation=action.operation)
+            event("act", operation=action.operation, localization=planned)
             ctx.check()
             transport.act(action, fresh_snapshot)
             ctx.check()
@@ -188,7 +212,9 @@ def run(
                 state_changed = transport.tree().digest != fresh_snapshot.digest
             else:
                 raise ValueError("Post-action observation is unavailable")
+            ctx.check()
             event("verify", operation=action.operation, state_changed=state_changed)
+            ctx.check()
             ctx.history.append(
                 ActionHistory(
                     operation=action.operation,

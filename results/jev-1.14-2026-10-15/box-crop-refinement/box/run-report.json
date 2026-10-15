@@ -1,0 +1,308 @@
+{
+  "mode": "box",
+  "status": "blocked",
+  "reason": "Box presence or confidence is below the configured gate",
+  "steps": 2,
+  "native_commands": 6,
+  "native_failures": 0,
+  "native_mutations": 1,
+  "decision_requests": 5,
+  "generative_requests": 0,
+  "elapsed_seconds": 5.0381721249978,
+  "model_seconds": 1.6469489580013033,
+  "reported_cost_usd": 0.0006832979999999999,
+  "unpriced_requests": 0,
+  "identity": {
+    "name": "openrouter",
+    "requested_model": "typesafe/jev-1.14",
+    "resolved_model": "typesafe/jev-1.14-20261014",
+    "resolved_provider": "TypeSafe",
+    "endpoint": "https://openrouter.ai/api/alpha/decisions",
+    "local": false
+  },
+  "events": [
+    {
+      "step": 1,
+      "phase": "observe",
+      "at_seconds": 0.00008045899812714197,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false,
+      "box": null,
+      "presence_belief": null,
+      "box_confidence": null,
+      "tap_point": null
+    },
+    {
+      "step": 1,
+      "phase": "decide",
+      "at_seconds": 1.27689237499726,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false,
+      "box": {
+        "top": 0.26,
+        "bottom": 0.33,
+        "left": 0.06,
+        "right": 0.94
+      },
+      "presence_belief": 0.92,
+      "box_confidence": 0.96,
+      "tap_point": {
+        "x": 201.0,
+        "y": 257.83000000000004
+      }
+    },
+    {
+      "step": 1,
+      "phase": "freshness",
+      "at_seconds": 1.3003347089979798,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false,
+      "box": null,
+      "presence_belief": null,
+      "box_confidence": null,
+      "tap_point": null
+    },
+    {
+      "step": 1,
+      "phase": "act",
+      "at_seconds": 1.801407916998869,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false,
+      "box": {
+        "top": 0.26,
+        "bottom": 0.33,
+        "left": 0.06,
+        "right": 0.94
+      },
+      "presence_belief": 0.92,
+      "box_confidence": 0.96,
+      "tap_point": {
+        "x": 201.0,
+        "y": 257.83000000000004
+      }
+    },
+    {
+      "step": 1,
+      "phase": "verify",
+      "at_seconds": 2.911802958999033,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": true,
+      "text_focus_required": false,
+      "box": null,
+      "presence_belief": null,
+      "box_confidence": null,
+      "tap_point": null
+    },
+    {
+      "step": 2,
+      "phase": "observe",
+      "at_seconds": 2.9118943749999744,
+      "operation": null,
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false,
+      "box": null,
+      "presence_belief": null,
+      "box_confidence": null,
+      "tap_point": null
+    },
+    {
+      "step": 2,
+      "phase": "decide",
+      "at_seconds": 4.508681624996825,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false,
+      "box": {
+        "top": 0.24585430968726163,
+        "bottom": 0.30899313501144166,
+        "left": 0.06875621890547264,
+        "right": 0.9312437810945273
+      },
+      "presence_belief": 0.82,
+      "box_confidence": 0.88,
+      "tap_point": {
+        "x": 201.0,
+        "y": 242.46833333333333
+      }
+    },
+    {
+      "step": 2,
+      "phase": "freshness",
+      "at_seconds": 4.53724337499807,
+      "operation": "TAP",
+      "completion_belief": null,
+      "inside_belief": null,
+      "state_changed": null,
+      "text_focus_required": false,
+      "box": null,
+      "presence_belief": null,
+      "box_confidence": null,
+      "tap_point": null
+    }
+  ],
+  "calls": [
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "typesafe/jev-1.14",
+        "resolved_model": "typesafe/jev-1.14-20261014",
+        "resolved_provider": "TypeSafe",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 348.633334000624,
+        "input_tokens": 3560,
+        "output_tokens": 96,
+        "reported_cost_usd": 0.00014952,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "typesafe/jev-1.14",
+        "resolved_model": "typesafe/jev-1.14-20261014",
+        "resolved_provider": "TypeSafe",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 306.1590409997734,
+        "input_tokens": 3473,
+        "output_tokens": 36,
+        "reported_cost_usd": 0.000145866,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "typesafe/jev-1.14",
+        "resolved_model": "typesafe/jev-1.14-20261014",
+        "resolved_provider": "TypeSafe",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 276.5850830001,
+        "input_tokens": 3623,
+        "output_tokens": 96,
+        "reported_cost_usd": 0.000152166,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "typesafe/jev-1.14",
+        "resolved_model": "typesafe/jev-1.14-20261014",
+        "resolved_provider": "TypeSafe",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 455.6772500000079,
+        "input_tokens": 3526,
+        "output_tokens": 36,
+        "reported_cost_usd": 0.000148092,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    },
+    {
+      "kind": "decision",
+      "succeeded": true,
+      "identity": {
+        "name": "openrouter",
+        "requested_model": "typesafe/jev-1.14",
+        "resolved_model": "typesafe/jev-1.14-20261014",
+        "resolved_provider": "TypeSafe",
+        "endpoint": "https://openrouter.ai/api/alpha/decisions",
+        "local": false
+      },
+      "usage": {
+        "request_ms": 259.8942500007979,
+        "input_tokens": 2087,
+        "output_tokens": 36,
+        "reported_cost_usd": 0.000087654,
+        "native_ms": null,
+        "prefill_ms": null,
+        "decode_ms": null,
+        "queue_ms": null,
+        "cache_hit": null,
+        "image_tokens": null,
+        "backend_allocated_bytes": null,
+        "backend_budget_bytes": null,
+        "prefix_processed_tokens": null,
+        "prefix_reused_tokens": null,
+        "context_evictions": null
+      }
+    }
+  ]
+}

@@ -1,100 +1,104 @@
 # AXe Decision Control
 
-Bounded iOS Simulator control through AXe, as a Python library, CLI, and two
-project skills. Keep your own goal and choose the observation method it needs.
+**Learn how AI controls an iOS Simulator: direct tool calls, accessibility decisions, screenshot grids, and image boundaries.**
 
-**Status: implemented and measured on a synthetic native fixture.** The
-CLI/library, provider adapters, two skills and benchmark harness are included.
-All 320 tests, lint, strict typing and an independent wheel installation pass.
-The frozen native comparison retains all **105 episodes**, including failures,
-across seven model/mode pairs, five seeded scenarios and three repeats.
+![Three control loops: observe, choose, validate, act through AXe, read again](docs/media/control-loops.svg)
 
-**Grid control is experimental: 0/30 strict benchmark passes.** It performed
-native focus, text entry and taps, but visual grounding and completion judgments
-were unreliable. Tree and direct modes also had failures. See the
-[measured results](docs/results.md) for each model, original recordings, final
-proof and all 66 local inference attempts. This is not general app accuracy.
+**[Open the visual field guide](docs/index.html)** · [Install the plugins](docs/plugins.md) · [Run evaluations](docs/evaluations.md) · [Inspect historical results](docs/results.md)
 
-## Install and run
-
-Requires Python 3.12+, uv, macOS with Xcode, AXe on PATH, and an already selected,
-booted iOS Simulator. Provider services, weights, and credentials are external.
-The examples use `rtk proxy` for this workspace; omit that prefix if RTK is absent.
-From this checkout, install the CLI:
+GitHub displays source for HTML. Open the guide locally to use its **seven video recordings, saved-event stepper, and interactive grid**. No API key or simulator needed to learn:
 
 ```sh
-rtk proxy uv tool install .
-rtk proxy axe-control --help
+git clone https://github.com/Saik0s/axe-decision-control.git
+cd axe-decision-control
+open docs/index.html  # macOS; otherwise open the file in your browser
 ```
 
-Or run from the checkout without a tool installation. Supply `AXE_UDID` as one
-explicit simulator UDID, `AXE_POINTS` as its logical `WIDTHxHEIGHT`, and `AXE_GOAL`
-as the user's requested goal. `booted` is not an accepted UDID. This local example
-requires a caller-managed Winnow service already serving the chosen model:
+## New: Jev 1.14 finds the boundaries
 
-```sh
-rtk proxy uv run axe-control run \
-  --udid "${AXE_UDID:?Select one simulator}" \
-  --points "${AXE_POINTS:?Supply logical WIDTHxHEIGHT}" \
-  --goal "${AXE_GOAL:?Supply the user goal}" \
-  --provider winnow --model Winnow-12B \
-  --base-url "${WINNOW_BASE_URL:-http://127.0.0.1:8091}" --mode tree
-```
+**[Watch the Jev 1.14 visual demo →](docs/jev-1.14.html)** Three new native recordings from **15 October 2026**: start **Review PR**, **50 minutes**, **Quiet mode on**, from an empty name, 10 minutes, and Quiet mode off.
 
-Add a separate `--text "$AXE_TEXT"` for each exact, user-approved literal needed
-for text entry. Do not infer or generate additional literals. A different service
-address must be selected explicitly; a developer's temporary port is not a default.
+| Jev + accessibility | Jev + screenshot grid | Jev + image boundaries |
+| :---: | :---: | :---: |
+| ![Jev 1.14 controlling the app through accessibility](docs/media/jev-1.14-tree.gif) | ![Jev 1.14 controlling the app through screenshot grid judgments](docs/media/jev-1.14-grid.gif) | ![Jev 1.14 locating controls with normalized bounding boxes](docs/media/jev-1.14-box.gif) |
+| **Independent pass** · 8 requests | **Independent pass** · 22 requests | **Independent pass** · 18 requests |
+| [Original video](results/jev-1.14-2026-10-15/tree/original.mp4) | [Original video](results/jev-1.14-2026-10-15/grid/original.mp4) | [Original video](results/jev-1.14-2026-10-15/box-image-fix/box/original.mp4) |
 
-## Choose a mode
+Tree, grid, and box now select **`typesafe/jev-1.14` through OpenRouter** by default. All three recordings resolved to `typesafe/jev-1.14-20261014`. Box asks for normalized edges, validates presence and confidence, converts the center to simulator points, then rechecks freshness before tapping. The [step-through lesson](docs/jev-1.14.html#boundaries) shows actual answers and all five box attempts, including four failures.
 
-| Mode | Model input and action selection | Provider |
+**Images and boxes remain experimental.** Box receives an additional caller-described target catalog; these demonstrations do not isolate the effect of localization strategy or establish general app accuracy. The native evaluator checks persisted app state and visible results separately from model completion. [Reproduction and evidence](results/jev-1.14-2026-10-15/README.md).
+
+## Historical comparison: the same task three ways
+
+Goal: start **Ship demo**, **25 minutes**, **Quiet mode on**. Real native recordings from **5 October 2026**, using the synthetic FocusBench app. Previews retain original playback timing at a reduced frame rate; originals are linked below. They are separate runs, not a synchronized race.
+
+| Direct LLM tools | Clef + accessibility | Clef + screenshot grid |
+| :---: | :---: | :---: |
+| ![GPT-4.1 mini directly controlling the synthetic app](docs/media/gpt-direct.gif) | ![Clef choosing accessibility targets in the synthetic app](docs/media/clef-tree.gif) | ![Clef grid run stopping before completing the task](docs/media/clef-grid.gif) |
+| **Pass** · GPT-4.1 mini | **Pass** · Clef | **Blocked** · Clef |
+| [Original video](results/native-comparison/gpt-direct/basic/repeat-0/original.mp4) | [Original video](results/native-comparison/clef-tree/basic/repeat-0/original.mp4) | [Original video](results/native-comparison/clef-grid/basic/repeat-0/original.mp4) |
+
+See **all seven systems**, including Jev and local Winnow, in the [visual guide](docs/index.html#replays). The same first basic-scenario episode is shown for each, including failures. [Raw episodes](results/native-comparison/report.md) retain the full comparison.
+
+## What changes inside the loop?
+
+| Mode | Model receives | Model returns |
 | --- | --- | --- |
-| `tree` | Accessibility state; typed choices of current semantic targets | OpenRouter Clef/Jev, or Winnow |
-| `grid` | Screenshots and geometry; coarse then fine visual localization | Clef image route or vision-enabled Winnow; experimental grounding |
-| `direct` | Accessibility state; one actual `simulator_action` function call | Generative OpenRouter model, or Winnow chat |
+| Direct | Accessibility state and a bounded function schema | One `simulator_action` tool call |
+| Tree | Accessibility state, allowed operations and targets | Typed answer IDs; program resolves native action |
+| Grid | Screenshot pixels, grid geometry and goal | Coarse/fine region judgments; program converts center to points |
+| Box | Screenshot, goal and optional caller-described target catalog | Typed target selection and normalized edges; program gates and converts the center to points |
 
-Tree prefers semantics. Grid converts screenshot pixels using the supplied logical
-point size, with no universal 3x scaling. Jev accepts text decisions only and is
-rejected for grid. Direct exposes bounded simulator actions, not host shell access.
+All four validate the choice, execute through AXe, then read fresh state. **Direct also uses accessibility.** Different models and hosting mean these observations do not isolate the effect of tree versus grid. Numeric beliefs are uncalibrated, not safety guarantees.
 
-Default limits are **20 steps, 120 model requests, and 300 seconds**. Time and
-cancellation checks are cooperative: an in-flight request can finish after the
-time budget, and cancellation prevents the next action rather than instantly
-interrupting work. `completed` means a fresh model judgment; benchmark success
-requires the independent oracle. Belief thresholds are uncalibrated control
-settings, never permission to act.
+## Evaluate outcomes, not promises
 
-## Library, CLI, and skills
+![Independent outcome and evidence checks join controller completion to determine a strict pass](docs/media/evaluation.svg)
 
-- [Usage](docs/usage.md): exact commands, authentication, library example, capture,
-  and completion semantics.
-- [Architecture](docs/architecture.md): planner boundaries, budgets, and evidence.
-- [Provider contracts](docs/provider-contracts.md): identity, wire formats, source
-  citations, and unverified integrations.
-- [Benchmarks](docs/benchmarks.md): native matrix, independent outcomes and saved proof.
-- [Local performance](docs/local-performance.md): measured prefix-cold/warm workloads.
-- [Measured results](docs/results.md): complete native comparison, local inference
-  latency/resource measurements and preserved failures.
-- [Packaging](docs/releasing.md): build the wheel and source ZIP with both skills
-  and curated evidence.
-- [axe-tree-control](.agents/skills/axe-tree-control/SKILL.md): semantic simulator
-  control for the user's goal.
-- [axe-grid-control](.agents/skills/axe-grid-control/SKILL.md): screenshot control
-  when visual localization is requested or needed.
+Historical native comparison from **5 October 2026**: **105 episodes**, **7 model/mode pairs × 5 scenarios × 3 repeats**. **46 strict passes, 59 failures**. Clef/Winnow grid recorded **0/30 strict passes**. The newer Jev demonstrations are separate evidence and do not change that denominator. These are synthetic fixture results, not general app accuracy or measured skill quality. The [evaluation guide](docs/evaluations.md) separates offline integrity checks, skill-agent evaluations, and native benchmarks.
 
-The skills live in `.agents/skills/` for project discovery and allow automatic
-selection. Invoke `$axe-tree-control` or `$axe-grid-control` explicitly if useful.
-CLI installation installs the Python package, not global skills.
+## Try the controller or install a plugin
 
-## Data and license
+```sh
+uv sync --frozen
+uv run axe-control --help
+uv run axe-control doctor
+```
 
-OpenRouter sends the goal, approved literals, and app state to cloud providers;
-grid also sends screenshots. Select that destination within the user's authorized
-scope. Default reports contain numeric telemetry and bounded status/identity
-metadata, not private goals, text, screenshots, or credentials. `observe` explicitly
-saves app content to a chosen path. Avoid shell history or tracing of private
-arguments; see [data handling](docs/usage.md#data-and-observations).
+Learning and offline checks need Python **3.12+** and uv. Native control also needs **macOS, Xcode, AXe, one explicitly selected booted simulator, and its logical dimensions**. Provider services and credentials are external. Cloud execution sends the goal and app state to the selected provider and can incur charges.
 
-Author: **Igor Tarasenko**. Package license: **MIT**; the standalone license
-file and packaging metadata are included. Provider code, weights, and hosted
-services have separate licenses and terms, described in the provider contracts.
+**[Claude Code and Codex installation →](docs/plugins.md)** Both plugins use one canonical [`skills/`](skills/) bundle with self-contained references. Installing a plugin does not install the Python CLI, native tools, model weights, or services.
+
+**[CLI and library recipes →](docs/usage.md)** · **[Local Winnow setup →](docs/local-winnow.md)**
+
+[Offline CI](.github/workflows/checks.yml) checks behavior, packaging, strict types and saved evidence without model calls. Host plugin execution and new native benchmarks remain separate validation lanes.
+
+## Find the part you want to learn
+
+```text
+.claude-plugin/  Claude Code plugin manifest and marketplace
+.codex-plugin/   Codex plugin manifest
+skills/         Shared agent workflows and their bundled references
+src/            Small bounded controller, planners and provider adapters
+evals/          Explicit evaluation cases and offline grading
+benchmarks/     Native and local-inference measurement harnesses
+fixtures/       Seeded SwiftUI app used for repeatable tasks
+results/        Dated recordings, screenshots and raw measurements
+docs/           Visual lessons first; technical references on demand
+tests/          Behavior and contract regression checks
+```
+
+[Architecture](docs/architecture.md) · [Provider contracts](docs/provider-contracts.md) · [Benchmark reproduction](docs/benchmarks.md) · [Packaging](docs/releasing.md)
+
+<details>
+<summary>Evidence limits and privacy</summary>
+
+Historical benchmark recordings and inference measurements date from **5 October 2026**; the Jev 1.14 demonstrations are dated **15 October 2026** and retain their separate attempts. New documentation, manifest validation, and offline tests do not refresh benchmark performance. The direct benchmark uses GPT-4.1 mini, not the Codex/NTM presentation agent. Failures remain in every benchmark denominator. Controller `completed` is a model judgment; the native evaluator checks independent app state and visible facts.
+
+`observe` explicitly saves app content. Default run reports contain bounded metadata and numeric telemetry, not private goals or text. Grid sends screenshots to the configured provider. Never commit credentials. Local monetary cost is unknown when unreported, not zero. See [data handling](docs/usage.md#data-and-observations).
+
+</details>
+
+## License
+
+Igor Tarasenko · [MIT](LICENSE). AXe, provider services and model weights retain their own licenses and terms.

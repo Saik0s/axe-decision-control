@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "scenario": {
+    "id": "duration",
+    "goal": "Start a session named Review PR for 50 minutes with Quiet mode on.",
+    "allowed_texts": [
+      "Review PR"
+    ],
+    "initial": {
+      "seed": 12,
+      "duration": 10,
+      "quiet": false,
+      "prefill": "",
+      "scroll": false
+    },
+    "expected": {
+      "name": "Review PR",
+      "duration": 50,
+      "quiet": true,
+      "phase": "running"
+    }
+  },
+  "repetition": 0,
+  "seed": 12,
+  "screen": {
+    "width": 402.0,
+    "height": 874.0
+  },
+  "provider_config": {
+    "provider": "openrouter",
+    "model": "typesafe/jev-1.14",
+    "mode": "box",
+    "base_url": "https://openrouter.ai/api",
+    "max_seconds": 240,
+    "max_steps": 20,
+    "max_requests": 120
+  },
+  "report": {
+    "mode": "box",
+    "status": "blocked",
+    "reason": "Box presence or confidence is below the configured gate",
+    "steps": 2,
+    "native_commands": 4,
+    "native_failures": 0,
+    "native_mutations": 0,
+    "decision_requests": 4,
+    "generative_requests": 0,
+    "elapsed_seconds": 3.5541835830008495,
+    "model_seconds": 1.397056166002585,
+    "reported_cost_usd": 0.0005903519999999999,
+    "unpriced_requests": 0,
+    "identity": {
+      "name": "openrouter",
+      "requested_model": "typesafe/jev-1.14",
+      "resolved_model": "typesafe/jev-1.14-20261014",
+      "resolved_provider": "TypeSafe",
+      "endpoint": "https://openrouter.ai/api/alpha/decisions",
+      "local": false
+    },
+    "events": [
+      {
+        "step": 1,
+        "phase": "observe",
+        "at_seconds": 0.00006170800043037161,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 1,
+        "phase": "decide",
+        "at_seconds": 1.2197056250006426,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": {
+          "top": 0.26,
+          "bottom": 0.33,
+          "left": 0.06,
+          "right": 0.94
+        },
+        "presence_belief": 0.9,
+        "box_confidence": 0.96,
+        "tap_point": {
+          "x": 201.0,
+          "y": 257.83000000000004
+        }
+      },
+      {
+        "step": 1,
+        "phase": "freshness",
+        "at_seconds": 1.245103958000982,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 2,
+        "phase": "observe",
+        "at_seconds": 1.7178509580007812,
+        "operation": null,
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      },
+      {
+        "step": 2,
+        "phase": "decide",
+        "at_seconds": 3.0249136249985895,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": {
+          "top": 0.26,
+          "bottom": 0.33,
+          "left": 0.07,
+          "right": 0.94
+        },
+        "presence_belief": 0.89,
+        "box_confidence": 0.97,
+        "tap_point": {
+          "x": 203.01,
+          "y": 257.83000000000004
+        }
+      },
+      {
+        "step": 2,
+        "phase": "freshness",
+        "at_seconds": 3.0489120000020193,
+        "operation": "TAP",
+        "completion_belief": null,
+        "inside_belief": null,
+        "state_changed": null,
+        "text_focus_required": false,
+        "box": null,
+        "presence_belief": null,
+        "box_confidence": null,
+        "tap_point": null
+      }
+    ],
+    "calls": [
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 341.33016700070584,
+          "input_tokens": 3563,
+          "output_tokens": 96,
+          "reported_cost_usd": 0.000149646,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 316.061041001376,
+          "input_tokens": 3468,
+          "output_tokens": 36,
+          "reported_cost_usd": 0.000145656,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 306.84308299896657,
+          "input_tokens": 3560,
+          "output_tokens": 96,
+          "reported_cost_usd": 0.00014952,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      },
+      {
+        "kind": "decision",
+        "succeeded": true,
+        "identity": {
+          "name": "openrouter",
+          "requested_model": "typesafe/jev-1.14",
+          "resolved_model": "typesafe/jev-1.14-20261014",
+          "resolved_provider": "TypeSafe",
+          "endpoint": "https://openrouter.ai/api/alpha/decisions",
+          "local": false
+        },
+        "usage": {
+          "request_ms": 432.8218750015367,
+          "input_tokens": 3465,
+          "output_tokens": 36,
+          "reported_cost_usd": 0.00014553,
+          "native_ms": null,
+          "prefill_ms": null,
+          "decode_ms": null,
+          "queue_ms": null,
+          "cache_hit": null,
+          "image_tokens": null,
+          "backend_allocated_bytes": null,
+          "backend_budget_bytes": null,
+          "prefix_processed_tokens": null,
+          "prefix_reused_tokens": null,
+          "context_evictions": null
+        }
+      }
+    ]
+  },
+  "exit_code": 2,
+  "evaluation": {
+    "oracle": {
+      "phase": "home",
+      "name": "",
+      "duration": 10,
+      "quiet": false,
+      "seed": 12,
+      "screen_width": 402.0,
+      "screen_height": 874.0
+    },
+    "tree": {
+      "labels": [
+        "FocusBench",
+        "Make time to focus.",
+        "Plan one session.",
+        "New session"
+      ],
+      "omitted_labels": 0
+    },
+    "issues": [
+      "final_phase_mismatch",
+      "final_name_mismatch",
+      "final_duration_mismatch",
+      "final_quiet_mismatch",
+      "visible_started_missing",
+      "visible_name_missing",
+      "visible_duration_missing",
+      "visible_quiet_missing"
+    ]
+  },
+  "setup_failures": [],
+  "proof_failures": [],
+  "resources": null,
+  "proof": {
+    "screenshot": "final.png",
+    "tree": "final-tree.json",
+    "video": "original.mp4"
+  }
+}

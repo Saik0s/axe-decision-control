@@ -1,0 +1,33 @@
+name: Offline checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: "0.12.17"
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - name: Behavior and artifact contracts
+        run: uv run --no-sync --offline pytest -q
+      - name: Lint and strict typing
+        run: |
+          uv run --no-sync --offline ruff check .
+          uv run --no-sync --offline mypy src evals tools/build_learning_media.py benchmarks/matrix.py benchmarks/summarize.py
+      - name: Regrade frozen native evidence without model calls
+        run: uv run --no-sync --offline python -m evals.native --input results/native-comparison --output /tmp/native-regrade.json > /dev/null
+      - name: Validate unmeasured skill case contracts
+        run: uv run --no-sync --offline python -m evals.skills
+      - name: Build distributable wheel
+        run: uv build --wheel

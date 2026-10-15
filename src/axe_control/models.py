@@ -9,13 +9,14 @@ from pydantic import Field, FiniteFloat, JsonValue, model_validator
 from .decisions import (
     ModelCall,
     Nonnegative,
+    NormalizedBox,
     Probability,
     ProviderIdentity,
     ProviderUsage,
     StrictModel,
 )
 
-Mode = Literal["direct", "tree", "grid"]
+Mode = Literal["direct", "tree", "grid", "box"]
 Operation = Literal["TAP", "TYPE_TEXT", "SCROLL_UP", "SCROLL_DOWN", "WAIT", "DONE"]
 
 
@@ -34,6 +35,9 @@ class Task(StrictModel):
     allowed_texts: list[Annotated[str, Field(max_length=2048)]] = Field(
         default_factory=list, repr=False
     )
+    target_descriptions: Annotated[
+        list[Annotated[str, Field(min_length=1, max_length=1024)]], Field(max_length=63)
+    ] = Field(default_factory=list, repr=False)
 
 
 class Action(StrictModel):
@@ -77,6 +81,8 @@ class RunConfig(StrictModel):
     max_seconds: int = Field(default=300, ge=1, le=3600)
     minimum_done: Probability = 0.90
     minimum_inside: Probability = 0.50
+    minimum_present: Probability = 0.90
+    minimum_box_confidence: Probability = 0.80
     screen: ScreenSize | None = None
     settle_seconds: Nonnegative = 0.35
     grid_columns: int = Field(default=4, ge=2, le=8)
@@ -99,6 +105,9 @@ class PlannedAction(StrictModel):
     completion_belief: Probability | None = None
     inside_belief: Probability | None = None
     text_focus_key: str | None = None
+    box: NormalizedBox | None = None
+    presence_belief: Probability | None = None
+    box_confidence: Probability | None = None
 
 
 class Event(StrictModel):
@@ -110,6 +119,10 @@ class Event(StrictModel):
     inside_belief: Probability | None = None
     state_changed: bool | None = None
     text_focus_required: bool = False
+    box: NormalizedBox | None = None
+    presence_belief: Probability | None = None
+    box_confidence: Probability | None = None
+    tap_point: Point | None = None
 
 
 class RunReport(StrictModel):

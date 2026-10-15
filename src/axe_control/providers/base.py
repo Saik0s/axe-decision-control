@@ -6,6 +6,8 @@ import math
 from typing import Protocol
 
 from ..decisions import (
+    BoxAnswer,
+    BoxQuestion,
     Capabilities,
     ChoiceAnswer,
     ChoiceQuestion,
@@ -67,6 +69,8 @@ def validate_reply(
     for key, question in request.questions.items():
         answer = reply.answers[key]
         if isinstance(question, NoulQuestion) and isinstance(answer, NoulAnswer):
+            continue
+        if isinstance(question, BoxQuestion) and isinstance(answer, BoxAnswer):
             continue
         if isinstance(question, ChoiceQuestion) and isinstance(answer, ChoiceAnswer):
             if (

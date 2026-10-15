@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import io
 import threading
+from typing import Literal
 
 import pytest
 from PIL import Image, ImageDraw
@@ -11,7 +12,8 @@ from test_control import SCREEN, ScriptedProvider, ScriptedTransport, png, snaps
 from axe_control.context import RunContext
 from axe_control.decisions import Capabilities, ChoiceAnswer, NoulAnswer
 from axe_control.grid import Cell, changed
-from axe_control.models import Action, ActionHistory, Event, RunConfig, Task
+from axe_control.models import Action, ActionHistory, Event, Mode, RunConfig, Task
+from axe_control.observation import TreeSnapshot, normalize_tree
 from axe_control.policies import grid
 from axe_control.runner import run
 
@@ -86,6 +88,113 @@ def test_direct_completion_rejects_state_changed_during_final_call() -> None:
     assert report.status == "budget_exhausted"
     assert report.events[-1].state_changed is True
     assert report.events[-1].completion_belief is None
+
+
+@pytest.mark.parametrize("confirmed", [False, True])
+def test_direct_completion_requires_fresh_done_even_with_zero_threshold(confirmed: bool) -> None:
+    confirmation = (Action(operation="DONE") if confirmed
+                    else Action(operation="TAP", target_ref="e1"))
+    provider = ScriptedProvider(actions=[Action(operation="DONE"), confirmation])
+    transport = ScriptedTransport()
+    report = run(provider, transport, Task(goal="Finish"),
+                 RunConfig(mode="direct", minimum_done=0.0, max_steps=1))
+    assert report.status == ("completed" if confirmed else "blocked")
+    assert report.native_mutations == 0 and not transport.actions
+    assert report.generative_requests == 2
+    assert report.events[-1].completion_belief is None
+
+
+@pytest.mark.parametrize("target,role,allowed", [
+    (None, "Button", False), ("e1", "Button", False),
+    ("e1", "TextField", True), ("e1", "SecureTextField", True),
+])
+def test_direct_text_entry_requires_a_current_editable_target(
+    target: str | None, role: str, allowed: bool,
+) -> None:
+    current = normalize_tree(
+        '[{"type":"' + role + '","AXLabel":"Name","AXUniqueId":"name",'
+        '"frame":{"x":20,"y":30,"width":100,"height":60}}]', screen=SCREEN)
+    action = Action(operation="TYPE_TEXT", target_ref=target, text="Synthetic name")
+    transport = ScriptedTransport([current])
+    report = run(ScriptedProvider(actions=[action]), transport,
+                 Task(goal="Enter the approved name", allowed_texts=["Synthetic name"]),
+                 RunConfig(mode="direct", max_steps=1))
+    assert report.status == ("budget_exhausted" if allowed else "blocked")
+    assert transport.actions == ([action] if allowed else [])
+    assert report.native_mutations == int(allowed)
+    assert "Synthetic name" not in report.model_dump_json()
+
+
+@pytest.mark.parametrize("mode", ["direct", "grid"])
+@pytest.mark.parametrize("stop", ["cancelled", "deadline"])
+@pytest.mark.parametrize("boundary", ["stale", "post_action", "verify_callback", "confirmation"])
+def test_cooperative_stop_wins_at_terminal_observation_boundaries(
+    monkeypatch: pytest.MonkeyPatch, mode: Mode,
+    stop: Literal["cancelled", "deadline"],
+    boundary: Literal["stale", "post_action", "verify_callback", "confirmation"],
+) -> None:
+    clock = [0.0]
+    monkeypatch.setattr("axe_control.context.time.monotonic", lambda: clock[0])
+    cancellation = threading.Event()
+    observations = 0
+    stop_observation = 6 if boundary == "stale" else 3
+
+    def request_stop() -> None:
+        if stop == "cancelled":
+            cancellation.set()
+        else:
+            clock[0] = 1.0
+
+    def observed() -> None:
+        nonlocal observations
+        observations += 1
+        if boundary != "verify_callback" and observations == stop_observation:
+            request_stop()
+
+    class BoundaryTransport(ScriptedTransport):
+        def tree(self) -> TreeSnapshot:
+            result = super().tree()
+            observed()
+            return result
+
+        def screenshot(self) -> bytes:
+            self.commands += 1
+            result = png(change=boundary == "stale" and observations % 2 == 1)
+            observed()
+            return result
+
+    def on_event(event: Event) -> None:
+        if boundary == "verify_callback" and event.phase == "verify":
+            request_stop()
+
+    transport = BoundaryTransport(
+        [snapshot("Old"), snapshot("New")] * 3 if boundary == "stale" else None,
+        forbid_tree=mode == "grid")
+    if mode == "direct":
+        provider = ScriptedProvider(actions=(
+            [Action(operation="DONE"), Action(operation="DONE")]
+            if boundary == "confirmation" else
+            [Action(operation="SCROLL_DOWN") for _ in range(3)]))
+    elif boundary == "confirmation":
+        provider = ScriptedProvider(answers=[
+            {"operation": ChoiceAnswer(choice="DONE", probabilities={"DONE": 1.0, "TAP": 0.0})},
+            {"complete": NoulAnswer(noul=0.99)}, {"complete": NoulAnswer(noul=0.99)},
+        ])
+    else:
+        provider = ScriptedProvider(answers=[{
+            "operation": ChoiceAnswer(choice="SCROLL_DOWN",
+                                      probabilities={"SCROLL_DOWN": 1.0, "DONE": 0.0}),
+        } for _ in range(3)])
+    report = run(provider, transport, Task(goal="Continue"),
+                 RunConfig(mode=mode, screen=SCREEN, max_seconds=1,
+                           max_steps=3 if boundary == "stale" else 1),
+                 cancellation=cancellation, on_event=on_event)
+    assert report.status == ("cancelled" if stop == "cancelled" else "budget_exhausted")
+    assert report.reason == ("Run cancelled before its next operation" if stop == "cancelled"
+                             else "Wall-clock budget exhausted")
+    expected_actions = 1 if boundary in {"post_action", "verify_callback"} else 0
+    assert len(transport.actions) == report.native_mutations == expected_actions
+    assert observations == stop_observation
 
 
 def test_final_decision_belief_is_saved_even_when_it_disagrees_with_plan() -> None:

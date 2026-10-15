@@ -1,39 +1,56 @@
-# Prepare a shareable package
+# Export source, plugins, and teaching material
 
 The wheel installs the `axe-control` CLI and typed `axe_control` library. The
-source ZIP also includes both project skills, benchmark code, fixture source,
-documentation and curated synthetic results. Neither artifact includes AXe,
-Xcode, simulator runtimes, credentials, model weights or a Winnow server.
+source ZIP additionally includes Claude Code/Codex metadata, canonical `skills/`,
+bundled references and evaluation cases, the visual guide and media, benchmarks,
+fixture source and dated synthetic results. Neither installs AXe, Xcode, model
+weights, credentials or provider services.
 
-Finish the benchmark run and its evidence review before labeling an archive a
-release. Preserve failed episodes and incomplete runs with their actual status.
-Update the result links and status in README and docs before building.
-
-From the checkout root, with uv installed:
+## Build from the checkout
 
 ```sh
-rtk proxy uv sync --frozen
-rtk proxy uv build --out-dir dist
-rtk proxy uv run --no-sync --offline python -m tools.package_source \
+uv sync --frozen
+uv build --out-dir dist
+uv run --no-sync --offline python -m tools.package_source \
   --output dist/axe-decision-control-source.zip
 ```
 
-Omit `rtk proxy` if RTK is absent. The ZIP command uses only the standard library
-and prints its SHA-256 and sorted member list. Choose a new filename on subsequent
-builds: existing outputs are refused. `uv build` creates the `dist` parent first.
+Choose a new output filename if that ZIP already exists. The exporter refuses
+collisions, selected-root destinations and symlink inputs. It uses only Python's
+standard library and prints the SHA-256 plus sorted members. Review the actual
+inventory before sharing: source selection cannot detect every secret.
 
-The ZIP uses an explicit source selection, including only the two named skill
-directories within `.agents`. It omits runtime task packets, local benchmark
-work directories, virtual environments, caches, symlinks, credentials and model
-weights. Review the actual archive inventory and curated evidence before sharing;
-file selection does not detect secrets accidentally added to a selected source.
+## What travels with the source ZIP
 
-Extract the source ZIP into a new directory and install from it with
-`uv tool install .`, or prepare the checkout with `uv sync --frozen`. The source
-ZIP retains `.agents/skills/axe-tree-control` and `.agents/skills/axe-grid-control`
-for project discovery. A wheel installation does not register global skills.
+```text
+.claude-plugin/ + .codex-plugin/ + .agents/plugins/   host metadata
+skills/                                             one canonical bundle
+src/ + pyproject.toml + uv.lock                     Python controller
+evals/ + benchmarks/ + fixtures/ + tests/           reproduction and checks
+docs/ + results/                                    visual teaching and evidence
+```
 
-Validate a wheel in a separate Python environment outside the checkout. Confirm
-CLI help, library imports, the `py.typed` marker and that the installed source
-matches the code measured by the final comparison. Keep native simulator and
-provider validation distinct from an import or installation check.
+Caches, environments, ignored runtime task packets, raw local benchmark work,
+credentials and model weights stay out. The old `.agents/skills/` source is
+retired. Skills do not rely on checkout-relative documentation or symlink bridges.
+See [plugin installation and artifact checks](plugins.md).
+
+## Verify the actual artifact
+
+Extract the ZIP into a fresh directory. Resolve both host catalogs/manifests,
+read each installed skill and follow its bundled references. Run offline evals
+from that extracted checkout. Build/install a wheel into an isolated environment,
+check CLI help and library imports, and confirm `py.typed` is installed.
+
+The wheel contains runtime Python only. Source evals and teaching media are not
+installed by `uv tool install .`; that command also does not register plugins.
+Do not modify a user's global plugin settings as a packaging check.
+
+## Keep releases and measurements separate
+
+Recorded `results/` are immutable historical inputs. A packaging or grader repair
+does not rerun the controller; regrade into ignored `artifacts/` and retain the
+original measurement date and implementation fingerprint. Passing offline checks
+or decoding a video does not establish fresh model quality, simulator execution,
+calibrated beliefs or automatic skill routing. Review [evaluation boundaries](evaluations.md)
+before making release claims. Publishing requires an explicit user request.
